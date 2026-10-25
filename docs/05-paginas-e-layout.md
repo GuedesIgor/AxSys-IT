@@ -80,15 +80,20 @@ flowchart TD
 
 ## Identidade visual do protótipo
 
+Segue o design system do site [axsys.com.br](https://axsys.com.br), com o logo oficial (cópia em [`assets/brand/`](../assets/brand/)).
+
 | Item | Escolha |
 |---|---|
-| Cor principal | Verde-água profundo `#0b6e6e` (escuro: `#3fc1b9`) |
-| Alerta | Âmbar para pendências, vermelho para falta/erro, verde para completo |
-| Barra lateral | Azul-petróleo escuro `#10303a` |
-| Títulos | Bricolage Grotesque |
-| Texto | IBM Plex Sans |
-| Horários e números | IBM Plex Mono com números tabulares |
-| Cartões | Fundo da superfície, borda fina, raio de 12 px |
+| Logo | `logo-full.png` do site, sobre pastilha branca para funcionar também no tema escuro |
+| Fundo | Off-white quente `#fbfaf9` (escuro: `#0d1623`) |
+| Texto e botão principal | Navy `#19293e` |
+| Destaque | Azul `#25578e`, hover `#1e4674` (escuro: `#78b0ea`) |
+| Estados | Verde `#1a7f45`, âmbar `#b5680a`, vermelho `#c0392b`, cada um com fundo suave |
+| Fonte | Inter (a mesma do site), números tabulares |
+| Cartões | Fundo branco, borda `#e3e1de`, cantos de 20 px, sombra leve |
+| Botões | Formato pílula; principal em navy |
+| Barra lateral | Clara, item ativo em azul suave |
+| Login | Painel navy de apresentação ao lado do formulário |
 
 ## Regras de interface
 

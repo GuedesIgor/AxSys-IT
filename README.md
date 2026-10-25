@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/brand/axsys-logo.png" alt="AxSys IT" width="260">
+
 # AxSys IT · Projetos de Software
 
 **Repositório privado de projetos de software da [AxSys IT](https://axsys.com.br)**
@@ -115,6 +117,8 @@ Estamos nas fases 1 a 3, que se repetem em ciclos curtos: ajustar o protótipo, 
 │   ├── 06-fluxos.md
 │   ├── 07-registro-de-validacoes.md
 │   └── 08-perguntas-em-aberto.md
+├── assets/
+│   └── brand/                 ← logo e favicon da AxSys IT (do axsys.com.br)
 └── prototipo/
     ├── README.md              ← como usar e o que cobre
     └── index.html             ← protótipo navegável

@@ -6,6 +6,25 @@ Diário das decisões tomadas ao validar o protótipo. Mais recente no topo.
 
 ---
 
+## Rodada 3 · Identidade visual AxSys
+
+**Versão do protótipo:** v3 · **Pedido:** o visual estava feio e fora do padrão de negócio de alto nível; usar o logo e o estilo do site.
+
+| # | Tema | Decisão | Motivo | Status |
+|---|---|---|---|---|
+| V3-01 | Marca | Usar o logo oficial do axsys.com.br no login e na barra lateral | Coerência com o site | ✅ |
+| V3-02 | Cores e fonte | Adotar paleta navy e azul e a fonte Inter do site | Mesma linguagem visual da empresa | ✅ |
+| V3-03 | Componentes | Cartões brancos de 20 px, botões pílula, barra lateral clara | Aspecto corporativo, limpo e com mais respiro | ✅ |
+| V3-04 | Login | Painel de apresentação navy com 3 argumentos do produto | Primeira impressão de produto, não de tela de teste | ✅ |
+| V3-05 | Relógio | Fonte leve e grande, sem fonte monoespaçada | Menos aspecto técnico, mais elegância | ✅ |
+| V3-06 | Tema escuro | Derivado do navy do site | Manter a identidade nos dois temas | ✅ |
+
+### Pendências desta rodada
+- O logo do site é PNG com espaço entre o losango e o texto. Pedir à AxSys o arquivo vetorial (SVG) e uma versão para fundo escuro.
+- Confirmar se o AxPonto terá marca própria ou usará só a AxSys IT.
+
+---
+
 ## Rodada 2 · Localização obrigatória e mapa
 
 **Versão do protótipo:** v2 · **Pedido:** a localização do aparelho deve ser obrigatória para bater o ponto, com mapa da pessoa.
