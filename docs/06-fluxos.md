@@ -8,11 +8,19 @@ sequenceDiagram
     participant S as Sistema
     C->>S: Entra com e-mail e senha
     S-->>C: Tela "Registrar ponto"
-    C->>S: Clica no botão destacado
-    S-->>C: Pede confirmação com a hora
-    C->>S: Confirma
-    S->>S: Grava com hora do servidor e log
-    S-->>C: Comprovante com número
+    S->>C: Pede permissão de localização
+    alt Negou ou bloqueou
+        C-->>S: Sem localização
+        S-->>C: Botões bloqueados e aviso "Localização obrigatória"
+    else Permitiu
+        C-->>S: Latitude, longitude e precisão
+        S-->>C: Mostra mapa com a posição
+        C->>S: Clica no botão destacado
+        S-->>C: Pede confirmação com hora e mapa
+        C->>S: Confirma
+        S->>S: Grava hora do servidor, local e log
+        S-->>C: Comprovante com número e local
+    end
 ```
 
 ## F2 · Esqueci de bater o ponto

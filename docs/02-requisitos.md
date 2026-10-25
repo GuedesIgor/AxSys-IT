@@ -25,6 +25,10 @@
 | RF-13 | Emitir comprovante com número, data, hora e origem | 🔴 | ✅ |
 | RF-14 | Mostrar horas trabalhadas e progresso da jornada do dia | 🟡 | ✅ |
 | RF-15 | Gravar a hora do servidor, não a do aparelho | 🔴 | ⬜ (simulada) |
+| RF-16 | **Localização do aparelho obrigatória**: sem permissão, os botões de ponto ficam bloqueados | 🔴 | ✅ |
+| RF-17 | Mostrar mapa com a posição da pessoa, círculo de precisão e a sede | 🔴 | ✅ (mapa esquemático) |
+| RF-18 | Gravar latitude, longitude e precisão em cada batida e no comprovante | 🔴 | ✅ |
+| RF-19 | Indicar se o registro foi dentro ou fora da área da empresa (apenas informativo) | 🟡 | ✅ |
 
 ### Espelho de ponto
 
@@ -76,6 +80,8 @@
 | RNF-08 | Privacidade | Seguir a LGPD: coletar só o necessário |
 | RNF-09 | Disponibilidade | Meta inicial de 99,5% (a validar) |
 | RNF-10 | Idioma | Português do Brasil, fuso America/Sao_Paulo |
+| RNF-11 | Mapa real no app | Mapa com tiles (ex.: OpenStreetMap com Leaflet). O protótipo usa um desenho esquemático |
+| RNF-12 | Contexto seguro | Geolocalização exige HTTPS |
 
 ## Rastreabilidade rápida
 

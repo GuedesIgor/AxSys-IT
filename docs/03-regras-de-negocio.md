@@ -18,6 +18,16 @@ stateDiagram-v2
 
 Jornadas sem intervalo (ex.: Estágio 4h) usam só **Entrada** e **Saída**.
 
+## RN-10 · Localização obrigatória
+
+1. O sistema pede a localização do aparelho ao abrir "Registrar ponto".
+2. **Sem permissão, nenhuma batida é aceita.** O botão do próximo registro fica desabilitado com o texto "Localização necessária".
+3. O mapa mostra a posição, a precisão (círculo) e a sede da empresa.
+4. A batida grava latitude, longitude e precisão. O comprovante repete esses dados.
+5. Estar **fora da área da empresa** (raio de 200 m no protótipo) não bloqueia: apenas é informado. Se vira bloqueio ou sinalização ao gestor, está em [Q-04](08-perguntas-em-aberto.md).
+6. O pedido de confirmação mostra o mapa de novo antes de gravar.
+7. Se a permissão for retirada entre abrir a tela e confirmar, a batida é recusada.
+
 ## RN-02 · Cálculo de horas trabalhadas
 
 ```text

@@ -18,7 +18,10 @@ Protótipo navegável do sistema de registro de ponto web. Serve para validar re
 ## O que é simulado
 
 - Dados e usuários: todos fictícios, gerados ao abrir (ver [usuários de teste](../docs/04-perfis-e-usuarios-ficticios.md)).
-- Hora e IP do registro: hora do navegador e IP de exemplo.
+- Hora do registro: hora do navegador.
+- Localização: o protótipo pede o GPS de verdade. O visualizador de artefatos bloqueia essa permissão, então há um **simulador de local** (e de negação). Para testar o GPS real, abra `index.html` direto no navegador (precisa de `localhost` ou `https`).
+- Mapa: desenho esquemático com a posição, a precisão e a sede. No app real será um mapa com tiles.
+- Sede de exemplo: Av. Paulista, São Paulo (coordenadas fictícias).
 - Persistência: guardada no navegador de quem testa (`localStorage`). Use **Reiniciar dados** no login para recomeçar.
 - Senhas: em texto, apenas para facilitar o teste.
 

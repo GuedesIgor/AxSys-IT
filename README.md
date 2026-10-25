@@ -53,7 +53,7 @@ flowchart LR
 
 | Perfil | O que faz | Telas principais |
 |---|---|---|
-| 👤 **Colaborador** | Registra o ponto, confere o espelho, pede ajustes | Registrar ponto · Meu espelho · Meus ajustes |
+| 👤 **Colaborador** | Registra o ponto **com localização obrigatória e mapa**, confere o espelho, pede ajustes | Registrar ponto · Meu espelho · Meus ajustes |
 | 🧭 **Gestor** | Acompanha a equipe e decide ajustes | Minha equipe · Aprovações |
 | 🗂️ **RH** | Cadastra pessoas e jornadas, gera relatórios | Visão geral · Colaboradores · Jornadas · Relatórios · Auditoria |
 | 🛠️ **Administrador** | Tudo do RH, mais configuração do sistema | Mesmas do RH |

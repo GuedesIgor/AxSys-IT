@@ -41,6 +41,10 @@ flowchart TD
 
 ### Registrar ponto (Colaborador)
 - **Relógio grande** com segundos.
+- **Cartão de localização** logo abaixo: 
+  - sem permissão, aviso âmbar "Localização obrigatória" com botão "Permitir localização" e os botões de ponto bloqueados;
+  - com permissão, mapa com a pessoa, círculo de precisão, sede, escala, coordenadas, indicação de área da empresa e link para o OpenStreetMap.
+- O modal de confirmação repete o mapa.
 - **Quatro botões** em linha: já feito (verde, com hora), próximo (verde-água, destacado), futuros (desabilitados).
 - Cartão lateral "Hoje": trabalhado, esperado, barra de progresso.
 - Cartão "Últimos dias" com três dias anteriores.

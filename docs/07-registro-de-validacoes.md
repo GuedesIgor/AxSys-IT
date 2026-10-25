@@ -6,6 +6,26 @@ Diário das decisões tomadas ao validar o protótipo. Mais recente no topo.
 
 ---
 
+## Rodada 2 · Localização obrigatória e mapa
+
+**Versão do protótipo:** v2 · **Pedido:** a localização do aparelho deve ser obrigatória para bater o ponto, com mapa da pessoa.
+
+| # | Tema | Decisão | Motivo | Status |
+|---|---|---|---|---|
+| V2-01 | Obrigatoriedade | Sem localização, os botões de ponto ficam bloqueados | Regra pedida pela AxSys | ✅ |
+| V2-02 | Mapa | Cartão com mapa, precisão, sede e coordenadas na tela de ponto e no modal de confirmação | Pessoa confere onde está antes de gravar | ✅ |
+| V2-03 | Dados gravados | Latitude, longitude e precisão ficam na batida e no comprovante | Rastro do registro | ✅ |
+| V2-04 | Área da empresa | Mostrar "na área" ou "fora da área" (raio de 200 m), sem bloquear | Evita bloquear quem trabalha remoto até a regra ser definida | ⏳ ver Q-04 |
+| V2-05 | Simulador | O protótipo inclui simulador de local e de negação de permissão | O visualizador de artefatos bloqueia o GPS real; sem o simulador não dá para validar o fluxo | ✅ só protótipo |
+| V2-06 | Mapa no protótipo | Desenho esquemático, não mapa real | O artefato não carrega imagens de mapa de outros sites. No app real usar tiles (OpenStreetMap/Leaflet) | ✅ |
+
+### Pendências desta rodada
+- Gestor e RH ainda não veem o local de cada batida. Sugestão: ícone de pin no espelho abrindo o mapa.
+- Definir se "fora da área" bloqueia, só sinaliza ou exige justificativa.
+- LGPD: informar ao colaborador, antes do pedido do navegador, por que e quando a localização é coletada.
+
+---
+
 ## Rodada 1 · Estrutura inicial
 
 **Versão do protótipo:** v1 · **Origem:** artefato do Claude, arquivo `prototipo/index.html`
