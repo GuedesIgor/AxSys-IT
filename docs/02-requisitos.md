@@ -94,6 +94,8 @@ Origem de cada um na [matriz de funcionalidades](10-matriz-de-funcionalidades.md
 | RF-69 | Mural de avisos por empresa ou setor | 🟢 | ✅ |
 | RF-70 | Perfil com dados, QR Code, troca de senha e preferências de notificação | 🟡 | ✅ |
 | RF-71 | Ver o local de cada batida no espelho (gestor e RH) | 🟡 | ✅ |
+| RF-72 | Módulo opcional de custo de mão de obra (valor da hora, custo estimado e valores nos eventos de folha), desligado por padrão e visível só a RH e Admin | 🟢 | ✅ |
+| RF-73 | Aviso de finalidade na captura da selfie e método alternativo (PIN ou QR) | 🔴 | 🟡 aviso feito, alternativa no app |
 
 ## Requisitos não funcionais
 
@@ -110,7 +112,11 @@ Origem de cada um na [matriz de funcionalidades](10-matriz-de-funcionalidades.md
 | RNF-09 | Disponibilidade | Meta inicial de 99,5% (a validar) |
 | RNF-10 | Idioma | Português do Brasil, fuso America/Sao_Paulo |
 | RNF-11 | Mapa real no app | Mapa com tiles (ex.: OpenStreetMap com Leaflet). O protótipo usa um desenho esquemático |
-| RNF-12 | Contexto seguro | Geolocalização exige HTTPS |
+| RNF-12 | Contexto seguro | Geolocalização e câmera exigem HTTPS |
+| RNF-13 | **Qualquer navegador e qualquer aparelho** | Funciona nas duas últimas versões de Chrome, Edge, Firefox, Safari e Samsung Internet, em Windows, macOS, Linux, Android e iOS, de 360 px de largura até telas grandes |
+| RNF-14 | App web instalável (PWA) | Instalável na tela inicial, abre em tela cheia e tem o mesmo comportamento em todos os aparelhos |
+| RNF-15 | Sem dependência de app nativo | Toda função da primeira versão roda no navegador. Câmera e GPS usam as permissões do próprio navegador |
+| RNF-16 | Caminho alternativo quando o aparelho não permite | Ver [Q-20](08-perguntas-em-aberto.md) |
 
 ## Rastreabilidade rápida
 

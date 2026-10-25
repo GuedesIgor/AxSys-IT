@@ -6,6 +6,20 @@ Diário das decisões tomadas ao validar o protótipo. Mais recente no topo.
 
 ---
 
+## Rodada 5 · Decisões sobre selfie, custo e plataforma
+
+**Versão do protótipo:** v5 · **Origem:** respostas da AxSys às perguntas Q-13, Q-16 e Q-17.
+
+| # | Tema | Decisão | Motivo | Status |
+|---|---|---|---|---|
+| V5-01 | Selfie | Manter a selfie **ativada por padrão**, sempre configurável, **desde que a validação jurídica confirme a base legal** | A AxSys aceita se for prática comum e legal. Prática comum: sim (UKG, Connecteam, Jibble, Pontomais). Legalidade no ponto de empregados: sem posição consolidada | ⏳ depende de parecer jurídico |
+| V5-02 | Selfie: salvaguardas | Aviso na hora da captura, alternativa por PIN ou QR, guardar só o necessário, prazo de retenção definido | Reduz risco enquanto o parecer não sai | ✅ aviso no protótipo; resto vai para a especificação |
+| V5-03 | Valor da hora | Sair do cadastro padrão. Vira o **módulo opcional de custo de mão de obra**, desligado por padrão, visível só a RH e Admin | O valor da hora é dado de folha, não de ponto. Reduz exposição de dado sensível | ✅ |
+| V5-04 | Plataforma | O AxPonto é um **app web responsivo instalável (PWA)** que funciona em qualquer navegador moderno e em qualquer aparelho | Requisito da AxSys. Um só produto serve computador, Android e iPhone | ✅ requisito registrado |
+| V5-05 | App nativo | Não é necessário na primeira versão. Só entra se uma função exigir (rastreio em segundo plano, controle de aparelho do quiosque) | Evita três bases de código | ✅ |
+
+---
+
 ## Rodada 4 · Benchmark de mercado e cadastro completo
 
 **Versão do protótipo:** v4 · **Pedido:** colaborador com setor, gestor e demais informações; estudar os 10 sistemas de ponto mais usados e trazer todas as funções.

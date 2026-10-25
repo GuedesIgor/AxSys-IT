@@ -240,7 +240,7 @@ function seedJornadas(){return {
  est:{nome:'Estágio 4h',desc:'Seg a Sex, 13:00–17:00, sem intervalo',min:240,intervalo:0,ini:780}
 };}
 function seedCfg(){return {
- raio:200,foraDaArea:'justificar',selfie:true,tolerancia:10,limiteExtra:120,intervaloMin:60,janelaMin:0,
+ raio:200,foraDaArea:'justificar',selfie:true,custos:false,tolerancia:10,limiteExtra:120,intervaloMin:60,janelaMin:0,
  autoSaida:true,offline:true,sessao:30,mfa:false,sso:false,senhaForte:true,bancoValidade:6,
  metodos:{web:true,quiosque:true,qr:true,whatsapp:false,slack:false,teams:false}
 };}
@@ -780,9 +780,9 @@ function vVisao(){
   var max=Math.max(1,at.length);
   function row(l,n){return '<tr><td>'+l+'</td><td style="width:50%"><div class="bar"><i style="width:'+(n/max*100)+'%"></i></div></td><td>'+n+'</td></tr>'}
   return head('Visão geral','Hoje, '+fdate(TODAY)+' · '+at.length+' colaboradores ativos')+
-  '<div class="grid">'+kpi(c.Trabalhando,'Trabalhando agora')+kpi(G.atraso.length,'Atrasos ou ausências hoje',G.atraso.length?'var(--bad)':'')+kpi(pend,'Solicitações pendentes',pend?'var(--amber)':'')+kpi(exTotal(G),'Exceções abertas',exTotal(G)?'var(--bad)':'')+kpi(money(custo),'Custo estimado da folha no mês')+kpi(prev?Math.round(real/prev*100)+'%':'—','Realizado × previsto no mês')+'</div>'+
+  '<div class="grid">'+kpi(c.Trabalhando,'Trabalhando agora')+kpi(G.atraso.length,'Atrasos ou ausências hoje',G.atraso.length?'var(--bad)':'')+kpi(pend,'Solicitações pendentes',pend?'var(--amber)':'')+kpi(exTotal(G),'Exceções abertas',exTotal(G)?'var(--bad)':'')+(S.cfg.custos?kpi(money(custo),'Custo estimado da folha no mês'):'')+kpi(prev?Math.round(real/prev*100)+'%':'—','Realizado × previsto no mês')+'</div>'+
   '<div class="two"><div class="card"><h3>Presença agora</h3><table><tbody>'+row('Trabalhando',c.Trabalhando)+row('No intervalo',c['No intervalo'])+row('Encerrou o dia',c.Encerrou)+row('Folga',c.Folga)+row('Em ausência aprovada',aus)+row('Sem registro',c.Ausente)+'</tbody></table></div>'+
-  '<div class="card"><h3>Por setor no mês</h3>'+tbl(['Setor','Pessoas','Agora','Realizado × previsto','Saldo','Custo'],[Object.keys(porSetor).map(function(k){var p=porSetor[k];return '<tr><td><b>'+esc(k)+'</b></td><td>'+p.n+'</td><td>'+p.w+'</td><td>'+hm(p.real)+' / '+hm(p.prev)+'</td><td>'+fmtSaldo(p.saldo)+'</td><td>'+money(p.cust)+'</td></tr>'}).join('')])+'</div></div>';
+  '<div class="card"><h3>Por setor no mês</h3>'+tbl(['Setor','Pessoas','Agora','Realizado × previsto','Saldo'].concat(S.cfg.custos?['Custo']:[]),[Object.keys(porSetor).map(function(k){var p=porSetor[k];return '<tr><td><b>'+esc(k)+'</b></td><td>'+p.n+'</td><td>'+p.w+'</td><td>'+hm(p.real)+' / '+hm(p.prev)+'</td><td>'+fmtSaldo(p.saldo)+'</td>'+(S.cfg.custos?'<td>'+money(p.cust)+'</td>':'')+'</tr>'}).join('')])+'</div></div>';
 }
 function vColab(){
   var q=ui.busca.toLowerCase(),l=S.users.filter(function(u){return(!ui.cset||u.setor===ui.cset)&&(!ui.funi||u.unidade===ui.funi)&&(!q||(u.nome+u.matricula+u.email+u.cargo).toLowerCase().indexOf(q)>=0)});
@@ -812,8 +812,8 @@ function repData(){
   var ym=ui.mes,us=repUsers(),H,R=[],t=ui.rel;
   if(t==='consolidado'){H=['Colaborador','Matrícula','Setor','Unidade','Dias completos','Horas','Previsto','Saldo','Faltas','Incompletos','Espelho'];
     us.forEach(function(u){var s=monthSummary(u.id,ym),f=fechState(u.id,ym);R.push([u.nome,u.matricula,u.setor,unitOf(u).nome,s.ok,hm(s.worked),hm(s.previsto),fmtSaldo(s.saldo),s.faltas,s.inc,f.fec?'Fechado':f.apr?'Aprovado':f.ass?'Assinado':'Aberto'])})}
-  else if(t==='extras'){H=['Colaborador','Setor','Extras 50%','Extras 100%','Adicional noturno','Banco de horas','Custo estimado'];
-    us.forEach(function(u){var s=monthSummary(u.id,ym);R.push([u.nome,u.setor,hm(s.ext50),hm(s.ext100),hm(s.noturno),fmtSaldo(bancoHoras(u.id)),money(s.custo)])})}
+  else if(t==='extras'){H=['Colaborador','Setor','Extras 50%','Extras 100%','Adicional noturno','Banco de horas'].concat(S.cfg.custos?['Custo estimado']:[]);
+    us.forEach(function(u){var s=monthSummary(u.id,ym),r=[u.nome,u.setor,hm(s.ext50),hm(s.ext100),hm(s.noturno),fmtSaldo(bancoHoras(u.id))];if(S.cfg.custos)r.push(money(s.custo));R.push(r)})}
   else if(t==='atrasos'){H=['Colaborador','Setor','Atrasos','Saídas antecipadas','Intervalos curtos','Faltas','Absenteísmo'];
     us.forEach(function(u){var at=0,sa=0,ic=0,du=0;monthDays(ym).forEach(function(d){if(d>TODAY||!u.ativo&&false)return;var x=dayInfo(u.id,d);if(!x.sc.folga&&x.st!=='ausencia'&&d>=u.admissao)du++;alertas(u.id,d).forEach(function(a){if(a.txt.indexOf('Entrada com')===0)at++;if(a.txt.indexOf('Saída antecipada')===0)sa++;if(a.txt.indexOf('Intervalo de')===0)ic++})});var s=monthSummary(u.id,ym);R.push([u.nome,u.setor,at,sa,ic,s.faltas,du?(s.faltas/du*100).toFixed(1).replace('.',',')+'%':'0%'])})}
   else if(t==='banco'){H=['Colaborador','Setor','Saldo no mês','Banco acumulado','Validade','Situação'];
@@ -824,14 +824,14 @@ function repData(){
   else if(t==='local'){H=['Data','Colaborador','Registro','Hora','Latitude','Longitude','Precisão','Área','Origem','Aparelho'];
     us.forEach(function(u){monthDays(ym).forEach(function(d){((S.punches[u.id]||{})[d]||[]).forEach(function(p){if(!p.local)return;var ar=areaInfo(u,p.local);R.push([fdate(d),u.nome,tipoNome(p.tipo),p.hora,p.local.lat.toFixed(5),p.local.lng.toFixed(5),'±'+p.local.acc+' m',ar.txt,p.orig,p.disp||'—'])})})});
     R.reverse();R=R.slice(0,200)}
-  else if(t==='folha'){H=['Matrícula','Colaborador','Evento','Quantidade','Valor'];
+  else if(t==='folha'){var cv=S.cfg.custos;H=['Matrícula','Colaborador','Evento','Quantidade'].concat(cv?['Valor']:[]);
     us.forEach(function(u){var s=monthSummary(u.id,ym),vh=u.valorHora,normal=s.worked-s.ext50-s.ext100;
-      R.push([u.matricula,u.nome,'Horas normais',hm(normal),money(normal/60*vh)]);
-      if(s.ext50)R.push([u.matricula,u.nome,'Hora extra 50%',hm(s.ext50),money(s.ext50/60*vh*1.5)]);
-      if(s.ext100)R.push([u.matricula,u.nome,'Hora extra 100%',hm(s.ext100),money(s.ext100/60*vh*2)]);
-      if(s.noturno)R.push([u.matricula,u.nome,'Adicional noturno 20%',hm(s.noturno),money(s.noturno/60*vh*0.2)]);
-      if(s.faltas)R.push([u.matricula,u.nome,'Falta',s.faltas+' dia(s)','−'+money(s.faltas*J(u.jornada).min/60*vh)]);
-      if(s.aus)R.push([u.matricula,u.nome,'Ausência abonada',s.aus+' dia(s)',money(0)])})}
+      R.push([u.matricula,u.nome,'Horas normais',hm(normal)].concat(cv?[money(normal/60*vh)]:[]));
+      if(s.ext50)R.push([u.matricula,u.nome,'Hora extra 50%',hm(s.ext50)].concat(cv?[money(s.ext50/60*vh*1.5)]:[]));
+      if(s.ext100)R.push([u.matricula,u.nome,'Hora extra 100%',hm(s.ext100)].concat(cv?[money(s.ext100/60*vh*2)]:[]));
+      if(s.noturno)R.push([u.matricula,u.nome,'Adicional noturno 20%',hm(s.noturno)].concat(cv?[money(s.noturno/60*vh*0.2)]:[]));
+      if(s.faltas)R.push([u.matricula,u.nome,'Falta',s.faltas+' dia(s)'].concat(cv?['−'+money(s.faltas*J(u.jornada).min/60*vh)]:[]));
+      if(s.aus)R.push([u.matricula,u.nome,'Ausência abonada',s.aus+' dia(s)'].concat(cv?[money(0)]:[]))})}
   return {H:H,R:R};
 }
 function csvText(H,R){return [H].concat(R).map(function(r){return r.map(function(c){c=String(c);return /[;"\n]/.test(c)?'"'+c.replace(/"/g,'""')+'"':c}).join(';')}).join('\n')}
@@ -879,6 +879,7 @@ function vConfig(){
    cfgRow('tol','Tolerância de atraso e saída','Minutos de tolerância antes de gerar alerta.',true,cN('tolerancia',c.tolerancia,0,30)+' min')+
    cfgRow('lim','Limite diário de hora extra','Acima disso o dia gera alerta para o gestor.',true,cN('limiteExtra',c.limiteExtra,0,360)+' min')+
    cfgRow('int','Intervalo mínimo','Intervalos menores que isso geram alerta (CLT: 1h para jornadas acima de 6h).',true,cN('intervaloMin',c.intervaloMin,15,120)+' min')+
+   cfgRow('cus','Módulo de custo de mão de obra','Mostra valor da hora, custo estimado e valores nos eventos de folha. Só RH e Admin veem. Desligado por padrão, porque o valor da hora normalmente fica no sistema de folha.',true,cT('custos',c.custos))+
    cfgRow('bv','Validade do banco de horas','Meses até as horas do banco vencerem.',false,cN('bancoValidade',c.bancoValidade,1,12)+' meses')+'</div>'+
   '<div class="card"><h3>Métodos de registro habilitados</h3>'+
    cfgRow('m1','Web (navegador)','Registro pelo computador ou celular.',true,cT('m.web',c.metodos.web))+
@@ -946,7 +947,7 @@ function modalHtml(){
   if(m.k==='punch'){
     var c=punchCtx(m),t=tipoNome(m.tipo),u=c.u,un=unitOf(u),ref=un.cerca?{lat:un.lat,lng:un.lng}:null;
     var proj=(m.tipo==='entrada'&&S.projetos.length)?fld('pp','Projeto ou atividade (opcional)','select',{o:[['','Sem projeto']].concat(S.projetos.map(function(x){return [x,x]}))}):'';
-    var selfie=c.needSelfie?(m.selfie?'<div class="selfie ok"><span class="av">'+esc(u.nome.split(' ').map(function(x){return x[0]}).slice(0,2).join(''))+'</span><div><b>Selfie capturada às '+m.selfieAt+'</b><div class="muted">Verificação facial simulada: identidade conferida.</div></div></div>':'<div class="selfie"><div><b>Verificação facial</b><div class="muted">Capture uma selfie para confirmar que é você. A câmera é simulada.</div></div><button class="btn sm primary" data-act="selfie">Capturar selfie</button></div>'):'';
+    var selfie=c.needSelfie?(m.selfie?'<div class="selfie ok"><span class="av">'+esc(u.nome.split(' ').map(function(x){return x[0]}).slice(0,2).join(''))+'</span><div><b>Selfie capturada às '+m.selfieAt+'</b><div class="muted">Verificação facial simulada: identidade conferida.</div></div></div>':'<div class="selfie"><div><b>Verificação facial</b><div class="muted">Capture uma selfie para confirmar que é você. A imagem é usada só para conferir sua identidade nesta batida. Se preferir, peça ao RH outro método (PIN ou QR). A câmera é simulada.</div></div><button class="btn sm primary" data-act="selfie">Capturar selfie</button></div>'):'';
     var offl=(m.orig==='web'&&ui.offline&&S.cfg.offline)?'<div class="banner">Sem internet: o registro fica salvo no aparelho e é enviado quando a conexão voltar.</div>':'';
     var outro=(m.orig==='web'&&ui.disp==='outro')?'<div class="banner">Aparelho diferente do habitual ('+DEV_OUTRO+'). O gestor será avisado.</div>':'';
     var fora=c.ar.fora?(c.bloq&&c.ar.fora?'<div class="err" role="alert">'+c.bloq+'</div>':'<div class="banner">'+c.ar.txt+'. '+(c.needJust?'Informe o motivo para registrar.':'O gestor será avisado.')+'</div>'+(c.needJust?fld('pj','Motivo de estar fora da área','textarea',{ph:'Ex.: reunião externa com o cliente'}):'')):(c.bloq?'<div class="err" role="alert">'+c.bloq+'</div>':'');
@@ -968,7 +969,7 @@ function modalHtml(){
      fld('cs','Setor','select',{o:S.setores.map(function(x){return [x,x]}),def:D('setor',S.setores[0])})+fld('cg','Cargo','text',{def:D('cargo','')})+
      fld('cu','Unidade','select',{o:Object.keys(S.unidades).map(function(k){return [k,S.unidades[k].nome]}),def:D('unidade','sp')})+fld('cp','Perfil','select',{o:[['func','Colaborador'],['gestor','Gestor'],['rh','RH']].concat(e&&e.perfil==='admin'?[['admin','Administrador']]:[]),def:D('perfil','func')})+
      fld('cm','Gestor direto','select',{o:[['','Sem gestor']].concat(gs),def:D('gestor','')||''})+fld('cj','Jornada','select',{o:Object.keys(S.jornadas).map(function(k){return [k,S.jornadas[k].nome]}),def:D('jornada','com')})+
-     fld('cr','Contrato','select',{o:CONTRATOS.map(function(x){return [x,x]}),def:D('contrato','CLT')})+fld('ca','Admissão','date',{def:D('admissao',TODAY)})+fld('cv','Valor da hora (R$)','number',{def:D('valorHora',30),step:'0.5',min:'0'})+fld('ck','Centro de custo','text',{def:D('cc','CC-000')})+fld('cx','PIN do quiosque (4 dígitos)','text',{def:D('pin','')})+'</div>'+
+     fld('cr','Contrato','select',{o:CONTRATOS.map(function(x){return [x,x]}),def:D('contrato','CLT')})+fld('ca','Admissão','date',{def:D('admissao',TODAY)})+(S.cfg.custos?fld('cv','Valor da hora (R$)','number',{def:D('valorHora',30),step:'0.5',min:'0'}):'')+fld('ck','Centro de custo','text',{def:D('cc','CC-000')})+fld('cx','PIN do quiosque (4 dígitos)','text',{def:D('pin','')})+'</div>'+
      (m.err?'<div class="err" role="alert">'+m.err+'</div>':'')+'<div class="row"><button class="btn" data-act="close">Cancelar</button><button class="btn primary" data-act="salvacolab">'+(e?'Salvar alterações':'Cadastrar')+'</button></div>';
   }else if(m.k==='ficha'){
     var f=U(m.id),b=bancoHoras(f.id),fi=feriasInfo(f.id),rh=session&&(session.perfil==='rh'||session.perfil==='admin');

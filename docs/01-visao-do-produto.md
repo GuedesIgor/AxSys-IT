@@ -35,13 +35,16 @@ Um sistema web em que o colaborador registra o ponto pelo navegador, o gestor re
 - Cadastro de colaboradores, perfis e jornadas
 - Relatório mensal por colaborador
 - Log de auditoria
+- Localização obrigatória em cada batida, com mapa e cerca virtual
+- Selfie de verificação (ativa por padrão, sujeita a parecer jurídico)
+- Escalas, ausências, banco de horas e fechamento mensal
+- Funcionamento em qualquer navegador e aparelho, como app web instalável
 
 ## Fora do escopo (por enquanto)
 
-- Aplicativo nativo para celular
-- Reconhecimento facial e biometria
-- Integração com folha de pagamento
-- Geolocalização obrigatória
+- Aplicativo nativo para celular (o app web instalável cobre computador e celular)
+- Biometria digital e relógio físico (a selfie de verificação está no escopo, sujeita a parecer jurídico)
+- Integração real com folha de pagamento (a primeira versão exporta eventos)
 - Escalas complexas (12x36, turnos rotativos)
 - Homologação legal de ponto eletrônico (Portaria 671/MTE). Precisa de estudo jurídico antes de qualquer promessa comercial. Ver [perguntas em aberto](08-perguntas-em-aberto.md).
 
@@ -50,4 +53,5 @@ Um sistema web em que o colaborador registra o ponto pelo navegador, o gestor re
 1. **Rápido para quem bate ponto todo dia.** A tela inicial do colaborador é o botão certo, grande, já destacado.
 2. **Nada some.** Registros não são apagados, apenas ajustados com aprovação e justificativa.
 3. **Cada pessoa vê o que precisa.** Permissões por perfil.
-4. **Simples de explicar.** Linguagem clara em português, sem jargão técnico na interface.
+4. **Funciona em qualquer navegador e aparelho.** Um app web responsivo e instalável (PWA), sem exigir app nativo.
+5. **Simples de explicar.** Linguagem clara em português, sem jargão técnico na interface.

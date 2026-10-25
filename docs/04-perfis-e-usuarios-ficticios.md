@@ -19,7 +19,7 @@ Todo colaborador tem estes dados, visíveis na ficha e editáveis pelo RH:
 |---|---|
 | Identificação | Nome, matrícula, CPF (mascarado), e-mail, telefone |
 | Organização | **Setor**, **cargo**, **gestor direto**, **unidade de trabalho**, perfil |
-| Contrato | Tipo (CLT, Estágio, PJ, Temporário), data de admissão, jornada, centro de custo, valor da hora |
+| Contrato | Tipo (CLT, Estágio, PJ, Temporário), data de admissão, jornada, centro de custo, valor da hora (só com o módulo de custo ligado) |
 | Acesso | Senha, PIN do quiosque, aparelho habitual, situação (ativo ou inativo) |
 | Indicadores | Banco de horas, dias de férias disponíveis |
 

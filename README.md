@@ -62,7 +62,7 @@ flowchart LR
 
 ### O que o protótipo já cobre
 
-Resultado do [estudo de 10 sistemas de ponto](docs/09-benchmark-concorrentes.md) (UKG, Deputy, Connecteam, Clockify, Jibble, Homebase, When I Work, Rippling, QuickBooks Time e Buddy Punch), mais a referência brasileira (Pontomais e Portaria 671). São **104 funções catalogadas** na [matriz de funcionalidades](docs/10-matriz-de-funcionalidades.md).
+Resultado do [estudo de 10 sistemas de ponto](docs/09-benchmark-concorrentes.md) (UKG, Deputy, Connecteam, Clockify, Jibble, Homebase, When I Work, Rippling, QuickBooks Time e Buddy Punch), mais a referência brasileira (Pontomais e Portaria 671). São **105 funções catalogadas** na [matriz de funcionalidades](docs/10-matriz-de-funcionalidades.md).
 
 | Grupo | Funções |
 |---|---|

@@ -8,10 +8,10 @@
 
 | Situação | Funções | % |
 |---|---:|---:|
-| ✅ Implementado no protótipo | 56 | 54% |
-| 🟡 Parcial ou simulado | 26 | 25% |
-| ⬜ Fora do protótipo (com motivo) | 22 | 21% |
-| **Total catalogado** | **104** | |
+| ✅ Implementado no protótipo | 57 | 54% |
+| 🟡 Parcial ou simulado | 25 | 24% |
+| ⬜ Fora do protótipo (com motivo) | 23 | 22% |
+| **Total catalogado** | **105** | |
 
 🟡 significa que a tela e o fluxo existem para validar, mas o efeito real (câmera, envio de e-mail, conector, arquivo oficial) só acontece no app de verdade.
 
@@ -37,9 +37,10 @@
 | ID | Funcionalidade | UKG | DEP | CON | CLK | JIB | HOM | WIW | RIP | QBT | BUD | PTM | BR | Protótipo | Como está |
 |---|---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|---|
 | A01 | Registro pelo navegador (web) | ● | ● |  |  | ● |  |  |  |  |  |  |  | ✅ | Tela "Registrar ponto" |
-| A02 | Aplicativo para celular | ● | ● | ● |  | ● |  |  |  |  |  | ● |  | 🟡 | Web responsivo. App nativo fica para o app real |
+| A02 | Funcionar em celular e em qualquer navegador | ● | ● | ● |  | ● |  |  |  |  |  | ● |  | ✅ | Web responsivo; no app real, PWA instalável (decisão V5-04) |
+| A19 | Aplicativo nativo para celular | ● | ● | ● |  | ● |  |  |  |  |  | ● |  | ⬜ | Decisão V5-05: só se uma função exigir |
 | A03 | Quiosque compartilhado com matrícula e PIN | ● |  | ● | ● | ● |  |  |  |  |  | ● |  | ✅ | Modo quiosque na tela de login |
-| A04 | Verificação facial ou selfie na batida | ● | ● | ● |  | ● |  |  |  |  |  | ● |  | 🟡 | Selfie simulada: exigida por configuração, câmera real só no app |
+| A04 | Verificação facial ou selfie na batida | ● | ● | ● |  | ● |  |  |  |  |  | ● |  | 🟡 | Selfie simulada, ativa por padrão e configurável. Depende de parecer jurídico (Q-13) |
 | A05 | QR Code pessoal do colaborador |  |  |  |  |  |  |  |  |  |  | ● |  | 🟡 | QR ilustrativo em Meu perfil; leitura real no app |
 | A06 | Registro por WhatsApp |  |  |  |  |  |  |  |  |  |  | ● |  | 🟡 | Método e integração simulados em Configurações |
 | A07 | Registro por Slack ou Teams |  |  |  |  | ● |  |  |  |  |  |  |  | 🟡 | Método e integração simulados |
@@ -101,7 +102,7 @@
 | D04 | Troca de turno entre pessoas |  |  |  |  |  | ● | ● |  |  |  |  |  | 🟡 | Pedido como tipo de ausência; troca automática no app |
 | D05 | Turnos abertos que o colaborador reivindica |  |  |  |  |  | ● | ● |  |  |  |  |  | ⬜ | Fora do escopo da primeira versão |
 | D06 | Escala sugerida por previsão de demanda | ● | ● |  |  |  |  |  |  |  |  |  |  | ⬜ | Exige dados de vendas e IA |
-| D07 | Custo de mão de obra | ● | ● |  | ● |  | ● | ● |  |  |  |  |  | ✅ | Custo estimado na Visão geral e nos relatórios |
+| D07 | Custo de mão de obra | ● | ● |  | ● |  | ● | ● |  |  |  |  |  | ✅ | Módulo opcional, desligado por padrão, só RH e Admin (V5-03) |
 | D08 | Custo contra vendas |  | ● |  |  |  |  |  |  |  |  |  |  | ⬜ | Sem dados de vendas |
 
 ## E · Ausências
