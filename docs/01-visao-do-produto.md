@@ -35,7 +35,7 @@ Um sistema web em que o colaborador registra o ponto pelo navegador, o gestor re
 - Cadastro de colaboradores, perfis e jornadas
 - Relatório mensal por colaborador
 - Log de auditoria
-- Localização obrigatória em cada batida, com mapa e cerca virtual
+- Localização obrigatória em cada batida, com mapa e cerca virtual. Sem localização, o ponto só vale depois da aprovação justificada do gestor
 - Selfie de verificação (ativa por padrão, sujeita a parecer jurídico)
 - Escalas, ausências, banco de horas e fechamento mensal
 - Funcionamento em qualquer navegador e aparelho, como app web instalável

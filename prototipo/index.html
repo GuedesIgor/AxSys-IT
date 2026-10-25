@@ -164,6 +164,7 @@ details.sim summary{cursor:pointer;color:var(--muted);font-weight:500}
 details.sim .row2{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
 @media(prefers-reduced-motion:no-preference){.pbtn,.btn,.nav button{transition:background .15s,color .15s,border-color .15s}}
 .scroll td:first-child{min-width:150px}
+.alertcard{border-color:var(--amber)}
 .btn.on{background:var(--brand-soft);color:var(--brand);border-color:var(--brand)}
 .tabs{display:flex;gap:6px;flex-wrap:wrap}
 .acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
@@ -240,7 +241,7 @@ function seedJornadas(){return {
  est:{nome:'Estágio 4h',desc:'Seg a Sex, 13:00–17:00, sem intervalo',min:240,intervalo:0,ini:780}
 };}
 function seedCfg(){return {
- raio:200,foraDaArea:'justificar',selfie:true,custos:false,tolerancia:10,limiteExtra:120,intervaloMin:60,janelaMin:0,
+ raio:200,foraDaArea:'justificar',selfie:true,semLocal:'aprovar',custos:false,tolerancia:10,limiteExtra:120,intervaloMin:60,janelaMin:0,
  autoSaida:true,offline:true,sessao:30,mfa:false,sso:false,senhaForte:true,bancoValidade:6,
  metodos:{web:true,quiosque:true,qr:true,whatsapp:false,slack:false,teams:false}
 };}
@@ -332,16 +333,23 @@ function seedFech(){
   f['u8|'+p]={ass:false,apr:false,fec:false};
   return f;
 }
+function seedPend(st){
+  var d=bday(1),arr=st.punches.u9[d];if(!arr)return;
+  var i=arr.map(function(p){return p.tipo}).indexOf('saida');if(i<0)return;
+  var p=arr.splice(i,1)[0];
+  st.pend.push({id:'q1',uid:'u9',data:d,tipo:'saida',hora:p.hora,just:'O GPS do celular estava desligado e não consegui ativar dentro do prédio.',motivoLoc:'Permissão de localização negada ou bloqueada no aparelho',disp:DEV_HAB,selfie:true,status:'pendente'});
+}
 function fresh(){
   var users=seedUsers(),jor=seedJornadas(),projetos=['Suporte N1','Portal do Cliente','Infraestrutura','Contas Estratégicas','Interno'],aus=seedAus();
-  return {v:3,users:users,jornadas:jor,cfg:seedCfg(),setores:['Tecnologia','Comercial','Recursos Humanos','Administração'],
+  var st={v:4,users:users,jornadas:jor,cfg:seedCfg(),setores:['Tecnologia','Comercial','Recursos Humanos','Administração'],
     unidades:{sp:{nome:'Sede São Paulo',lat:-23.5614,lng:-46.6559,cerca:true},rj:{nome:'Filial Rio de Janeiro',lat:-22.9068,lng:-43.1729,cerca:true},rem:{nome:'Home office',lat:null,lng:null,cerca:false}},
     projetos:projetos,punches:seedPunches(users,jor,aus,projetos),adj:seedAdj(),aus:aus,esc:{},avisos:seedAvisos(),fech:seedFech(),
-    integr:{},prefs:{},audit:[],seq:1000,fails:{}};
+    integr:{},prefs:{},audit:[],seq:1000,fails:{},pend:[]};
+  seedPend(st);return st;
 }
 var S;
-function load(){S=null;try{var r=localStorage.getItem('axponto-v3');if(r){var o=JSON.parse(r);if(o&&o.v===3)S=o}}catch(e){}if(!S)S=fresh()}
-function save(){try{localStorage.setItem('axponto-v3',JSON.stringify(S))}catch(e){}}
+function load(){S=null;try{var r=localStorage.getItem('axponto-v4');if(r){var o=JSON.parse(r);if(o&&o.v===4)S=o}}catch(e){}if(!S)S=fresh();if(!S.pend)S.pend=[]}
+function save(){try{localStorage.setItem('axponto-v4',JSON.stringify(S))}catch(e){}}
 load();
 var session=null,route='',toastMsg='',modal=null,loc={status:'idle'};
 var ui={mes:THIS_YM,err:'',email:'',senha:'',ver:null,rel:'consolidado',fset:'',funi:'',busca:'',cset:'',af:'',sem:null,disp:'hab',offline:false,kiosk:false,kq:{uid:null,err:'',unidade:'sp'},cfgTab:'ponto'};
@@ -379,7 +387,7 @@ function dayInfo(uid,date){
     complete=arr.length===4;
   }else{if(m.entrada!=null&&m.saida!=null)worked=m.saida-m.entrada;complete=arr.length>=2}
   var isToday=date===TODAY,aus=ausOn(uid,date);
-  var pend=S.adj.some(function(a){return a.uid===uid&&a.data===date&&a.status==='pendente'});
+  var pend=S.adj.some(function(a){return a.uid===uid&&a.data===date&&a.status==='pendente'})||pendHoje(uid,date).length>0;
   var st;
   if(date>TODAY)st='futuro';
   else if(!arr.length)st=aus?'ausencia':(sc.hol?'feriado':(sc.folga?'folga':(isToday?'aguardando':'falta')));
@@ -410,6 +418,7 @@ function alertas(uid,date){
   if(i.arr.some(function(p){return p.fora}))a('warn','Batida fora da área da empresa');
   if(i.arr.some(function(p){return p.disp&&p.disp!==U(uid).disp}))a('warn','Batida em aparelho diferente do habitual');
   if(i.arr.some(function(p){return p.orig==='offline'&&p.sync===false}))a('info','Batida offline aguardando sincronização');
+  var sl=i.arr.filter(function(p){return p.semLocal})[0];if(sl)a('info','Batida sem localização, aprovada por '+(sl.aprovPor||'gestor'));
   if(i.arr.length&&i.sc.folga)a('info',i.sc.hol?'Trabalho em feriado (hora extra 100%)':'Trabalho em dia de folga (hora extra 100%)');
   return out;
 }
@@ -440,10 +449,12 @@ function feriasInfo(uid){
   S.aus.forEach(function(a){if(a.uid!==uid||a.tipo!=='ferias'||a.status==='recusada'||a.ini.slice(0,4)!==y)return;var n=1+Math.round((parseISO(a.fim)-parseISO(a.ini))/86400000);if(a.status==='aprovada'){if(a.fim<TODAY)usado+=n;else agend+=n}});
   return {usado:usado,agend:agend,saldo:30-usado-agend};
 }
+function pendHoje(uid,date){return (S.pend||[]).filter(function(q){return q.uid===uid&&q.data===(date||TODAY)&&q.status==='pendente'})}
 function nextTipo(uid){
-  var j=J(U(uid).jornada),arr=(S.punches[uid]||{})[TODAY]||[];
-  var seq=j.intervalo>0?['entrada','saida_almoco','volta_almoco','saida']:['entrada','saida'];
-  return arr.length<seq.length?seq[arr.length]:null;
+  var j=J(U(uid).jornada),seq=j.intervalo>0?['entrada','saida_almoco','volta_almoco','saida']:['entrada','saida'];
+  var have=((S.punches[uid]||{})[TODAY]||[]).map(function(p){return p.tipo}).concat(pendHoje(uid).map(function(q){return q.tipo})),last=-1;
+  seq.forEach(function(t,i){if(have.indexOf(t)>=0)last=i});
+  return last+1<seq.length?seq[last+1]:null;
 }
 function tipoNome(t){return TIPOS.filter(function(x){return x[0]===t})[0][1]}
 function statusHoje(uid){
@@ -513,7 +524,7 @@ function locBlock(){
      '<div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" data-act="reqloc">Atualizar localização</button><a class="btn sm" href="https://www.openstreetmap.org/?mlat='+loc.lat+'&mlon='+loc.lng+'#map=17/'+loc.lat+'/'+loc.lng+'" target="_blank" rel="noopener">Abrir no OpenStreetMap</a></div>'+simBlock(false)+'</div>';
   }
   if(loc.status==='pedindo')return '<div class="locbox"><b>Obtendo localização…</b><div class="muted">Autorize o acesso no aviso do navegador.</div></div>';
-  return '<div class="locbox need" role="alert"><b>Localização obrigatória</b><div>Para registrar o ponto é preciso permitir o acesso à localização do aparelho. '+(loc.status==='negado'?'O acesso foi negado ou está bloqueado. Libere nas permissões do navegador e tente de novo.':'')+'</div><div><button class="btn primary" data-act="reqloc">Permitir localização</button></div>'+simBlock(true)+'</div>';
+  return '<div class="locbox need" role="alert"><b>Localização obrigatória</b><div>Para registrar o ponto é preciso permitir o acesso à localização do aparelho. '+(loc.status==='negado'?'O acesso foi negado ou está bloqueado. Libere nas permissões do navegador e tente de novo.':'')+'</div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" data-act="reqloc">Permitir localização</button>'+semLocBtn()+'</div>'+simBlock(true)+'</div>';
 }
 
 /* ================= COMPONENTES ================= */
@@ -539,7 +550,7 @@ function stChip(i){
   var c={ok:['ok','Completo'],falta:['bad','Falta'],incompleto:['warn','Incompleto'],andamento:['info','Em andamento'],aguardando:['mute','Sem registro'],folga:['mute','Folga'],futuro:['mute','—'],feriado:['info','Feriado'],ausencia:['info','Ausência']}[i.st];
   var t=c[1];if(i.st==='feriado'&&i.sc.hol)t=i.sc.hol;if(i.st==='ausencia'&&i.aus)t=AUS_TIPOS[i.aus.tipo].split(' (')[0];
   var h='<span class="chip '+c[0]+'">'+esc(t)+'</span>';
-  if(i.pend)h+=' <span class="chip warn">Ajuste pendente</span>';
+  if(i.pend)h+=' <span class="chip warn">Aguardando aprovação</span>';
   return h;
 }
 function adjChip(s){return s==='pendente'?'<span class="chip warn">Pendente</span>':(s==='aprovado'||s==='aprovada')?'<span class="chip ok">Aprovado</span>':'<span class="chip bad">Recusado</span>'}
@@ -589,6 +600,8 @@ function vPonto(){
   var btns=seq.map(function(t){
     var p=i.arr.filter(function(x){return x.tipo===t[0]})[0];
     if(p)return '<button class="pbtn done" disabled><span class="t">'+t[1]+'</span><span class="h">✓ '+p.hora+(p.sync===false?' · offline':'')+'</span></button>';
+    var qp=pendHoje(u.id).filter(function(x){return x.tipo===t[0]})[0];
+    if(qp)return '<button class="pbtn" disabled><span class="t">'+t[1]+'</span><span class="h">⏳ '+qp.hora+' · aguardando gestor</span></button>';
     if(nx===t[0])return loc.status==='ok'?'<button class="pbtn next" data-act="punch"><span class="t">'+t[1]+'</span><span class="h">Registrar agora</span></button>':'<button class="pbtn next" disabled><span class="t">'+t[1]+'</span><span class="h">Localização necessária</span></button>';
     return '<button class="pbtn" disabled><span class="t">'+t[1]+'</span><span class="h">Aguardando</span></button>';
   }).join('');
@@ -605,7 +618,7 @@ function vPonto(){
   '<div class="two"><div class="card" style="display:flex;flex-direction:column;gap:16px"><div><div class="muted">Horário atual · Hora legal de Brasília</div><div class="clock" id="clk">'+new Date().toLocaleTimeString('pt-BR')+'</div></div>'+
   '<div class="muted">'+msg+' Jornada: '+esc(j.nome)+'.</div>'+(i.aus?'':locBlock()+'<div class="punches">'+btns+'</div>')+
   '<div class="muted" style="font-size:12.5px">Cada registro grava hora do servidor, localização, aparelho e fuso America/Sao_Paulo. Métodos de registro: web'+(S.cfg.metodos.quiosque?', quiosque':'')+(S.cfg.metodos.qr?', QR Code':'')+'.</div></div>'+
-  '<div style="display:flex;flex-direction:column;gap:20px"><div class="card"><h3>Hoje</h3><div class="grid" style="margin-top:10px;grid-template-columns:1fr 1fr"><div class="kpi"><div class="n">'+hm(total)+'</div><div class="l">Trabalhado</div></div><div class="kpi"><div class="n">'+hm(esp)+'</div><div class="l">Esperado</div></div></div>'+
+  '<div style="display:flex;flex-direction:column;gap:20px">'+cardMeusPtsl(u.id,false)+'<div class="card"><h3>Hoje</h3><div class="grid" style="margin-top:10px;grid-template-columns:1fr 1fr"><div class="kpi"><div class="n">'+hm(total)+'</div><div class="l">Trabalhado</div></div><div class="kpi"><div class="n">'+hm(esp)+'</div><div class="l">Esperado</div></div></div>'+
   '<div class="timeline" style="margin-top:14px" role="img" aria-label="Progresso da jornada '+pct+'%"><i style="width:'+pct+'%"></i></div><div class="muted" style="margin-top:6px">'+pct+'% da jornada · previsão de saída '+hm(i.sc.fim)+'</div></div>'+
   '<div class="card"><div class="grid" style="grid-template-columns:1fr 1fr"><div class="kpi"><div class="n" style="color:'+(bh<0?'var(--bad)':'var(--ok)')+'">'+fmtSaldo(bh)+'</div><div class="l">Banco de horas</div></div><div class="kpi"><div class="n">'+fi.saldo+'</div><div class="l">Dias de férias disponíveis</div></div></div></div>'+
   '<div class="card"><h3>Últimos dias</h3>'+(recent.length?'<table><tbody>'+recent.map(function(d){var x=dayInfo(u.id,d);return '<tr><td>'+DOW[parseISO(d).getDay()]+' '+fdm(d)+'</td><td>'+x.arr.map(function(p){return p.hora}).join(' · ')+'</td><td>'+stChip(x)+'</td></tr>'}).join('')+'</tbody></table>':empty('Sem registros anteriores.'))+'</div>'+
@@ -622,11 +635,11 @@ function espelhoTable(uid,ym,own){
     var c=i.j.intervalo>0?['entrada','saida_almoco','volta_almoco','saida']:['entrada','saida'];
     var tds=['entrada','saida_almoco','volta_almoco','saida'].map(function(t){
       if(c.indexOf(t)<0)return '<td class="muted">n/a</td>';
-      var p=i.arr.filter(function(x){return x.tipo===t})[0],tag=p&&p.orig==='ajuste'?' <span class="chip info" title="Ajustado">aj</span>':p&&p.fora?' <span class="chip warn" title="Fora da área">!</span>':'';
+      var p=i.arr.filter(function(x){return x.tipo===t})[0],tag=p&&p.orig==='ajuste'?' <span class="chip info" title="Ajustado">aj</span>':p&&p.semLocal?' <span class="chip warn" title="Sem localização, aprovada pelo gestor">s/l</span>':p&&p.fora?' <span class="chip warn" title="Fora da área">!</span>':'';
       return '<td>'+(i.m[t]!=null?hm(i.m[t])+tag:'<span class="muted">--:--</span>')+'</td>'}).join('');
     var closed=mesFechado(uid,d),act='';
     if(own&&!closed&&(i.st==='falta'||i.st==='incompleto'||i.st==='ok'))act+='<button class="btn sm" data-act="ajuste" data-date="'+d+'">Ajustar</button> ';
-    if(i.arr.some(function(p){return p.local}))act+='<button class="btn sm" data-act="localdia" data-id="'+uid+'" data-date="'+d+'">Local</button>';
+    if(i.arr.some(function(p){return p.local||p.semLocal}))act+='<button class="btn sm" data-act="localdia" data-id="'+uid+'" data-date="'+d+'">Local</button>';
     return '<tr class="'+cls+'"><td>'+fdm(d)+'</td><td>'+DOW[w]+'</td>'+tds+'<td>'+(i.st==='futuro'?'—':hm(i.worked))+'</td><td>'+fmtSaldo(i.saldo)+'</td><td>'+(i.st==='futuro'?'':stChip(i))+'</td><td>'+(i.st==='futuro'?'':rowAlerts(uid,d))+'</td><td style="white-space:nowrap">'+act+'</td></tr>'}).join('');
   return tbl(['Dia','Sem','Entrada','Saída int.','Volta int.','Saída','Total','Saldo','Situação','Alertas',''],[rows]);
 }
@@ -642,7 +655,7 @@ function vEspelho(){
 }
 function vMeusAjustes(){
   var l=S.adj.filter(function(a){return a.uid===session.id}).reverse();
-  return head('Meus ajustes','Solicitações de correção enviadas ao seu gestor','<button class="btn primary" data-act="ajuste">Nova solicitação</button>')+
+  return head('Meus ajustes','Solicitações de correção enviadas ao seu gestor','<button class="btn primary" data-act="ajuste">Nova solicitação</button>')+cardMeusPtsl(session.id,true)+
   '<div class="card">'+(l.length?tbl(['Dia','Registro','Justificativa','Situação'],l.map(function(a){return '<tr><td>'+fdate(a.data)+'</td><td>'+tipoNome(a.tipo)+' '+a.hora+'</td><td style="min-width:220px">'+esc(a.just)+(a.resp?'<div class="muted">Resposta: '+esc(a.resp)+'</div>':'')+'</td><td>'+adjChip(a.status)+'</td></tr>'})):empty('Você ainda não enviou nenhuma solicitação. Use “Nova solicitação” quando esquecer de bater o ponto.'))+'</div>';
 }
 function vAusencias(){
@@ -678,6 +691,7 @@ function vAlertas(){
   });
   S.adj.filter(function(a){return a.uid===u.id&&a.status!=='pendente'}).slice(-3).forEach(function(a){it.push({sev:a.status==='aprovado'?'ok':'warn',txt:'Ajuste de '+fdate(a.data)+' '+(a.status==='aprovado'?'aprovado':'recusado')+(a.resp?': '+esc(a.resp):'')})});
   S.aus.filter(function(a){return a.uid===u.id&&a.status!=='pendente'}).slice(-3).forEach(function(a){it.push({sev:a.status==='aprovada'?'ok':'warn',txt:AUS_TIPOS[a.tipo].split(' (')[0]+' de '+fdm(a.ini)+' '+(a.status==='aprovada'?'aprovada':'recusada')})});
+  S.pend.filter(function(q){return q.uid===u.id&&q.status!=='pendente'}).slice(-3).forEach(function(q){it.push({sev:q.status==='aprovado'?'ok':'warn',txt:'Ponto sem localização de '+fdate(q.data)+' ('+tipoNome(q.tipo)+') '+(q.status==='aprovado'?'aprovado':'recusado')+' por '+esc(q.decPor)+': '+esc(q.decJust)})});
   var pm=prevYm(),f=fechState(u.id,pm);
   if(!f.ass)it.push({sev:'warn',txt:'O espelho de '+MES[+pm.slice(5)-1]+' ainda não foi assinado.',act:'<button class="btn sm" data-act="nav" data-r="espelho">Abrir espelho</button>'});
   var bh=bancoHoras(u.id);if(bh>600)it.push({sev:'info',txt:'Seu banco de horas está em '+fmtSaldo(bh)+'. Considere agendar uma folga compensatória.'});
@@ -704,7 +718,7 @@ function vPerfil(){
 }
 
 /* ================= GESTÃO E RH ================= */
-var GRUPOS=[['atraso','Atrasos e ausências hoje','bad'],['semsaida','Marcação ímpar (últimos 15 dias)','bad'],['falta','Faltas sem justificativa','bad'],['naoesc','Batidas fora da escala (folga, fim de semana, feriado)','info'],['fora','Batidas fora da área da empresa','warn'],['disp','Batidas em aparelho diferente','warn'],['offline','Batidas offline sem sincronizar','warn'],['extra','Horas extras acima do limite','warn'],['espelho','Espelhos do mês anterior pendentes','warn']];
+var GRUPOS=[['atraso','Atrasos e ausências hoje','bad'],['ptsl','Pontos sem localização aguardando decisão do gestor','bad'],['semsaida','Marcação ímpar (últimos 15 dias)','bad'],['falta','Faltas sem justificativa','bad'],['naoesc','Batidas fora da escala (folga, fim de semana, feriado)','info'],['fora','Batidas fora da área da empresa','warn'],['disp','Batidas em aparelho diferente','warn'],['offline','Batidas offline sem sincronizar','warn'],['extra','Horas extras acima do limite','warn'],['espelho','Espelhos do mês anterior pendentes','warn']];
 function excecoes(users){
   var G={},tol=S.cfg.tolerancia,nowM=toMin(nowHM()),pm=prevYm();
   GRUPOS.forEach(function(g){G[g[0]]=[]});
@@ -730,6 +744,7 @@ function excecoes(users){
     else if(!f.apr)G.espelho.push({uid:u.id,d:null,txt:'Assinado, aguardando aprovação do gestor'});
     else if(!f.fec&&(session.perfil==='rh'||session.perfil==='admin'))G.espelho.push({uid:u.id,d:null,txt:'Aprovado, aguardando fechamento do RH'});
   });
+  S.pend.forEach(function(q){if(q.status==='pendente'&&users.some(function(x){return x.id===q.uid&&x.ativo}))G.ptsl.push({uid:q.uid,d:q.data,txt:tipoNome(q.tipo)+' às '+q.hora+' sem localização. Justificativa: '+q.just})});
   return G;
 }
 function exTotal(G){var n=0;GRUPOS.forEach(function(g){n+=G[g[0]].length});return n}
@@ -743,7 +758,7 @@ function vExcecoes(){
 function vEquipe(){
   var t=team(session.id).filter(function(u){return u.ativo}),G=excecoes(t);
   var work=t.filter(function(u){return statusHoje(u.id)[1]==='Trabalhando'}).length;
-  var pend=S.adj.filter(function(a){return a.status==='pendente'&&U(a.uid).gestor===session.id}).length+S.aus.filter(function(a){return a.status==='pendente'&&U(a.uid).gestor===session.id}).length;
+  var pend=S.adj.filter(function(a){return a.status==='pendente'&&U(a.uid).gestor===session.id}).length+S.aus.filter(function(a){return a.status==='pendente'&&U(a.uid).gestor===session.id}).length+pendPts(session).length;
   var rows=t.map(function(u){var s=statusHoje(u.id),sm=monthSummary(u.id,THIS_YM),bh=bancoHoras(u.id);
     return '<tr><td><b>'+esc(u.nome)+'</b><div class="muted" style="font-size:12px">'+esc(u.cargo)+'</div></td><td>'+esc(unitOf(u).nome.replace('Filial ','').replace('Sede ',''))+'</td><td><span class="chip '+s[0]+'">'+s[1]+'</span></td><td>'+(s[2]||'--:--')+'</td><td>'+fmtSaldo(bh)+'</td><td>'+sm.faltas+'</td><td>'+sm.inc+'</td><td style="white-space:nowrap"><button class="btn sm" data-act="verespelho" data-id="'+u.id+'">Espelho</button> <button class="btn sm" data-act="ficha" data-id="'+u.id+'">Ficha</button></td></tr>'}).join('');
   return head('Minha equipe',esc(session.setor)+' · situação de hoje, '+fdate(TODAY))+
@@ -756,6 +771,27 @@ function vEspelhoDe(){
   '<div class="card" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center"><div><b>Fechamento de '+MES[+ui.mes.slice(5)-1]+'</b></div><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">'+fechChip(f)+(canApr?'<button class="btn primary sm" data-act="espaprovar" data-id="'+u.id+'" data-ym="'+ui.mes+'">Aprovar espelho</button>':'')+(canFec?'<button class="btn primary sm" data-act="espfechar" data-id="'+u.id+'" data-ym="'+ui.mes+'">Fechar mês</button>':'')+'</div></div>'+
   espelhoKpis(u.id,ui.mes)+'<div class="card">'+espelhoTable(u.id,ui.mes,false)+'</div>';
 }
+function ptslTb(arr,acts){
+  return tbl(['Colaborador','Registro batido','Motivo técnico','Justificativa do colaborador',acts?'':'Decisão do gestor'],[arr.map(function(q){var u=U(q.uid);
+    return '<tr><td><b>'+esc(u.nome)+'</b><div class="muted" style="font-size:12px">'+esc(u.setor)+'</div></td><td><b>'+tipoNome(q.tipo)+' às '+q.hora+'</b><div class="muted" style="font-size:12px">'+fdate(q.data)+'</div></td><td style="min-width:150px">'+esc(q.motivoLoc)+'<div class="muted" style="font-size:12px">'+esc(q.disp)+(q.selfie?' · selfie conferida':'')+'</div></td><td style="min-width:220px">'+esc(q.just)+'</td><td>'+(acts?'<div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn sm primary" data-act="ptdec" data-id="'+q.id+'" data-v="aprovado">Aprovar</button><button class="btn sm danger" data-act="ptdec" data-id="'+q.id+'" data-v="recusado">Recusar</button></div>':adjChip(q.status)+'<div class="muted" style="font-size:12px;max-width:260px">'+esc(q.decPor||'')+': '+esc(q.decJust||'')+'</div>')+'</td></tr>'}).join('')]);
+}
+function cardPtSL(){
+  var own=function(uid){return session.perfil!=='gestor'||U(uid).gestor===session.id};
+  var pp=pendPts(session),hp=S.pend.filter(function(q){return q.status!=='pendente'&&own(q.uid)}).slice().reverse().slice(0,6);
+  return '<div class="card'+(pp.length?' alertcard':'')+'"><h3>Pontos batidos sem localização ('+pp.length+')</h3>'+
+   (pp.length?'<div class="banner" style="margin:8px 0 12px">Atenção: estes pontos foram batidos <b>sem a localização do aparelho</b> e <b>ainda não estão registrados</b>. Leia a justificativa de quem bateu e decida. Sua justificativa também é obrigatória.</div>'+ptslTb(pp,true):empty('Nenhum ponto sem localização aguardando decisão.'))+
+   (hp.length?'<h3 style="margin-top:18px">Decisões recentes</h3>'+ptslTb(hp,false):'')+'</div>';
+}
+function cardMeusPtsl(uid,full){
+  var l=S.pend.filter(function(q){return q.uid===uid}).slice().reverse();if(!full)l=l.filter(function(q,i){return q.status==='pendente'||i<2});
+  if(!l.length)return '';
+  return '<div class="card'+(l.some(function(q){return q.status==='pendente'})?' alertcard':'')+'"><h3>Pontos sem localização</h3><p class="muted" style="margin:2px 0 8px">Só valem depois da aprovação do gestor.</p>'+tbl(['Dia','Registro','Justificativa','Situação'],[l.map(function(q){return '<tr><td>'+fdate(q.data)+'</td><td>'+tipoNome(q.tipo)+' '+q.hora+'</td><td style="min-width:200px">'+esc(q.just)+'</td><td>'+(q.status==='pendente'?'<span class="chip warn">Aguardando gestor</span>':adjChip(q.status))+(q.decJust?'<div class="muted" style="font-size:12px;max-width:240px">'+esc(q.decPor)+': '+esc(q.decJust)+'</div>':'')+'</td></tr>'}).join('')])+'</div>';
+}
+function locMotivo(){return loc.status==='negado'?'Permissão de localização negada ou bloqueada no aparelho':loc.status==='pedindo'?'O aparelho não respondeu ao pedido de localização':'Localização não liberada neste aparelho'}
+function semLocBtn(){
+  if((S.cfg.semLocal||'aprovar')!=='aprovar'||!nextTipo(session.id)||dayInfo(session.id,TODAY).aus)return '';
+  return '<div class="muted" style="flex-basis:100%;font-size:12.5px">Se não for possível liberar, registre sem localização: o ponto fica <b>pendente</b> e só será registrado depois que o seu gestor aprovar. A justificativa é obrigatória.</div><button class="btn" data-act="ptsl">Registrar sem localização</button>';
+}
 function vAprov(){
   var rh=session.perfil!=='gestor',own=function(uid){return rh||U(uid).gestor===session.id};
   var adj=S.adj.filter(function(a){return own(a.uid)}).slice().reverse(),pa=adj.filter(function(a){return a.status==='pendente'}),ha=adj.filter(function(a){return a.status!=='pendente'}).slice(0,6);
@@ -764,7 +800,7 @@ function vAprov(){
   function adjTb(arr,acts){return tbl(['Colaborador','Dia','Registro','Justificativa',acts?'':'Situação'],arr.map(function(a){return '<tr><td><b>'+esc(U(a.uid).nome)+'</b></td><td>'+fdate(a.data)+'</td><td>'+tipoNome(a.tipo)+' '+a.hora+'</td><td style="min-width:220px">'+esc(a.just)+'</td><td style="white-space:nowrap">'+(acts?'<button class="btn sm primary" data-act="aprovar" data-id="'+a.id+'">Aprovar</button> <button class="btn sm danger" data-act="recusar" data-id="'+a.id+'">Recusar</button>':adjChip(a.status))+'</td></tr>'}))}
   function ausTb(arr,acts){return tbl(['Colaborador','Tipo','Período','Observação',acts?'':'Situação'],arr.map(function(a){return '<tr><td><b>'+esc(U(a.uid).nome)+'</b></td><td>'+AUS_TIPOS[a.tipo].split(' (')[0]+'</td><td>'+fdate(a.ini)+(a.fim!==a.ini?' a '+fdate(a.fim):'')+'</td><td style="min-width:200px">'+esc(a.obs)+'</td><td style="white-space:nowrap">'+(acts?'<button class="btn sm primary" data-act="ausaprovar" data-id="'+a.id+'">Aprovar</button> <button class="btn sm danger" data-act="ausrecusar" data-id="'+a.id+'">Recusar</button>':adjChip(a.status))+'</td></tr>'}))}
   var esp=us.map(function(u){var f=fechState(u.id,pm);return '<tr><td><b>'+esc(u.nome)+'</b></td><td>'+fechChip(f)+'</td><td style="white-space:nowrap"><button class="btn sm" data-act="verespelho" data-id="'+u.id+'" data-ym="'+pm+'">Ver espelho</button> '+(session.perfil==='gestor'&&f.ass&&!f.apr?'<button class="btn sm primary" data-act="espaprovar" data-id="'+u.id+'" data-ym="'+pm+'">Aprovar</button>':'')+(rh&&f.apr&&!f.fec?'<button class="btn sm primary" data-act="espfechar" data-id="'+u.id+'" data-ym="'+pm+'">Fechar mês</button>':'')+'</td></tr>'}).join('');
-  return head('Aprovações','Ajustes de ponto, ausências e fechamento do mês')+
+  return head('Aprovações','Pontos sem localização, ajustes, ausências e fechamento do mês')+cardPtSL()+
   '<div class="card"><h3>Ajustes de ponto pendentes ('+pa.length+')</h3>'+(pa.length?adjTb(pa,true):empty('Nenhum ajuste aguardando decisão.'))+'</div>'+
   '<div class="card"><h3>Ausências pendentes ('+pu.length+')</h3>'+(pu.length?ausTb(pu,true):empty('Nenhuma ausência aguardando decisão.'))+'</div>'+
   '<div class="card"><h3>Espelhos de '+MES[+pm.slice(5)-1]+'</h3>'+tbl(['Colaborador','Situação',''],[esp])+(rh?'<div style="margin-top:12px"><button class="btn sm" data-act="espfechartodos">Fechar todos os espelhos aprovados</button></div>':'')+'</div>'+
@@ -773,7 +809,7 @@ function vAprov(){
 function vVisao(){
   var at=S.users.filter(function(u){return u.ativo&&u.perfil!=='admin'}),c={Trabalhando:0,'No intervalo':0,Encerrou:0,Ausente:0,Folga:0},aus=0;
   at.forEach(function(u){var s=statusHoje(u.id)[1];if(c[s]!=null)c[s]++;else aus++});
-  var pend=S.adj.filter(function(a){return a.status==='pendente'}).length+S.aus.filter(function(a){return a.status==='pendente'}).length;
+  var pend=S.adj.filter(function(a){return a.status==='pendente'}).length+S.aus.filter(function(a){return a.status==='pendente'}).length+pendPts(session).length;
   var G=excecoes(at),custo=0,prev=0,real=0;
   var porSetor={};
   at.forEach(function(u){var sm=monthSummary(u.id,THIS_YM);custo+=sm.custo;prev+=sm.previsto;real+=sm.worked;var p=porSetor[u.setor]||(porSetor[u.setor]={n:0,w:0,prev:0,real:0,saldo:0,cust:0});p.n++;if(statusHoje(u.id)[1]==='Trabalhando')p.w++;p.prev+=sm.previsto;p.real+=sm.worked;p.saldo+=sm.saldo;p.cust+=sm.custo});
@@ -822,7 +858,8 @@ function repData(){
     us.forEach(function(u){monthDays(ym).forEach(function(d){var x=dayInfo(u.id,d);if(x.st!=='ok')return;var e=x.arr[0],pr=(e&&e.proj)||'Sem projeto',p=P[pr]||(P[pr]={m:0,u:{},d:0});p.m+=x.worked;p.u[u.id]=1;p.d++})});
     Object.keys(P).sort().forEach(function(k){R.push([k,hm(P[k].m),Object.keys(P[k].u).length,P[k].d])})}
   else if(t==='local'){H=['Data','Colaborador','Registro','Hora','Latitude','Longitude','Precisão','Área','Origem','Aparelho'];
-    us.forEach(function(u){monthDays(ym).forEach(function(d){((S.punches[u.id]||{})[d]||[]).forEach(function(p){if(!p.local)return;var ar=areaInfo(u,p.local);R.push([fdate(d),u.nome,tipoNome(p.tipo),p.hora,p.local.lat.toFixed(5),p.local.lng.toFixed(5),'±'+p.local.acc+' m',ar.txt,p.orig,p.disp||'—'])})})});
+    us.forEach(function(u){monthDays(ym).forEach(function(d){((S.punches[u.id]||{})[d]||[]).forEach(function(p){if(!p.local){if(p.semLocal)R.push([fdate(d),u.nome,tipoNome(p.tipo),p.hora,'','','','Sem localização (aprovada por '+p.aprovPor+')',p.orig,p.disp||'—']);return}var ar=areaInfo(u,p.local);R.push([fdate(d),u.nome,tipoNome(p.tipo),p.hora,p.local.lat.toFixed(5),p.local.lng.toFixed(5),'±'+p.local.acc+' m',ar.txt,p.orig,p.disp||'—'])})})});
+    S.pend.forEach(function(q){if(q.status==='pendente'&&q.data.slice(0,7)===ym&&us.some(function(x){return x.id===q.uid}))R.push([fdate(q.data),U(q.uid).nome,tipoNome(q.tipo),q.hora,'','','','Sem localização (pendente de aprovação)','pendente',q.disp])});
     R.reverse();R=R.slice(0,200)}
   else if(t==='folha'){var cv=S.cfg.custos;H=['Matrícula','Colaborador','Evento','Quantidade'].concat(cv?['Valor']:[]);
     us.forEach(function(u){var s=monthSummary(u.id,ym),vh=u.valorHora,normal=s.worked-s.ext50-s.ext100;
@@ -872,6 +909,7 @@ function vConfig(){
    cfgRow('raio','Raio da cerca virtual','Distância máxima da unidade para a batida contar como "na área".',true,cN('raio',c.raio,20,5000)+' m')+
    cfgRow('fora','Quando a batida é fora da área','Permitir só avisa o gestor; justificar exige texto; bloquear impede o registro.',true,cS('foraDaArea',c.foraDaArea,[['permitir','Permitir e sinalizar'],['justificar','Exigir justificativa'],['bloquear','Bloquear']]))+
    cfgRow('selfie','Verificação facial por selfie','Exige uma foto a cada batida para evitar que um colega bata por outro. A câmera é simulada.',true,cT('selfie',c.selfie))+
+   cfgRow('sl','Ponto sem localização','Quando a pessoa não libera a localização: enviar para aprovação do gestor (justificativa obrigatória dos dois lados) ou bloquear o registro.',true,cS('semLocal',c.semLocal||'aprovar',[['aprovar','Enviar para aprovação do gestor'],['bloquear','Bloquear']]))+
    cfgRow('janela','Janela de entrada antecipada','Minutos antes do horário em que a entrada é liberada. 0 desliga a regra.',true,cN('janelaMin',c.janelaMin,0,240)+' min')+
    cfgRow('offline','Registro offline','Guarda a batida no aparelho sem internet e sincroniza depois.',true,cT('offline',c.offline))+
    cfgRow('auto','Saída automática','Fecha jornadas abertas no fim do dia e sinaliza para ajuste.',false,cT('autoSaida',c.autoSaida))+'</div>'+
@@ -901,9 +939,10 @@ function vAud(){
 
 /* ================= NAVEGAÇÃO E CASCA ================= */
 var ROUTES={ponto:vPonto,espelho:vEspelho,meusajustes:vMeusAjustes,ausencias:vAusencias,escalas:vEscalas,alertas:vAlertas,mural:vMural,perfil:vPerfil,equipe:vEquipe,excecoes:vExcecoes,aprovacoes:vAprov,visao:vVisao,colab:vColab,org:vOrg,jornadas:vJornadas,relatorios:vRel,integr:vIntegr,config:vConfig,auditoria:vAud};
+function pendPts(u){return S.pend.filter(function(q){return q.status==='pendente'&&q.uid!==u.id&&(u.perfil==='gestor'?U(q.uid).gestor===u.id:(u.perfil==='rh'||u.perfil==='admin'))})}
 function pendCount(u){
   var rh=u.perfil!=='gestor';
-  return S.adj.filter(function(a){return a.status==='pendente'&&(rh||U(a.uid).gestor===u.id)}).length+S.aus.filter(function(a){return a.status==='pendente'&&(rh||U(a.uid).gestor===u.id)}).length;
+  return S.adj.filter(function(a){return a.status==='pendente'&&(rh||U(a.uid).gestor===u.id)}).length+S.aus.filter(function(a){return a.status==='pendente'&&(rh||U(a.uid).gestor===u.id)}).length+pendPts(u).length;
 }
 function navFor(u){
   var n=pendCount(u),b=n?' <span class="badge">'+n+'</span>':'';
@@ -954,6 +993,13 @@ function modalHtml(){
     h='<h2>Confirmar '+t.toLowerCase()+'?</h2>'+(m.orig==='quiosque'?'<p class="muted">Colaborador: <b>'+esc(u.nome)+'</b> · '+u.matricula+'</p>':'<p class="muted">O horário é gravado com a hora do servidor e não pode ser editado depois, apenas ajustado com aprovação.</p>')+
      '<div class="clock" style="font-size:44px;margin:10px 0">'+nowHM()+'</div>'+mapSvg(c.l,ref,un.nome.split(' ')[0])+'<div class="muted" style="font-size:12.5px;margin:6px 0 12px">'+c.l.lat.toFixed(5)+', '+c.l.lng.toFixed(5)+' · ±'+c.l.acc+' m · '+c.ar.txt+(c.l.sim?' · simulada':'')+'</div>'+
      selfie+proj+outro+offl+fora+(m.err?'<div class="err" role="alert">'+m.err+'</div>':'')+'<div class="row"><button class="btn" data-act="close">Cancelar</button><button class="btn primary" data-act="confirmpunch"'+(c.bloq?' disabled':'')+'>Confirmar registro</button></div>';
+  }else if(m.k==='ptsl'){
+    var iu=U(m.uid),ini=esc(iu.nome.split(' ').map(function(x){return x[0]}).slice(0,2).join(''));
+    var sfl=S.cfg.selfie?(m.selfie?'<div class="selfie ok"><span class="av">'+ini+'</span><div><b>Selfie capturada às '+m.selfieAt+'</b><div class="muted">Verificação facial simulada.</div></div></div>':'<div class="selfie"><div><b>Verificação facial</b><div class="muted">Sem a localização, a selfie é obrigatória para confirmar que é você. A imagem é usada só para conferir sua identidade nesta batida. A câmera é simulada.</div></div><button class="btn sm primary" data-act="selfie">Capturar selfie</button></div>'):'';
+    h='<h2>Registrar sem localização</h2><div class="banner" style="margin-bottom:12px">Este ponto <b>não será registrado agora</b>. Ele fica pendente e só vale depois que o seu gestor aprovar.</div><div class="muted">'+tipoNome(m.tipo)+' · '+fdate(TODAY)+'</div><div class="clock" style="font-size:44px;margin:6px 0 10px">'+m.hora+'</div><div class="muted" style="margin-bottom:12px">Motivo técnico: '+esc(m.motivo)+'</div>'+sfl+fld('sj','Justificativa obrigatória','textarea',{ph:'Explique por que não foi possível usar a localização'})+(m.err?'<div class="err" role="alert">'+m.err+'</div>':'')+'<div class="row"><button class="btn" data-act="close">Cancelar</button><button class="btn primary" data-act="sendptsl">Enviar para aprovação</button></div>';
+  }else if(m.k==='decpt'){
+    var dq=S.pend.filter(function(x){return x.id===m.id})[0],du=U(dq.uid),dap=m.v==='aprovado';
+    h='<h2>'+(dap?'Aprovar':'Recusar')+' ponto sem localização</h2><div class="banner" style="margin-bottom:12px">Ponto batido <b>sem localização</b>. Ele ainda não está registrado.</div><div class="dl" style="margin-bottom:14px"><div><dt>Colaborador</dt><dd>'+esc(du.nome)+'</dd></div><div><dt>Registro</dt><dd>'+tipoNome(dq.tipo)+' às '+dq.hora+' de '+fdate(dq.data)+'</dd></div><div><dt>Motivo técnico</dt><dd>'+esc(dq.motivoLoc)+'</dd></div><div><dt>Aparelho</dt><dd>'+esc(dq.disp)+(dq.selfie?' · selfie conferida':'')+'</dd></div></div><div class="muted" style="font-weight:600">Justificativa do colaborador</div><div class="receipt" style="margin:6px 0 14px">'+esc(dq.just)+'</div>'+fld('dj','Sua justificativa para '+(dap?'aprovar':'recusar')+' (obrigatória)','textarea',{ph:dap?'Ex.: confirmei com o colaborador, estava em reunião externa':'Ex.: não foi possível confirmar a presença'})+(m.err?'<div class="err" role="alert">'+m.err+'</div>':'')+'<div class="row"><button class="btn" data-act="close">Cancelar</button><button class="btn '+(dap?'primary':'danger')+'" data-act="confirmdecpt">'+(dap?'Aprovar ponto':'Recusar ponto')+'</button></div>';
   }else if(m.k==='receipt'){
     h='<h2>Ponto registrado</h2><div class="receipt">'+esc(m.txt)+'</div><div class="row"><button class="btn primary" data-act="close">Fechar</button></div>';
   }else if(m.k==='ajuste'){
@@ -975,9 +1021,9 @@ function modalHtml(){
     var f=U(m.id),b=bancoHoras(f.id),fi=feriasInfo(f.id),rh=session&&(session.perfil==='rh'||session.perfil==='admin');
     h='<h2>'+esc(f.nome)+'</h2><div class="muted" style="margin-bottom:12px">'+esc(f.cargo)+' · '+esc(f.setor)+' '+(f.ativo?'<span class="chip ok">Ativo</span>':'<span class="chip bad">Inativo</span>')+'</div>'+ficha(f)+'<div class="grid" style="grid-template-columns:1fr 1fr;margin-top:14px"><div class="kpi"><div class="n">'+fmtSaldo(b)+'</div><div class="l">Banco de horas</div></div><div class="kpi"><div class="n">'+fi.saldo+'</div><div class="l">Dias de férias disponíveis</div></div></div><div class="row">'+(rh?'<button class="btn" data-act="editar" data-id="'+f.id+'">Editar</button>':'')+'<button class="btn primary" data-act="close">Fechar</button></div>';
   }else if(m.k==='localdia'){
-    var lu=U(m.id),arr=((S.punches[lu.id]||{})[m.date]||[]).filter(function(p){return p.local}),first=arr[0],un2=unitOf(lu);
+    var lu=U(m.id),arr=((S.punches[lu.id]||{})[m.date]||[]).filter(function(p){return p.local||p.semLocal}),first=arr.filter(function(p){return p.local})[0],un2=unitOf(lu);
     h='<h2>Local das batidas</h2><div class="muted" style="margin-bottom:8px">'+esc(lu.nome)+' · '+fdate(m.date)+'</div>'+(first?mapSvg(first.local,un2.cerca?{lat:un2.lat,lng:un2.lng}:null,un2.nome.split(' ')[0]):'')+
-     tbl(['Registro','Hora','Coordenadas','Área','Origem'],[arr.map(function(p){var ar=areaInfo(lu,p.local);return '<tr><td>'+tipoNome(p.tipo)+'</td><td>'+p.hora+'</td><td style="white-space:nowrap">'+p.local.lat.toFixed(5)+', '+p.local.lng.toFixed(5)+'</td><td><span class="chip '+(ar.fora?'warn':'ok')+'">'+ar.txt+'</span>'+(p.just?'<div class="muted" style="font-size:12px">'+esc(p.just)+'</div>':'')+'</td><td>'+esc(p.orig)+(p.selfie?' · selfie':'')+'<div class="muted" style="font-size:12px">'+esc(p.disp||'')+(p.proj?' · '+esc(p.proj):'')+'</div></td></tr>'}).join('')])+'<div class="row"><button class="btn primary" data-act="close">Fechar</button></div>';
+     tbl(['Registro','Hora','Coordenadas','Área','Origem'],[arr.map(function(p){var sl=!p.local,ar=sl?null:areaInfo(lu,p.local);return '<tr><td>'+tipoNome(p.tipo)+'</td><td>'+p.hora+'</td><td style="white-space:nowrap">'+(sl?'Sem localização':p.local.lat.toFixed(5)+', '+p.local.lng.toFixed(5))+'</td><td>'+(sl?'<span class="chip warn">Sem localização</span><div class="muted" style="font-size:12px">Justificativa: '+esc(p.justSem||'')+'<br>Aprovada por '+esc(p.aprovPor||'')+': '+esc(p.aprovJust||'')+'</div>':'<span class="chip '+(ar.fora?'warn':'ok')+'">'+ar.txt+'</span>'+(p.just?'<div class="muted" style="font-size:12px">'+esc(p.just)+'</div>':''))+'</td><td>'+esc(p.orig)+(p.selfie?' · selfie':'')+'<div class="muted" style="font-size:12px">'+esc(p.disp||'')+(p.proj?' · '+esc(p.proj):'')+'</div></td></tr>'}).join('')])+'<div class="row"><button class="btn primary" data-act="close">Fechar</button></div>';
   }else if(m.k==='inp'){
     h='<h2>'+INP_TIT[m.tipo]+'</h2>'+inputFields(m.tipo)+(m.err?'<div class="err" role="alert">'+m.err+'</div>':'')+'<div class="row"><button class="btn" data-act="close">Cancelar</button><button class="btn primary" data-act="saveinp">Salvar</button></div>';
   }else if(m.k==='csv'){
@@ -1113,6 +1159,42 @@ document.addEventListener('click',function(e){
   }
   if(a==='selfie'){modal.selfie=true;modal.selfieAt=new Date().toLocaleTimeString('pt-BR');modal.err='';return render()}
   if(a==='confirmpunch')return doPunch();
+  if(a==='ptsl'){
+    if((S.cfg.semLocal||'aprovar')!=='aprovar')return toast('O registro sem localização está desativado em Configurações.');
+    var ntp=nextTipo(session.id);if(!ntp)return toast('Sua jornada de hoje já está completa ou aguardando decisão.');
+    modal={k:'ptsl',uid:session.id,tipo:ntp,hora:nowHM(),motivo:locMotivo()};return render();
+  }
+  if(a==='sendptsl'){
+    var sj=(mv('sj')||'').trim();
+    if(S.cfg.selfie&&!modal.selfie){modal.err='Capture a selfie para continuar.';return render()}
+    if(sj.length<10){modal.err='A justificativa é obrigatória (mínimo 10 caracteres).';return render()}
+    if(nextTipo(session.id)!==modal.tipo){modal=null;return toast('Este registro já foi feito.')}
+    S.seq++;var nq={id:'q'+S.seq,uid:session.id,data:TODAY,tipo:modal.tipo,hora:modal.hora,just:sj,motivoLoc:modal.motivo,disp:ui.disp==='outro'?DEV_OUTRO:DEV_HAB,selfie:!!S.cfg.selfie,status:'pendente'};
+    S.pend.push(nq);log('Ponto sem localização solicitado',tipoNome(nq.tipo)+' '+nq.hora+' · '+sj);
+    modal={k:'receipt',txt:'SOLICITAÇÃO DE PONTO SEM LOCALIZAÇÃO\nProtocolo AX-PEND-'+S.seq+'\nSituação: PENDENTE DE APROVAÇÃO\nColaborador: '+session.nome+' ('+session.matricula+')\nRegistro: '+tipoNome(nq.tipo)+' às '+nq.hora+' de '+fdate(TODAY)+'\nMotivo técnico: '+nq.motivoLoc+'\nJustificativa: '+sj+'\n\nEste ponto NÃO está registrado. Ele só vale depois que o seu gestor aprovar.'};
+    return render();
+  }
+  if(a==='ptdec'){
+    var qq=S.pend.filter(function(x){return x.id===id})[0];
+    if(!qq||qq.status!=='pendente')return toast('Esta solicitação já foi decidida.');
+    if(qq.uid===session.id)return toast('Você não pode decidir o próprio ponto.');
+    modal={k:'decpt',id:id,v:el.getAttribute('data-v')};return render();
+  }
+  if(a==='confirmdecpt'){
+    var dj=(mv('dj')||'').trim();
+    if(dj.length<10){modal.err='A sua justificativa é obrigatória (mínimo 10 caracteres).';return render()}
+    var q2=S.pend.filter(function(x){return x.id===modal.id})[0];
+    if(!q2||q2.status!=='pendente'){modal=null;return toast('Esta solicitação já foi decidida.')}
+    if(mesFechado(q2.uid,q2.data)){modal=null;return toast('Este mês já foi fechado pelo RH.')}
+    q2.status=modal.v;q2.decPor=session.nome;q2.decJust=dj;q2.decEm=iso(new Date())+' '+nowHM();
+    if(modal.v==='aprovado'){
+      var dayArr=(S.punches[q2.uid][q2.data]=S.punches[q2.uid][q2.data]||[]),ord=TIPOS.map(function(t){return t[0]});
+      dayArr.push({tipo:q2.tipo,hora:q2.hora,orig:'web',disp:q2.disp,selfie:q2.selfie,semLocal:true,justSem:q2.just,aprovPor:session.nome,aprovJust:dj});
+      dayArr.sort(function(p1,p2){return ord.indexOf(p1.tipo)-ord.indexOf(p2.tipo)});
+    }
+    log('Ponto sem localização '+modal.v,U(q2.uid).nome+' · '+tipoNome(q2.tipo)+' '+q2.hora+' · '+fdate(q2.data)+' · justificativa: '+dj);
+    modal=null;return toast(q2.status==='aprovado'?'Ponto aprovado e registrado no espelho.':'Ponto recusado. O colaborador foi avisado.');
+  }
   if(a==='sync'){var cnt=0;((S.punches[session.id]||{})[TODAY]||[]).forEach(function(p){if(p.sync===false){p.sync=true;cnt++}});ui.offline=false;log('Sincronização',cnt+' batida(s) enviada(s)');return toast(cnt+' batida(s) sincronizada(s).')}
   if(a==='ajuste'){modal={k:'ajuste',date:dt||''};return render()}
   if(a==='sendajuste'){

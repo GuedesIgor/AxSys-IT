@@ -25,7 +25,7 @@
 | RF-13 | Emitir comprovante com número, data, hora e origem | 🔴 | ✅ |
 | RF-14 | Mostrar horas trabalhadas e progresso da jornada do dia | 🟡 | ✅ |
 | RF-15 | Gravar a hora do servidor, não a do aparelho | 🔴 | ⬜ (simulada) |
-| RF-16 | **Localização do aparelho obrigatória**: sem permissão, os botões de ponto ficam bloqueados | 🔴 | ✅ |
+| RF-16 | **Localização do aparelho obrigatória**: sem permissão, o botão de ponto normal fica bloqueado. O único caminho é o ponto sem localização (RF-74), que depende de aprovação | 🔴 | ✅ |
 | RF-17 | Mostrar mapa com a posição da pessoa, círculo de precisão e a sede | 🔴 | ✅ (mapa esquemático) |
 | RF-18 | Gravar latitude, longitude e precisão em cada batida e no comprovante | 🔴 | ✅ |
 | RF-19 | Indicar se o registro foi dentro ou fora da área da empresa (apenas informativo) | 🟡 | ✅ |
@@ -96,6 +96,18 @@ Origem de cada um na [matriz de funcionalidades](10-matriz-de-funcionalidades.md
 | RF-71 | Ver o local de cada batida no espelho (gestor e RH) | 🟡 | ✅ |
 | RF-72 | Módulo opcional de custo de mão de obra (valor da hora, custo estimado e valores nos eventos de folha), desligado por padrão e visível só a RH e Admin | 🟢 | ✅ |
 | RF-73 | Aviso de finalidade na captura da selfie e método alternativo (PIN ou QR) | 🔴 | 🟡 aviso feito, alternativa no app |
+
+### Ponto sem localização (Rodada 6)
+
+| ID | Requisito | Prioridade | Protótipo |
+|---|---|---|---|
+| RF-74 | Sem a localização liberada, a pessoa pode **solicitar** o ponto sem localização. Ele **não é registrado** até o gestor aprovar | 🔴 | ✅ |
+| RF-75 | A pessoa que bate **deve justificar** (mínimo 10 caracteres). Com a selfie ativa, a selfie também é obrigatória | 🔴 | ✅ |
+| RF-76 | O gestor recebe aviso na lista de pendências e no contador do menu, com a justificativa, o motivo técnico, o aparelho e a hora batida, **antes de decidir** | 🔴 | ✅ |
+| RF-77 | O gestor **deve justificar** a aprovação ou a recusa (mínimo 10 caracteres). A decisão e as duas justificativas ficam no histórico e na auditoria | 🔴 | ✅ |
+| RF-78 | Ponto aprovado entra no espelho marcado como "sem localização" e mostra quem aprovou e por quê. Recusado não entra | 🔴 | ✅ |
+| RF-79 | Ninguém decide o próprio ponto. Para gestores, decidem RH e Admin | 🔴 | ✅ |
+| RF-80 | Configuração para **bloquear** o ponto sem localização em vez de enviá-lo para aprovação | 🟡 | ✅ |
 
 ## Requisitos não funcionais
 

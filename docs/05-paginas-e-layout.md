@@ -54,6 +54,7 @@ flowchart TD
 - **Confirmação** com mapa, selfie, projeto (na entrada), justificativa se estiver fora da área, e avisos de aparelho diferente e de modo offline.
 - Cartões laterais: Hoje (progresso e previsão de saída), banco de horas e férias, últimos dias, mural de avisos.
 - Faixa de alerta com botão **Sincronizar agora** quando houver batidas offline.
+- **Sem localização:** o aviso âmbar explica que o ponto fica pendente e oferece **Registrar sem localização**. O modal pede selfie e justificativa obrigatória e termina em um protocolo "PENDENTE DE APROVAÇÃO". A batida aparece como "⏳ aguardando gestor" e um cartão lista as solicitações e as decisões.
 
 ### Meu espelho
 - Fechamento do mês: situação (Aberto, Assinado, Aprovado, Fechado) e botão **Assinar espelho**.
@@ -85,7 +86,7 @@ flowchart TD
 - Cada item abre o espelho da pessoa.
 
 ### Aprovações
-- Ajustes, ausências e espelhos do mês anterior, com Aprovar e Recusar (motivo obrigatório na recusa). RH fecha o mês, um a um ou em lote. Histórico recente no fim.
+- **Pontos batidos sem localização** em destaque no topo, com aviso de que ainda não estão registrados, justificativa de quem bateu, motivo técnico e aparelho. Aprovar e Recusar abrem um modal que repete esses dados e exige a justificativa do gestor. Depois vêm ajustes, ausências e espelhos do mês anterior, com Aprovar e Recusar (motivo obrigatório na recusa). RH fecha o mês, um a um ou em lote. Histórico recente no fim.
 
 ### Visão geral (RH, Admin)
 - Indicadores: trabalhando, atrasos, pendências, exceções, custo estimado da folha, realizado contra previsto.

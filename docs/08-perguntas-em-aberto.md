@@ -9,7 +9,7 @@ Itens que precisam de decisão antes de especificar o app real.
 | Q-03 | O sistema será produto próprio (SaaS para vários clientes) ou ferramenta para uso interno de um cliente? | Multi-empresa, cobrança, isolamento de dados | AxSys IT | 🔴 Aberto |
 | Q-04 | A localização já é **obrigatória** (decidido). Falta definir: estar fora da área da empresa bloqueia, só sinaliza ou exige justificativa? Qual o raio? Vale um cadastro de locais por empresa? | Regras de bloqueio e LGPD | A definir | 🟡 Parcial |
 | Q-11 | A localização é coletada só na batida ou também em segundo plano? Quanto tempo guardamos? | LGPD, termo de consentimento | A definir | 🔴 Aberto |
-| Q-12 | O que fazer com quem usa navegador ou aparelho sem GPS, ou em prédio com sinal fraco (precisão ruim)? | Aceitar com precisão mínima ou exigir ajuste | A definir | 🔴 Aberto |
+| Q-12 | O que fazer com quem usa navegador ou aparelho sem GPS, ou em prédio com sinal fraco (precisão ruim)? | Aceitar com precisão mínima ou exigir ajuste | A definir | 🟡 Sem GPS: ponto sem localização (Q-20). Precisão ruim: aberto |
 | Q-05 | Como será o banco de horas: compensação, limite, vencimento? | Cálculo de saldo | RH do cliente | 🟡 Compensação feita; limite e vencimento abertos |
 | Q-06 | Haverá feriados, férias, atestados e abonos no espelho? | Novas situações de dia | A definir | 🟢 Resolvido no protótipo (Rodada 4); falta confirmar |
 | Q-07 | Tempo de expiração da sessão e política de senha | Segurança | AxSys IT | 🔴 Aberto |
@@ -21,7 +21,8 @@ Itens que precisam de decisão antes de especificar o app real.
 | Q-15 | O produto precisa suportar escala 12x36, turnos noturnos que viram o dia e jornadas rotativas na primeira versão? | Modelo de dados e cálculo | A definir | 🔴 Aberto |
 | Q-16 | Valor da hora e custo no app de ponto. AxSys questionou se faz sentido. **Resposta: não é essencial.** Virou módulo opcional, desligado por padrão, visível só a RH e Admin | Escopo e privacidade | AxSys IT | 🟢 Resolvido |
 | Q-17 | App nativo ou web? **Decisão: web responsivo instalável (PWA), funcionando em qualquer navegador e aparelho.** App nativo só se surgir função que o navegador não faz | Prazo e custo | AxSys IT | 🟢 Resolvido |
-| Q-20 | Quem usa navegador antigo, nega a localização ou está em aparelho sem GPS não consegue bater o ponto. Qual o caminho alternativo: quiosque, ajuste com justificativa ou liberação pelo gestor? | Acessibilidade e regra de localização obrigatória | A definir | 🔴 Aberto |
+| Q-20 | Quem nega a localização ou está em aparelho sem GPS. **Decisão: o ponto sem localização fica pendente, com justificativa de quem bate, e só é registrado quando o gestor aprovar, também com justificativa.** | Acessibilidade e regra de localização obrigatória | AxSys IT | 🟢 Resolvido (Rodada 6) |
+| Q-21 | Qual o prazo máximo para o gestor decidir um ponto sem localização, e o que fazer depois (lembrete, escalar para RH)? Haverá limite mensal de pedidos por pessoa? | Fluxo de aprovação e abuso | AxSys IT | 🔴 Aberto |
 | Q-18 | Quais integrações de folha entram primeiro (TOTVS, Senior, ADP, Domínio, Conta Azul)? | Prioridade de integração | Clientes-alvo | 🔴 Aberto |
 | Q-19 | Valores padrão: tolerância 10 min, limite de hora extra 2h, raio da cerca 200 m, intervalo mínimo 60 min. Estão certos? | Regras de alerta | RH do cliente | 🟡 Valores de partida |
 

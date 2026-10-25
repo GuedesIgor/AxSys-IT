@@ -21,7 +21,7 @@ Jornadas sem intervalo (ex.: Estágio 4h) usam só **Entrada** e **Saída**.
 ## RN-10 · Localização obrigatória
 
 1. O sistema pede a localização do aparelho ao abrir "Registrar ponto".
-2. **Sem permissão, nenhuma batida é aceita.** O botão do próximo registro fica desabilitado com o texto "Localização necessária".
+2. **Sem permissão, a batida normal não é aceita.** O botão do próximo registro fica desabilitado com o texto "Localização necessária". O único caminho é o ponto sem localização (RN-19).
 3. O mapa mostra a posição, a precisão (círculo) e a sede da empresa.
 4. A batida grava latitude, longitude e precisão. O comprovante repete esses dados.
 5. Estar **fora da área da empresa** (raio de 200 m no protótipo) não bloqueia: apenas é informado. Se vira bloqueio ou sinalização ao gestor, está em [Q-04](08-perguntas-em-aberto.md).
@@ -103,6 +103,28 @@ O saldo só é calculado em dias **completos**. Dias incompletos ou com falta n�
 ## RN-09 · Imutabilidade
 
 Um registro de ponto nunca é editado nem apagado. Mudanças acontecem por ajuste aprovado, com data, autor e justificativa.
+
+## RN-19 · Ponto sem localização
+
+```mermaid
+stateDiagram-v2
+    [*] --> Solicitado: Colaborador justifica e envia
+    Solicitado --> Aprovado: Gestor aprova com justificativa
+    Solicitado --> Recusado: Gestor recusa com justificativa
+    Aprovado --> [*]: Entra no espelho como "sem localização"
+    Recusado --> [*]: Não entra no espelho
+```
+
+1. Só aparece quando a localização não foi liberada e a configuração permite (padrão). Em modo **bloquear**, não há alternativa.
+2. O colaborador informa uma **justificativa obrigatória** (mínimo 10 caracteres). Com selfie ativa, a selfie é obrigatória também.
+3. O sistema guarda a **hora em que a pessoa bateu**, o motivo técnico (permissão negada, sem resposta, não liberada) e o aparelho.
+4. O ponto fica **pendente e não conta** em horas, saldo, banco de horas nem relatórios de jornada até ser aprovado.
+5. A batida pendente ocupa o lugar na sequência do dia: o botão mostra "aguardando gestor" e a pessoa segue para a próxima batida normalmente.
+6. Aprovam o **gestor direto**, RH e Admin. Ninguém aprova o próprio ponto. Para gestores, decidem RH e Admin.
+7. O aprovador vê, antes de decidir, a justificativa, o motivo técnico, o aparelho e a hora, e **precisa justificar** a decisão (mínimo 10 caracteres).
+8. Aprovado: a batida entra no espelho com a hora original, marcada "sem localização", com a justificativa da pessoa e a do gestor. Recusado: não entra, e o dia pode virar "marcação ímpar" para ajuste.
+9. Mês fechado não aceita decisão.
+10. Tudo vai para a auditoria e para o relatório de localização (como aprovado ou pendente).
 
 ## RN-11 · Alertas de jornada (CLT)
 

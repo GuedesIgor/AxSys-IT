@@ -62,12 +62,12 @@ flowchart LR
 
 ### O que o protótipo já cobre
 
-Resultado do [estudo de 10 sistemas de ponto](docs/09-benchmark-concorrentes.md) (UKG, Deputy, Connecteam, Clockify, Jibble, Homebase, When I Work, Rippling, QuickBooks Time e Buddy Punch), mais a referência brasileira (Pontomais e Portaria 671). São **105 funções catalogadas** na [matriz de funcionalidades](docs/10-matriz-de-funcionalidades.md).
+Resultado do [estudo de 10 sistemas de ponto](docs/09-benchmark-concorrentes.md) (UKG, Deputy, Connecteam, Clockify, Jibble, Homebase, When I Work, Rippling, QuickBooks Time e Buddy Punch), mais a referência brasileira (Pontomais e Portaria 671). São **106 funções catalogadas** na [matriz de funcionalidades](docs/10-matriz-de-funcionalidades.md).
 
 | Grupo | Funções |
 |---|---|
 | **Registro** | Web, quiosque com PIN, selfie, QR Code, offline, projeto por batida, comprovante numerado |
-| **Local e antifraude** | Localização obrigatória com mapa, cerca virtual por unidade, três modos para batida fora da área, alerta de aparelho diferente |
+| **Local e antifraude** | Localização obrigatória com mapa, cerca virtual por unidade, três modos para batida fora da área, alerta de aparelho diferente. Sem localização, o ponto fica pendente e só vale após aprovação justificada do gestor |
 | **Regras da CLT** | Tolerância, intervalo, 6h sem pausa, extras 50% e 100%, adicional noturno, interjornada, banco de horas, feriados |
 | **Escalas e ausências** | Escala semanal, folga e plantão, férias com saldo, atestado, licença, abono, folga compensatória |
 | **Fechamento** | Espelho assinado, aprovado e fechado, com mês travado |

@@ -80,6 +80,8 @@ Datas são sempre relativas a hoje, contadas em dias úteis.
 | Atraso | Ana, 7 dias úteis atrás | Alerta de atraso e saldo negativo |
 | Hora extra acima do limite | Bruno, 6 dias úteis atrás | Alerta e painel de exceções |
 | Intervalo curto | Diego, 5 dias úteis atrás | Alerta de intervalo menor que 60 min |
+| Ponto sem localização pendente | Elisa, saída de 1 dia útil atrás | Paula vê o aviso em Aprovações, lê a justificativa e decide com justificativa |
+| Bater sem localização | Ana, simulador "Negar permissão" | Selfie e justificativa obrigatórias; o ponto vira pendente para o Carlos |
 | Atestado aprovado | Elisa, 8 dias úteis atrás | Dia "Atestado" no espelho e na escala |
 | Férias aprovadas | Camila, daqui a 10 dias | Escala e calendário de ausências |
 | Férias pendentes | Ana, daqui a 45 dias | Aprovação do Carlos e saldo de férias |

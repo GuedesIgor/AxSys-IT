@@ -149,3 +149,29 @@ flowchart LR
     D --> E[Sincronizar]
     E --> F[Registro enviado, alerta some]
 ```
+
+## F10 · Ponto sem localização
+
+```mermaid
+sequenceDiagram
+    actor C as Colaborador
+    participant S as Sistema
+    actor G as Gestor
+    C->>S: Tenta bater o ponto
+    S-->>C: Localização negada ou indisponível, botão bloqueado
+    C->>S: Registrar sem localização
+    S-->>C: Pede selfie e justificativa obrigatória
+    C->>S: Envia
+    S->>S: Guarda como PENDENTE (não conta no espelho)
+    S-->>C: Protocolo "pendente de aprovação"
+    S-->>G: Aviso e contador em Aprovações
+    G->>S: Lê justificativa, motivo técnico, aparelho e hora
+    alt Aprova
+        G->>S: Justificativa da aprovação (obrigatória)
+        S->>S: Entra no espelho como "sem localização"
+        S-->>C: Aprovado, com a justificativa do gestor
+    else Recusa
+        G->>S: Justificativa da recusa (obrigatória)
+        S-->>C: Recusado, com a justificativa do gestor
+    end
+```

@@ -6,6 +6,27 @@ Diário das decisões tomadas ao validar o protótipo. Mais recente no topo.
 
 ---
 
+## Rodada 6 · Ponto sem localização depende do gestor
+
+**Versão do protótipo:** v6 · **Pedido:** ponto sem localização fica pendente de aprovação do gestor e só é registrado depois; quem bate justifica; o gestor vê a justificativa e também justifica.
+
+| # | Tema | Decisão | Motivo | Status |
+|---|---|---|---|---|
+| V6-01 | Caminho sem localização | Sem permissão, a pessoa pode solicitar o ponto sem localização. Ele **não é registrado** até a aprovação | Resolve a pergunta Q-20 | ✅ |
+| V6-02 | Justificativa de quem bate | Obrigatória (mínimo 10 caracteres), mais selfie quando ativa | Responsabilização e antifraude | ✅ |
+| V6-03 | Aviso ao gestor | Cartão em destaque em Aprovações, contador no menu e grupo no painel de exceções | O gestor não pode deixar de ver | ✅ |
+| V6-04 | Decisão do gestor | Vê justificativa, motivo técnico, aparelho e hora, e precisa justificar a aprovação ou a recusa | Pedido da AxSys | ✅ |
+| V6-05 | Efeito no espelho | Aprovado entra com marca "sem localização", com as duas justificativas. Recusado não entra | Transparência e rastro | ✅ |
+| V6-06 | Quem decide | Gestor direto, RH e Admin. Ninguém decide o próprio ponto; gestores são decididos por RH e Admin | Evita autoaprovação | ✅ |
+| V6-07 | Configuração | Opção de bloquear em vez de enviar para aprovação | Clientes que não aceitam exceção | ✅ |
+| V6-08 | Dados de teste | Os dados do protótipo foram renovados (nova versão de armazenamento) | Incluir o cenário de teste da Elisa | ✅ |
+
+### Pendências desta rodada
+- Prazo máximo para o gestor decidir e o que acontece se passar (lembrete, escalar para RH).
+- Limite de pedidos sem localização por pessoa no mês, para evitar abuso.
+
+---
+
 ## Rodada 5 · Decisões sobre selfie, custo e plataforma
 
 **Versão do protótipo:** v5 · **Origem:** respostas da AxSys às perguntas Q-13, Q-16 e Q-17.

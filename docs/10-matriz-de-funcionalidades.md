@@ -8,10 +8,10 @@
 
 | Situação | Funções | % |
 |---|---:|---:|
-| ✅ Implementado no protótipo | 57 | 54% |
+| ✅ Implementado no protótipo | 58 | 55% |
 | 🟡 Parcial ou simulado | 25 | 24% |
 | ⬜ Fora do protótipo (com motivo) | 23 | 22% |
-| **Total catalogado** | **105** | |
+| **Total catalogado** | **106** | |
 
 🟡 significa que a tela e o fluxo existem para validar, mas o efeito real (câmera, envio de e-mail, conector, arquivo oficial) só acontece no app de verdade.
 
@@ -67,6 +67,7 @@
 | B05 | Aviso quando a batida vem de outro aparelho |  |  | ● |  |  |  |  |  |  |  |  |  | ✅ | Alerta e painel de exceções |
 | B06 | Prevenção de batida por colega (selfie, aparelho e local) |  |  | ● |  |  |  |  |  |  |  | ● |  | ✅ | Combinação de selfie, aparelho e local |
 | B07 | Ver onde cada batida aconteceu |  | ● |  |  |  |  |  |  | ● | ● |  |  | ✅ | Botão Local no espelho e relatório Localização |
+| B10 | Ponto sem localização com aprovação justificada do gestor |  |  |  |  |  |  |  |  |  |  |  |  | ✅ | Pedido da AxSys (RN-19): pendente, não conta até aprovar, justificativas dos dois lados |
 | B08 | Entrada e saída automática ao cruzar a cerca |  |  |  |  | ● |  |  |  |  |  |  |  | ⬜ | Exige app nativo e rastreio em segundo plano (LGPD) |
 | B09 | Rastreamento contínuo de GPS |  |  |  |  |  |  |  |  |  | ● |  |  | ⬜ | Decisão de produto: coletar só na batida |
 
