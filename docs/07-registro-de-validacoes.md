@@ -6,6 +6,18 @@ Diário das decisões tomadas ao validar o protótipo. Mais recente no topo.
 
 ---
 
+## Rodada 7 · Prazo do gestor no ponto sem localização
+
+**Versão do protótipo:** v7 · **Origem:** respostas da AxSys à pergunta Q-21.
+
+| # | Tema | Decisão | Motivo | Status |
+|---|---|---|---|---|
+| V7-01 | Prazo | 2 dias úteis, configurável de 1 a 10 em Configurações. Não há prazo legal específico; vale a prática comum de aprovações de ponto | A AxSys pediu o prazo legal ou o mais usado | ✅ |
+| V7-02 | Depois do prazo | Lembrete no último dia; vencido, o pedido fica marcado "escalado ao RH" | O ponto não pode ficar parado até o fechamento | ✅ simulado (sem e-mail ou push) |
+| V7-03 | Limite mensal | Sem limite por pessoa | Decisão da AxSys | ✅ |
+
+---
+
 ## Rodada 6 · Ponto sem localização depende do gestor
 
 **Versão do protótipo:** v6 · **Pedido:** ponto sem localização fica pendente de aprovação do gestor e só é registrado depois; quem bate justifica; o gestor vê a justificativa e também justifica.
@@ -22,8 +34,7 @@ Diário das decisões tomadas ao validar o protótipo. Mais recente no topo.
 | V6-08 | Dados de teste | Os dados do protótipo foram renovados (nova versão de armazenamento) | Incluir o cenário de teste da Elisa | ✅ |
 
 ### Pendências desta rodada
-- Prazo máximo para o gestor decidir e o que acontece se passar (lembrete, escalar para RH).
-- Limite de pedidos sem localização por pessoa no mês, para evitar abuso.
+- Resolvidas na [Rodada 7](#rodada-7--prazo-do-gestor-no-ponto-sem-localização).
 
 ---
 

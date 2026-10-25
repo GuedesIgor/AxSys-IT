@@ -241,7 +241,7 @@ function seedJornadas(){return {
  est:{nome:'Estágio 4h',desc:'Seg a Sex, 13:00–17:00, sem intervalo',min:240,intervalo:0,ini:780}
 };}
 function seedCfg(){return {
- raio:200,foraDaArea:'justificar',selfie:true,semLocal:'aprovar',custos:false,tolerancia:10,limiteExtra:120,intervaloMin:60,janelaMin:0,
+ raio:200,foraDaArea:'justificar',selfie:true,semLocal:'aprovar',prazoSemLoc:2,custos:false,tolerancia:10,limiteExtra:120,intervaloMin:60,janelaMin:0,
  autoSaida:true,offline:true,sessao:30,mfa:false,sso:false,senhaForte:true,bancoValidade:6,
  metodos:{web:true,quiosque:true,qr:true,whatsapp:false,slack:false,teams:false}
 };}
@@ -337,7 +337,7 @@ function seedPend(st){
   var d=bday(1),arr=st.punches.u9[d];if(!arr)return;
   var i=arr.map(function(p){return p.tipo}).indexOf('saida');if(i<0)return;
   var p=arr.splice(i,1)[0];
-  st.pend.push({id:'q1',uid:'u9',data:d,tipo:'saida',hora:p.hora,just:'O GPS do celular estava desligado e não consegui ativar dentro do prédio.',motivoLoc:'Permissão de localização negada ou bloqueada no aparelho',disp:DEV_HAB,selfie:true,status:'pendente'});
+  st.pend.push({id:'q1',uid:'u9',data:d,tipo:'saida',hora:p.hora,just:'O GPS do celular estava desligado e não consegui ativar dentro do prédio.',motivoLoc:'Permissão de localização negada ou bloqueada no aparelho',disp:DEV_HAB,selfie:true,status:'pendente',criado:d});
 }
 function fresh(){
   var users=seedUsers(),jor=seedJornadas(),projetos=['Suporte N1','Portal do Cliente','Infraestrutura','Contas Estratégicas','Interno'],aus=seedAus();
@@ -771,9 +771,14 @@ function vEspelhoDe(){
   '<div class="card" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center"><div><b>Fechamento de '+MES[+ui.mes.slice(5)-1]+'</b></div><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">'+fechChip(f)+(canApr?'<button class="btn primary sm" data-act="espaprovar" data-id="'+u.id+'" data-ym="'+ui.mes+'">Aprovar espelho</button>':'')+(canFec?'<button class="btn primary sm" data-act="espfechar" data-id="'+u.id+'" data-ym="'+ui.mes+'">Fechar mês</button>':'')+'</div></div>'+
   espelhoKpis(u.id,ui.mes)+'<div class="card">'+espelhoTable(u.id,ui.mes,false)+'</div>';
 }
+function prazoPt(q){
+  var lim=S.cfg.prazoSemLoc||2,n=0,d=q.criado||q.data;while(d<TODAY){d=addDays(d,1);if(isBiz(d))n++}
+  if(n>=lim)return '<span class="chip bad" title="Prazo de '+lim+' dias úteis esgotado">Prazo vencido · escalado ao RH</span>';
+  return lim-n===1?'<span class="chip warn">Vence hoje (lembrete enviado)</span>':'<span class="chip info">Prazo: '+(lim-n)+' dias úteis</span>';
+}
 function ptslTb(arr,acts){
   return tbl(['Colaborador','Registro batido','Motivo técnico','Justificativa do colaborador',acts?'':'Decisão do gestor'],[arr.map(function(q){var u=U(q.uid);
-    return '<tr><td><b>'+esc(u.nome)+'</b><div class="muted" style="font-size:12px">'+esc(u.setor)+'</div></td><td><b>'+tipoNome(q.tipo)+' às '+q.hora+'</b><div class="muted" style="font-size:12px">'+fdate(q.data)+'</div></td><td style="min-width:150px">'+esc(q.motivoLoc)+'<div class="muted" style="font-size:12px">'+esc(q.disp)+(q.selfie?' · selfie conferida':'')+'</div></td><td style="min-width:220px">'+esc(q.just)+'</td><td>'+(acts?'<div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn sm primary" data-act="ptdec" data-id="'+q.id+'" data-v="aprovado">Aprovar</button><button class="btn sm danger" data-act="ptdec" data-id="'+q.id+'" data-v="recusado">Recusar</button></div>':adjChip(q.status)+'<div class="muted" style="font-size:12px;max-width:260px">'+esc(q.decPor||'')+': '+esc(q.decJust||'')+'</div>')+'</td></tr>'}).join('')]);
+    return '<tr><td><b>'+esc(u.nome)+'</b><div class="muted" style="font-size:12px">'+esc(u.setor)+'</div></td><td><b>'+tipoNome(q.tipo)+' às '+q.hora+'</b><div class="muted" style="font-size:12px">'+fdate(q.data)+'</div>'+(acts?'<div style="margin-top:6px">'+prazoPt(q)+'</div>':'')+'</td><td style="min-width:150px">'+esc(q.motivoLoc)+'<div class="muted" style="font-size:12px">'+esc(q.disp)+(q.selfie?' · selfie conferida':'')+'</div></td><td style="min-width:220px">'+esc(q.just)+'</td><td>'+(acts?'<div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn sm primary" data-act="ptdec" data-id="'+q.id+'" data-v="aprovado">Aprovar</button><button class="btn sm danger" data-act="ptdec" data-id="'+q.id+'" data-v="recusado">Recusar</button></div>':adjChip(q.status)+'<div class="muted" style="font-size:12px;max-width:260px">'+esc(q.decPor||'')+': '+esc(q.decJust||'')+'</div>')+'</td></tr>'}).join('')]);
 }
 function cardPtSL(){
   var own=function(uid){return session.perfil!=='gestor'||U(uid).gestor===session.id};
@@ -785,7 +790,7 @@ function cardPtSL(){
 function cardMeusPtsl(uid,full){
   var l=S.pend.filter(function(q){return q.uid===uid}).slice().reverse();if(!full)l=l.filter(function(q,i){return q.status==='pendente'||i<2});
   if(!l.length)return '';
-  return '<div class="card'+(l.some(function(q){return q.status==='pendente'})?' alertcard':'')+'"><h3>Pontos sem localização</h3><p class="muted" style="margin:2px 0 8px">Só valem depois da aprovação do gestor.</p>'+tbl(['Dia','Registro','Justificativa','Situação'],[l.map(function(q){return '<tr><td>'+fdate(q.data)+'</td><td>'+tipoNome(q.tipo)+' '+q.hora+'</td><td style="min-width:200px">'+esc(q.just)+'</td><td>'+(q.status==='pendente'?'<span class="chip warn">Aguardando gestor</span>':adjChip(q.status))+(q.decJust?'<div class="muted" style="font-size:12px;max-width:240px">'+esc(q.decPor)+': '+esc(q.decJust)+'</div>':'')+'</td></tr>'}).join('')])+'</div>';
+  return '<div class="card'+(l.some(function(q){return q.status==='pendente'})?' alertcard':'')+'"><h3>Pontos sem localização</h3><p class="muted" style="margin:2px 0 8px">Só valem depois da aprovação do gestor.</p>'+tbl(['Dia','Registro','Justificativa','Situação'],[l.map(function(q){return '<tr><td>'+fdate(q.data)+'</td><td>'+tipoNome(q.tipo)+' '+q.hora+'</td><td style="min-width:200px">'+esc(q.just)+'</td><td>'+(q.status==='pendente'?'<span class="chip warn">Aguardando gestor</span><div style="margin-top:4px">'+prazoPt(q)+'</div>':adjChip(q.status))+(q.decJust?'<div class="muted" style="font-size:12px;max-width:240px">'+esc(q.decPor)+': '+esc(q.decJust)+'</div>':'')+'</td></tr>'}).join('')])+'</div>';
 }
 function locMotivo(){return loc.status==='negado'?'Permissão de localização negada ou bloqueada no aparelho':loc.status==='pedindo'?'O aparelho não respondeu ao pedido de localização':'Localização não liberada neste aparelho'}
 function semLocBtn(){
@@ -910,6 +915,7 @@ function vConfig(){
    cfgRow('fora','Quando a batida é fora da área','Permitir só avisa o gestor; justificar exige texto; bloquear impede o registro.',true,cS('foraDaArea',c.foraDaArea,[['permitir','Permitir e sinalizar'],['justificar','Exigir justificativa'],['bloquear','Bloquear']]))+
    cfgRow('selfie','Verificação facial por selfie','Exige uma foto a cada batida para evitar que um colega bata por outro. A câmera é simulada.',true,cT('selfie',c.selfie))+
    cfgRow('sl','Ponto sem localização','Quando a pessoa não libera a localização: enviar para aprovação do gestor (justificativa obrigatória dos dois lados) ou bloquear o registro.',true,cS('semLocal',c.semLocal||'aprovar',[['aprovar','Enviar para aprovação do gestor'],['bloquear','Bloquear']]))+
+   cfgRow('prazosl','Prazo para decidir ponto sem localização','Dias úteis. No último dia o gestor recebe lembrete; vencido o prazo, o pedido é escalado ao RH, que também pode decidir.',true,cN('prazoSemLoc',c.prazoSemLoc||2,1,10)+' dias úteis')+
    cfgRow('janela','Janela de entrada antecipada','Minutos antes do horário em que a entrada é liberada. 0 desliga a regra.',true,cN('janelaMin',c.janelaMin,0,240)+' min')+
    cfgRow('offline','Registro offline','Guarda a batida no aparelho sem internet e sincroniza depois.',true,cT('offline',c.offline))+
    cfgRow('auto','Saída automática','Fecha jornadas abertas no fim do dia e sinaliza para ajuste.',false,cT('autoSaida',c.autoSaida))+'</div>'+
@@ -1169,7 +1175,7 @@ document.addEventListener('click',function(e){
     if(S.cfg.selfie&&!modal.selfie){modal.err='Capture a selfie para continuar.';return render()}
     if(sj.length<10){modal.err='A justificativa é obrigatória (mínimo 10 caracteres).';return render()}
     if(nextTipo(session.id)!==modal.tipo){modal=null;return toast('Este registro já foi feito.')}
-    S.seq++;var nq={id:'q'+S.seq,uid:session.id,data:TODAY,tipo:modal.tipo,hora:modal.hora,just:sj,motivoLoc:modal.motivo,disp:ui.disp==='outro'?DEV_OUTRO:DEV_HAB,selfie:!!S.cfg.selfie,status:'pendente'};
+    S.seq++;var nq={id:'q'+S.seq,uid:session.id,data:TODAY,tipo:modal.tipo,hora:modal.hora,just:sj,motivoLoc:modal.motivo,disp:ui.disp==='outro'?DEV_OUTRO:DEV_HAB,selfie:!!S.cfg.selfie,status:'pendente',criado:TODAY};
     S.pend.push(nq);log('Ponto sem localização solicitado',tipoNome(nq.tipo)+' '+nq.hora+' · '+sj);
     modal={k:'receipt',txt:'SOLICITAÇÃO DE PONTO SEM LOCALIZAÇÃO\nProtocolo AX-PEND-'+S.seq+'\nSituação: PENDENTE DE APROVAÇÃO\nColaborador: '+session.nome+' ('+session.matricula+')\nRegistro: '+tipoNome(nq.tipo)+' às '+nq.hora+' de '+fdate(TODAY)+'\nMotivo técnico: '+nq.motivoLoc+'\nJustificativa: '+sj+'\n\nEste ponto NÃO está registrado. Ele só vale depois que o seu gestor aprovar.'};
     return render();

@@ -173,5 +173,8 @@ sequenceDiagram
     else Recusa
         G->>S: Justificativa da recusa (obrigatória)
         S-->>C: Recusado, com a justificativa do gestor
+    else Passou o prazo (2 dias úteis)
+        S-->>G: Lembrete no último dia
+        S->>S: Vencido: marca como escalado ao RH
     end
 ```

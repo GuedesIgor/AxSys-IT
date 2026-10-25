@@ -22,7 +22,7 @@ Itens que precisam de decisão antes de especificar o app real.
 | Q-16 | Valor da hora e custo no app de ponto. AxSys questionou se faz sentido. **Resposta: não é essencial.** Virou módulo opcional, desligado por padrão, visível só a RH e Admin | Escopo e privacidade | AxSys IT | 🟢 Resolvido |
 | Q-17 | App nativo ou web? **Decisão: web responsivo instalável (PWA), funcionando em qualquer navegador e aparelho.** App nativo só se surgir função que o navegador não faz | Prazo e custo | AxSys IT | 🟢 Resolvido |
 | Q-20 | Quem nega a localização ou está em aparelho sem GPS. **Decisão: o ponto sem localização fica pendente, com justificativa de quem bate, e só é registrado quando o gestor aprovar, também com justificativa.** | Acessibilidade e regra de localização obrigatória | AxSys IT | 🟢 Resolvido (Rodada 6) |
-| Q-21 | Qual o prazo máximo para o gestor decidir um ponto sem localização, e o que fazer depois (lembrete, escalar para RH)? Haverá limite mensal de pedidos por pessoa? | Fluxo de aprovação e abuso | AxSys IT | 🔴 Aberto |
+| Q-21 | Prazo do gestor e limite mensal no ponto sem localização. **Decisão: prazo comum de 2 dias úteis (configurável), lembrete no último dia e escalonamento ao RH; sem limite mensal por pessoa.** Não há prazo legal específico | Fluxo de aprovação e abuso | AxSys IT | 🟢 Resolvido (Rodada 7) |
 | Q-18 | Quais integrações de folha entram primeiro (TOTVS, Senior, ADP, Domínio, Conta Azul)? | Prioridade de integração | Clientes-alvo | 🔴 Aberto |
 | Q-19 | Valores padrão: tolerância 10 min, limite de hora extra 2h, raio da cerca 200 m, intervalo mínimo 60 min. Estão certos? | Regras de alerta | RH do cliente | 🟡 Valores de partida |
 

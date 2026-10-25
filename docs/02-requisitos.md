@@ -108,6 +108,7 @@ Origem de cada um na [matriz de funcionalidades](10-matriz-de-funcionalidades.md
 | RF-78 | Ponto aprovado entra no espelho marcado como "sem localização" e mostra quem aprovou e por quê. Recusado não entra | 🔴 | ✅ |
 | RF-79 | Ninguém decide o próprio ponto. Para gestores, decidem RH e Admin | 🔴 | ✅ |
 | RF-80 | Configuração para **bloquear** o ponto sem localização em vez de enviá-lo para aprovação | 🟡 | ✅ |
+| RF-81 | Prazo para o gestor decidir (padrão 2 dias úteis, configurável): lembrete no último dia e escalonamento ao RH quando vence | 🟡 | ✅ |
 
 ## Requisitos não funcionais
 

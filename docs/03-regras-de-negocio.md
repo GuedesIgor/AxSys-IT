@@ -125,6 +125,8 @@ stateDiagram-v2
 8. Aprovado: a batida entra no espelho com a hora original, marcada "sem localização", com a justificativa da pessoa e a do gestor. Recusado: não entra, e o dia pode virar "marcação ímpar" para ajuste.
 9. Mês fechado não aceita decisão.
 10. Tudo vai para a auditoria e para o relatório de localização (como aprovado ou pendente).
+11. **Prazo de decisão:** 2 dias úteis a partir do pedido (configurável de 1 a 10). No último dia o gestor recebe lembrete. Vencido o prazo, o pedido é marcado como **escalado ao RH**, que passa a ser o responsável, sem tirar o direito do gestor de decidir. Não existe prazo legal específico para isso; 2 dias úteis é a prática comum de fluxos de aprovação de ponto e deve caber antes do fechamento do mês.
+12. **Sem limite mensal** de pedidos por pessoa (decisão da AxSys). O controle de abuso fica na justificativa obrigatória, na aprovação do gestor e no relatório de localização, que mostra quem usa esse caminho com frequência.
 
 ## RN-11 · Alertas de jornada (CLT)
 
