@@ -6,6 +6,33 @@ Diário das decisões tomadas ao validar o protótipo. Mais recente no topo.
 
 ---
 
+## Rodada 4 · Benchmark de mercado e cadastro completo
+
+**Versão do protótipo:** v4 · **Pedido:** colaborador com setor, gestor e demais informações; estudar os 10 sistemas de ponto mais usados e trazer todas as funções.
+
+| # | Tema | Decisão | Motivo | Status |
+|---|---|---|---|---|
+| V4-01 | Ficha | Colaborador com 14 campos: matrícula, CPF, setor, cargo, gestor, unidade, contrato, admissão, centro de custo, valor da hora, PIN e outros | Pedido da AxSys | ✅ |
+| V4-02 | Benchmark | Estudar 10 sistemas globais e referências do Brasil; registrar em [09](09-benchmark-concorrentes.md) | Não deixar função de fora | ✅ |
+| V4-03 | Catálogo | 104 funções em [10](10-matriz-de-funcionalidades.md), cada uma com situação no protótipo | Rastreabilidade | ✅ |
+| V4-04 | Quiosque | Modo quiosque com matrícula e PIN | Presente em UKG, Clockify, Connecteam, Jibble, Pontomais | ✅ |
+| V4-05 | Antifraude | Selfie, cerca por unidade, aviso de aparelho diferente | Connecteam, Jibble, Pontomais | ✅ simulado |
+| V4-06 | Fora da área | Três modos configuráveis; padrão: exigir justificativa | Responde parte da Q-04 sem bloquear quem trabalha fora | ⏳ confirmar padrão |
+| V4-07 | Regras CLT | Alertas de intervalo, 6h sem pausa, interjornada, extras e jornada longa | Exigência trabalhista brasileira | ✅ |
+| V4-08 | Banco de horas | Saldo acumulado com folga compensatória | Pontomais e UKG | ✅ |
+| V4-09 | Escalas e ausências | Escala semanal, férias com saldo, atestado, licença, abono | Deputy, When I Work, Pontomais | ✅ |
+| V4-10 | Fechamento | Espelho assinado, aprovado e fechado, travando o mês | Pontomais e UKG | ✅ |
+| V4-11 | Exceções | Painel único com nove tipos de problema | Equivalente sem IA ao assistente do Deputy | ✅ |
+| V4-12 | Relatórios | Oito relatórios, exportação CSV por cópia | Pontomais, Deputy, Clockify | ✅ |
+| V4-13 | Integrações | Conectores simulados | UKG, Buddy Punch, QuickBooks Time, Pontomais | 🟡 simulado |
+| V4-14 | Configurações | Cada opção avisa se tem efeito no protótipo | Transparência na validação | ✅ |
+
+### Pendências desta rodada
+- Perguntas Q-13 a Q-19 em [08](08-perguntas-em-aberto.md).
+- Funções marcadas ⬜ na matriz precisam de decisão de escopo.
+
+---
+
 ## Rodada 3 · Identidade visual AxSys
 
 **Versão do protótipo:** v3 · **Pedido:** o visual estava feio e fora do padrão de negócio de alto nível; usar o logo e o estilo do site.

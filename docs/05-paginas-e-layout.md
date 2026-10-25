@@ -6,77 +6,101 @@
 
 ```mermaid
 flowchart TD
-    L[Login] --> P{Perfil}
+    L[Login] --> Q[Modo quiosque]
+    L --> P{Perfil}
     P -->|Colaborador| PT[Registrar ponto]
     P -->|Gestor| EQ[Minha equipe]
     P -->|RH / Admin| VG[Visão geral]
 
-    PT --- ES[Meu espelho] --- MA[Meus ajustes]
-    EQ --- AP[Aprovações]
+    PT --- ES[Meu espelho] --- MA[Meus ajustes] --- AU[Ausências] --- EC[Escalas]
+    PT --- AL[Alertas] --- MU[Mural de avisos] --- PF[Meu perfil]
+
+    EQ --- EX[Painel de exceções] --- AP[Aprovações]
     EQ --> EE[Espelho de um colaborador]
+
+    VG --- EX
     VG --- AP
-    VG --- CO[Colaboradores] --- JO[Jornadas] --- RE[Relatórios] --- AU[Auditoria]
-    ES --> MJ((Modal: solicitar ajuste))
-    MA --> MJ
-    PT --> MC((Modal: confirmar ponto)) --> CP((Modal: comprovante))
-    CO --> MN((Modal: novo colaborador))
-    AP --> MR((Modal: recusar))
+    VG --- CO[Colaboradores] --- OR[Organização] --- JO[Jornadas] --- RE[Relatórios]
+    VG --- IN[Integrações] --- CF[Configurações] --- AD[Auditoria]
+
+    PT --> MC((Confirmar ponto: mapa, selfie, projeto)) --> CP((Comprovante))
+    ES --> MJ((Solicitar ajuste))
+    ES --> ML((Local das batidas))
+    AU --> MS((Solicitar ausência))
+    CO --> MF((Ficha)) --> ME((Editar colaborador))
+    RE --> MX((Exportar CSV))
 ```
 
 ## Estrutura geral
 
 | Elemento | Comportamento |
 |---|---|
-| **Barra lateral** | Navegação por perfil, nome do usuário, botão Sair. No celular vira uma faixa no topo |
-| **Área principal** | Título, subtítulo, ação principal à direita, depois cartões |
-| **Modais** | Para ações curtas: confirmar, ajustar, recusar, cadastrar. Fecham com Esc ou clique fora |
+| **Barra lateral** | Navegação em seções por perfil: Meu ponto, Gestão, RH, Conta. No celular vira uma faixa no topo |
+| **Área principal** | Título, subtítulo, ações à direita, depois cartões |
+| **Modais** | Para ações curtas. Fecham com Esc ou clique fora |
 | **Aviso (toast)** | Confirma resultados em 3 segundos |
-| **Tema** | Claro e escuro automáticos conforme o sistema |
+| **Tema** | Claro e escuro automáticos |
 
 ## Telas
 
-### Login
-- Duas colunas: formulário e lista de usuários de teste (só no protótipo).
-- Erros: credencial inválida com contagem de tentativas, conta inativa, conta bloqueada.
+### Login e quiosque
+- **Login:** painel de apresentação e formulário. Links para recuperar senha e abrir o quiosque. Lista de usuários de teste com matrícula e PIN.
+- **Quiosque:** relógio grande, escolha da unidade do aparelho, matrícula e PIN. A confirmação mostra mapa e pede selfie quando ativa.
 
-### Registrar ponto (Colaborador)
-- **Relógio grande** com segundos.
-- **Cartão de localização** logo abaixo: 
-  - sem permissão, aviso âmbar "Localização obrigatória" com botão "Permitir localização" e os botões de ponto bloqueados;
-  - com permissão, mapa com a pessoa, círculo de precisão, sede, escala, coordenadas, indicação de área da empresa e link para o OpenStreetMap.
-- O modal de confirmação repete o mapa.
-- **Quatro botões** em linha: já feito (verde, com hora), próximo (verde-água, destacado), futuros (desabilitados).
-- Cartão lateral "Hoje": trabalhado, esperado, barra de progresso.
-- Cartão "Últimos dias" com três dias anteriores.
-- Rodapé do cartão: origem, rede e fuso do registro.
+### Registrar ponto (todos)
+- **Relógio grande** com hora legal.
+- **Cartão de localização** com mapa, precisão, coordenadas e área da empresa. Sem permissão, os botões de ponto ficam bloqueados.
+- **Quatro botões** de batida: feito (verde), próximo (destacado), futuros (desabilitados).
+- **Confirmação** com mapa, selfie, projeto (na entrada), justificativa se estiver fora da área, e avisos de aparelho diferente e de modo offline.
+- Cartões laterais: Hoje (progresso e previsão de saída), banco de horas e férias, últimos dias, mural de avisos.
+- Faixa de alerta com botão **Sincronizar agora** quando houver batidas offline.
 
 ### Meu espelho
-- Quatro indicadores: horas, saldo, faltas, dias incompletos.
-- Tabela do mês com sábados e domingos acinzentados.
-- Chips de situação: Completo, Incompleto, Falta, Em andamento, Ajuste pendente.
-- Botão **Ajustar** nos dias com problema.
+- Fechamento do mês: situação (Aberto, Assinado, Aprovado, Fechado) e botão **Assinar espelho**.
+- Seis indicadores: horas e previsto, saldo, banco de horas, faltas, incompletos, horas extras 50% e 100%.
+- Tabela do mês com alertas por dia, ajustes marcados, botão **Ajustar** e botão **Local**.
 
-### Meus ajustes
-- Lista com dia, registro, justificativa, resposta do gestor e situação.
-- Vazio explica quando usar a tela.
+### Meus ajustes e Ausências
+- **Ajustes:** lista com justificativa, resposta e situação.
+- **Ausências:** saldo de férias, banco de horas, lista de pedidos e, para gestor e RH, calendário de ausências aprovadas.
+
+### Escalas
+- Semana em tabela: cada dia mostra jornada, folga, plantão, feriado ou ausência.
+- Gestor e RH clicam no dia para alternar. Navegação por semana.
+- Colaborador vê só a própria linha.
+
+### Alertas e Mural
+- **Alertas:** faltas e dias incompletos sem ajuste, decisões recebidas, espelho a assinar, banco alto.
+- **Mural:** avisos da empresa ou do setor. Gestor e RH publicam.
+
+### Meu perfil
+- Ficha completa, QR Code pessoal, troca de senha, preferências de notificação.
 
 ### Minha equipe (Gestor)
-- Tabela com situação de agora (Trabalhando, No intervalo, Encerrou, Ausente), último registro, saldo do mês, faltas e incompletos.
-- Link para o espelho de cada pessoa, somente leitura.
+- Indicadores: pessoas, trabalhando agora, atrasos, pendências.
+- Tabela com situação agora, unidade, banco de horas, faltas e incompletos. Botões Espelho e Ficha.
 
-### Aprovações (Gestor, RH, Admin)
-- Pendentes no topo com Aprovar e Recusar; histórico abaixo.
-- Contador no menu quando há pendências.
+### Painel de exceções (Gestor, RH, Admin)
+- Nove grupos de problema: atrasos hoje, marcação ímpar, faltas, batidas fora da escala, fora da área, aparelho diferente, offline, horas extras altas e espelhos pendentes.
+- Cada item abre o espelho da pessoa.
+
+### Aprovações
+- Ajustes, ausências e espelhos do mês anterior, com Aprovar e Recusar (motivo obrigatório na recusa). RH fecha o mês, um a um ou em lote. Histórico recente no fim.
 
 ### Visão geral (RH, Admin)
-- Indicadores: ativos, trabalhando agora, ajustes pendentes, problemas do mês.
-- Barras de presença agora.
+- Indicadores: trabalhando, atrasos, pendências, exceções, custo estimado da folha, realizado contra previsto.
+- Presença agora em barras e resumo por setor.
 
-### Colaboradores · Jornadas · Relatórios · Auditoria (RH, Admin)
-- **Colaboradores:** cadastro, ativar/desativar, redefinir senha.
-- **Jornadas:** cartões com horas por dia e semana e quantas pessoas usam.
-- **Relatórios:** consolidado mensal por colaborador.
-- **Auditoria:** quando, quem, ação e detalhe das ações sensíveis.
+### Colaboradores
+- Busca, filtro por setor e unidade, tabela completa. Ficha, edição, ativar e desativar, redefinir senha, novo colaborador com 14 campos.
+
+### Organização · Jornadas · Relatórios · Integrações · Configurações · Auditoria
+- **Organização:** setores, unidades com cerca, projetos, feriados do ano.
+- **Jornadas:** cartões com horas, intervalo, horário e pessoas. Nova jornada.
+- **Relatórios:** oito abas (consolidado, extras, atrasos e faltas, banco de horas, projetos, localização, eventos de folha, AFD e AEJ), filtros por mês, setor e unidade, exportar CSV, fechar espelhos.
+- **Integrações:** conectores simulados por grupo e token de API.
+- **Configurações:** registro e localização, regras de jornada, métodos de registro, segurança. Cada opção indica se tem efeito no protótipo.
+- **Auditoria:** quando, quem, ação e detalhe, com filtro.
 
 ## Identidade visual do protótipo
 
@@ -99,7 +123,8 @@ Segue o design system do site [axsys.com.br](https://axsys.com.br), com o logo o
 
 1. Um único botão em destaque por tela.
 2. Estado sempre com texto **e** cor (nunca só cor).
-3. Horários sempre em fonte monoespaçada e alinhados.
+3. Horários em números tabulares e alinhados.
 4. Formulários com rótulo visível, erro abaixo do campo.
 5. Foco de teclado sempre visível.
 6. Nenhuma tabela quebra a página no celular: rolagem horizontal dentro do cartão.
+7. Cada opção de configuração diz se tem efeito real no protótipo ou se é só configuração.

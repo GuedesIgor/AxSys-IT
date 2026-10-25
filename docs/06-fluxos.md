@@ -70,15 +70,82 @@ flowchart LR
     OK --> L[Registra na auditoria]
 ```
 
-## F5 · Fechamento do mês
+## F5 · Registrar no quiosque
+
+```mermaid
+sequenceDiagram
+    actor C as Colaborador
+    participant K as Quiosque
+    participant S as Sistema
+    C->>K: Informa matrícula e PIN
+    K->>S: Valida conta e dia
+    alt Inválido, inativo, em ausência ou jornada concluída
+        S-->>K: Mensagem de erro
+    else Válido
+        S-->>K: Próxima batida com mapa da unidade
+        K-->>C: Pede selfie, se ativa
+        C->>K: Confirma
+        S->>S: Grava com local da unidade e origem "quiosque"
+        S-->>K: Comprovante
+    end
+```
+
+## F6 · Batida fora da área da empresa
 
 ```mermaid
 flowchart TD
-    A[RH abre Visão geral] --> B[Confere pendências e inconsistências]
-    B --> C{Há ajustes pendentes?}
-    C -->|Sim| D[Cobra gestores em Aprovações]
-    D --> B
-    C -->|Não| E[Abre Relatórios, escolhe o mês]
-    E --> F[Confere horas, saldo, faltas]
-    F --> G[Exporta CSV/PDF, futuro]
+    A[Confirma batida] --> B{Unidade tem cerca?}
+    B -->|Não, home office| OK[Registra]
+    B -->|Sim| C{Dentro do raio?}
+    C -->|Sim| OK
+    C -->|Não| D{Modo configurado}
+    D -->|Permitir| W[Registra e avisa o gestor]
+    D -->|Justificar| J[Pede motivo] --> W
+    D -->|Bloquear| X[Impede o registro]
+    W --> EX[Aparece no painel de exceções]
+```
+
+## F7 · Solicitar ausência
+
+```mermaid
+sequenceDiagram
+    actor C as Colaborador
+    participant S as Sistema
+    actor G as Gestor
+    C->>S: Escolhe tipo, período e observação
+    S->>S: Confere saldo de férias e sobreposição
+    S-->>G: Contador em Aprovações
+    alt Aprova
+        G->>S: Aprovar
+        S->>S: Atualiza escala, espelho e banco de horas
+    else Recusa
+        G->>S: Recusar com motivo
+        S-->>C: Situação Recusada com resposta
+    end
+```
+
+## F8 · Fechamento do mês
+
+```mermaid
+flowchart TD
+    A[Mês termina] --> B[Colaborador confere e assina o espelho]
+    B --> C{Há problema?}
+    C -->|Sim| D[Pede ajuste] --> E[Gestor decide] --> B
+    C -->|Não| F[Gestor aprova o espelho]
+    F --> G[RH confere o painel de exceções]
+    G --> H[RH fecha o mês]
+    H --> I[Mês travado: sem novos ajustes]
+    I --> J[RH exporta eventos de folha, AFD e AEJ]
+```
+
+## F9 · Registro offline
+
+```mermaid
+flowchart LR
+    A[Sem internet] --> B{Offline permitido?}
+    B -->|Não| X[Batida bloqueada]
+    B -->|Sim| C[Salva no aparelho como pendente]
+    C --> D[Internet volta]
+    D --> E[Sincronizar]
+    E --> F[Registro enviado, alerta some]
 ```

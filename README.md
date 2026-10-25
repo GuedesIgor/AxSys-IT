@@ -55,10 +55,26 @@ flowchart LR
 
 | Perfil | O que faz | Telas principais |
 |---|---|---|
-| 👤 **Colaborador** | Registra o ponto **com localização obrigatória e mapa**, confere o espelho, pede ajustes | Registrar ponto · Meu espelho · Meus ajustes |
-| 🧭 **Gestor** | Acompanha a equipe e decide ajustes | Minha equipe · Aprovações |
-| 🗂️ **RH** | Cadastra pessoas e jornadas, gera relatórios | Visão geral · Colaboradores · Jornadas · Relatórios · Auditoria |
-| 🛠️ **Administrador** | Tudo do RH, mais configuração do sistema | Mesmas do RH |
+| 👤 **Colaborador** | Registra o ponto com **localização obrigatória, mapa e selfie**, confere o espelho, pede ajustes e ausências, vê a escala | Registrar ponto · Meu espelho · Ajustes · Ausências · Escala · Alertas |
+| 🧭 **Gestor** | Acompanha a equipe, decide ajustes, ausências e espelhos, monta escalas | Minha equipe · Painel de exceções · Aprovações · Escalas |
+| 🗂️ **RH** | Cadastra pessoas e organização, fecha o mês, gera relatórios | Visão geral · Colaboradores · Organização · Relatórios · Integrações · Configurações |
+| 🛠️ **Administrador** | Tudo do RH, mais segurança | Mesmas do RH |
+
+### O que o protótipo já cobre
+
+Resultado do [estudo de 10 sistemas de ponto](docs/09-benchmark-concorrentes.md) (UKG, Deputy, Connecteam, Clockify, Jibble, Homebase, When I Work, Rippling, QuickBooks Time e Buddy Punch), mais a referência brasileira (Pontomais e Portaria 671). São **104 funções catalogadas** na [matriz de funcionalidades](docs/10-matriz-de-funcionalidades.md).
+
+| Grupo | Funções |
+|---|---|
+| **Registro** | Web, quiosque com PIN, selfie, QR Code, offline, projeto por batida, comprovante numerado |
+| **Local e antifraude** | Localização obrigatória com mapa, cerca virtual por unidade, três modos para batida fora da área, alerta de aparelho diferente |
+| **Regras da CLT** | Tolerância, intervalo, 6h sem pausa, extras 50% e 100%, adicional noturno, interjornada, banco de horas, feriados |
+| **Escalas e ausências** | Escala semanal, folga e plantão, férias com saldo, atestado, licença, abono, folga compensatória |
+| **Fechamento** | Espelho assinado, aprovado e fechado, com mês travado |
+| **Gestão** | Painel de exceções, custo de mão de obra, realizado contra previsto, mural de avisos |
+| **Relatórios** | Consolidado, extras, atrasos, banco de horas, projetos, localização, eventos de folha, AFD e AEJ |
+| **Cadastro** | Ficha completa (setor, cargo, gestor, unidade, contrato e mais), setores, unidades, projetos, jornadas |
+| **Configuração** | Políticas de ponto, métodos de registro, segurança, integrações simuladas |
 
 ## Mapa da documentação
 
@@ -67,11 +83,13 @@ flowchart LR
 | [01 · Visão do produto](docs/01-visao-do-produto.md) | Problema, objetivos, escopo e o que fica de fora | ✅ Rascunho validado |
 | [02 · Requisitos](docs/02-requisitos.md) | Requisitos funcionais e não funcionais com prioridade | 🟡 Em validação |
 | [03 · Regras de negócio](docs/03-regras-de-negocio.md) | Cálculo de horas, sequência de batidas, bloqueios | 🟡 Em validação |
-| [04 · Perfis e usuários fictícios](docs/04-perfis-e-usuarios-ficticios.md) | Permissões por perfil e contas de teste do protótipo | ✅ Validado no protótipo |
+| [04 · Perfis e cadastro](docs/04-perfis-e-usuarios-ficticios.md) | Perfis, ficha do colaborador, organograma e contas de teste | ✅ Validado no protótipo |
 | [05 · Páginas e layout](docs/05-paginas-e-layout.md) | Mapa de telas, conteúdo de cada uma, regras visuais | 🟡 Em validação |
 | [06 · Fluxos](docs/06-fluxos.md) | Fluxos principais em diagramas | 🟡 Em validação |
 | [07 · Registro de validações](docs/07-registro-de-validacoes.md) | Diário de cada decisão tomada com o protótipo | 🔄 Atualizado a cada rodada |
 | [08 · Perguntas em aberto](docs/08-perguntas-em-aberto.md) | O que ainda precisa de decisão | 🔴 Aberto |
+| [09 · Benchmark de concorrentes](docs/09-benchmark-concorrentes.md) | Estudo dos 10 sistemas de ponto e limites da pesquisa | ✅ Concluído |
+| [10 · Matriz de funcionalidades](docs/10-matriz-de-funcionalidades.md) | Todas as funções encontradas e a cobertura no protótipo | 🔄 Atualizado a cada rodada |
 
 ## Protótipo navegável
 
@@ -116,7 +134,9 @@ Estamos nas fases 1 a 3, que se repetem em ciclos curtos: ajustar o protótipo, 
 │   ├── 05-paginas-e-layout.md
 │   ├── 06-fluxos.md
 │   ├── 07-registro-de-validacoes.md
-│   └── 08-perguntas-em-aberto.md
+│   ├── 08-perguntas-em-aberto.md
+│   ├── 09-benchmark-concorrentes.md
+│   └── 10-matriz-de-funcionalidades.md
 ├── assets/
 │   └── brand/                 ← logo e favicon da AxSys IT (do axsys.com.br)
 └── prototipo/

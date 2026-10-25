@@ -12,7 +12,7 @@
 | RF-01 | Login com e-mail e senha | 🔴 | ✅ |
 | RF-02 | Bloquear a conta após 3 senhas erradas seguidas | 🟡 | ✅ |
 | RF-03 | Impedir login de usuário inativo, com mensagem clara | 🔴 | ✅ |
-| RF-04 | Recuperar e trocar senha pelo próprio usuário | 🟡 | ⬜ |
+| RF-04 | Recuperar e trocar senha pelo próprio usuário | 🟡 | ✅ (recuperação simulada) |
 | RF-05 | Sair da sessão a qualquer momento | 🔴 | ✅ |
 
 ### Registro de ponto
@@ -61,10 +61,39 @@
 | RF-43 | RH cadastra colaborador com perfil, gestor e jornada | 🔴 | ✅ |
 | RF-44 | RH ativa/desativa usuário e redefine senha | 🔴 | ✅ |
 | RF-45 | RH consulta modelos de jornada | 🟡 | ✅ (leitura) |
-| RF-46 | RH edita e cria jornadas | 🟡 | ⬜ |
+| RF-46 | RH edita e cria jornadas | 🟡 | 🟡 (criação pronta) |
 | RF-47 | Relatório mensal por colaborador | 🔴 | ✅ |
-| RF-48 | Exportar relatório em CSV e PDF | 🟡 | ⬜ |
+| RF-48 | Exportar relatório em CSV e PDF | 🟡 | 🟡 (CSV por cópia de texto) |
 | RF-49 | Log de auditoria de ações sensíveis | 🔴 | ✅ |
+
+### Requisitos adicionados pelo benchmark (Rodada 4)
+
+Origem de cada um na [matriz de funcionalidades](10-matriz-de-funcionalidades.md).
+
+| ID | Requisito | Prioridade | Protótipo |
+|---|---|---|---|
+| RF-50 | Ficha do colaborador com matrícula, CPF, setor, cargo, gestor, unidade, perfil, jornada, contrato, admissão, centro de custo, valor da hora e PIN | 🔴 | ✅ |
+| RF-51 | RH gerencia setores, unidades, projetos e jornadas | 🔴 | ✅ |
+| RF-52 | Quiosque compartilhado com matrícula e PIN | 🟡 | ✅ |
+| RF-53 | Selfie na batida, ativável por configuração | 🟡 | 🟡 simulada |
+| RF-54 | Cerca virtual por unidade, raio configurável, e três modos para batida fora da cerca (permitir, justificar, bloquear) | 🔴 | ✅ |
+| RF-55 | Alertar quando a batida vem de aparelho diferente do habitual | 🟡 | ✅ |
+| RF-56 | Registrar offline e sincronizar depois | 🟡 | ✅ |
+| RF-57 | Escolher projeto na entrada e gerar horas por projeto | 🟢 | ✅ |
+| RF-58 | Alertas automáticos: atraso, saída antecipada, intervalo curto, mais de 6h sem pausa, hora extra acima do limite, jornada acima de 10h, interjornada menor que 11h | 🔴 | ✅ |
+| RF-59 | Separar hora extra 50% e 100% e calcular adicional noturno | 🔴 | ✅ |
+| RF-60 | Banco de horas com saldo e folga compensatória | 🔴 | ✅ |
+| RF-61 | Calendário de feriados nacionais no cálculo | 🔴 | ✅ |
+| RF-62 | Escala semanal com folga, plantão, férias e feriados | 🟡 | ✅ |
+| RF-63 | Ausências (férias, atestado, folga, licença, abono, troca) com aprovação e saldo de férias | 🔴 | ✅ |
+| RF-64 | Espelho assinado pelo colaborador, aprovado pelo gestor e fechado pelo RH, com mês travado | 🔴 | ✅ |
+| RF-65 | Painel de exceções para gestor e RH | 🔴 | ✅ |
+| RF-66 | Relatórios: consolidado, extras, atrasos e faltas, banco de horas, projetos, localização, eventos de folha e AFD/AEJ | 🔴 | ✅ (AFD/AEJ em prévia) |
+| RF-67 | Integrações com folha, chat, agenda, SSO e relógios físicos | 🟡 | 🟡 simuladas |
+| RF-68 | Configurações de política de ponto, métodos de registro e segurança | 🔴 | ✅ |
+| RF-69 | Mural de avisos por empresa ou setor | 🟢 | ✅ |
+| RF-70 | Perfil com dados, QR Code, troca de senha e preferências de notificação | 🟡 | ✅ |
+| RF-71 | Ver o local de cada batida no espelho (gestor e RH) | 🟡 | ✅ |
 
 ## Requisitos não funcionais
 

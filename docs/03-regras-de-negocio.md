@@ -85,13 +85,96 @@ O saldo só é calculado em dias **completos**. Dias incompletos ou com falta n�
 | Ação | Colaborador | Gestor | RH | Admin |
 |---|:-:|:-:|:-:|:-:|
 | Registrar o próprio ponto | ✅ | ✅ | ✅ | ✅ |
-| Ver o próprio espelho | ✅ | ✅ | ✅ | ✅ |
-| Solicitar ajuste | ✅ | ✅ | ✅ | ✅ |
-| Ver espelho da equipe | ❌ | ✅ (só equipe) | ✅ | ✅ |
-| Aprovar ajustes | ❌ | ✅ (só equipe) | ✅ | ✅ |
-| Cadastrar e desativar usuários | ❌ | ❌ | ✅ | ✅ |
-| Relatórios e auditoria | ❌ | ❌ | ✅ | ✅ |
+| Ver o próprio espelho, escala e ausências | ✅ | ✅ | ✅ | ✅ |
+| Solicitar ajuste e ausência | ✅ | ✅ | ✅ | ✅ |
+| Assinar o próprio espelho | ✅ | ✅ | ✅ | ✅ |
+| Ver espelho, ficha e local da equipe | ❌ | ✅ (só equipe) | ✅ | ✅ |
+| Aprovar ajustes, ausências e espelhos | ❌ | ✅ (só equipe) | ✅ | ✅ |
+| Alterar escala | ❌ | ✅ (só equipe) | ✅ | ✅ |
+| Painel de exceções | ❌ | ✅ (só equipe) | ✅ | ✅ |
+| Publicar aviso no mural | ❌ | ✅ | ✅ | ✅ |
+| Cadastrar e editar colaboradores | ❌ | ❌ | ✅ | ✅ |
+| Setores, unidades, projetos e jornadas | ❌ | ❌ | ✅ | ✅ |
+| Fechar o mês | ❌ | ❌ | ✅ | ✅ |
+| Relatórios, integrações e auditoria | ❌ | ❌ | ✅ | ✅ |
+| Configurações de ponto | ❌ | ❌ | ✅ | ✅ |
+| Configurações de segurança | ❌ | ❌ | ❌ | ✅ |
 
 ## RN-09 · Imutabilidade
 
 Um registro de ponto nunca é editado nem apagado. Mudanças acontecem por ajuste aprovado, com data, autor e justificativa.
+
+## RN-11 · Alertas de jornada (CLT)
+
+Calculados automaticamente para cada dia, com os valores de Configurações:
+
+| Alerta | Condição |
+|---|---|
+| Atraso | Entrada depois do horário previsto mais a tolerância |
+| Saída antecipada | Saída antes do fim previsto menos a tolerância |
+| Intervalo curto | Intervalo menor que o mínimo (padrão 60 min) |
+| Sem intervalo | Mais de 6h seguidas antes da saída para o intervalo |
+| Hora extra alta | Saldo do dia acima do limite (padrão 2h) |
+| Jornada longa | Mais de 10h trabalhadas |
+| Interjornada | Menos de 11h entre a saída de um dia e a entrada do seguinte |
+| Marcação ímpar | Dia passado com batidas faltando |
+| Falta | Dia útil passado sem batidas, sem ausência aprovada e sem ajuste pendente |
+
+## RN-12 · Horas extras e adicional noturno
+
+- Em dia normal, o saldo positivo do dia conta como **extra 50%**.
+- Em folga, fim de semana ou feriado, todas as horas trabalhadas contam como **extra 100%**.
+- Horas entre 22:00 e 05:00 geram **adicional noturno** (20% no relatório de folha).
+- Custo estimado = horas × valor da hora, com acréscimo de 50% ou 100% nas extras.
+
+## RN-13 · Banco de horas
+
+`banco = soma dos saldos dos dias completos − folgas compensatórias aprovadas`
+
+Folga compensatória aprovada desconta a jornada do dia. A validade (padrão 6 meses) é uma configuração; o vencimento automático fica para o app.
+
+## RN-14 · Feriados e escala
+
+1. Feriados nacionais não geram falta nem esperam jornada.
+2. A escala padrão vem da jornada. O gestor pode marcar **folga** em dia útil ou **plantão** em fim de semana e feriado.
+3. Ausência aprovada (férias, atestado, licença, folga, abono) aparece na escala e dispensa o ponto no dia.
+
+## RN-15 · Ausências
+
+- Tipos: férias, atestado, folga compensatória, licença, abono e troca de turno.
+- Quem aprova: gestor direto (RH e Admin também).
+- Férias: 30 dias por ano. Não pode pedir mais que o saldo.
+- Não pode haver dois pedidos no mesmo período.
+
+## RN-16 · Fechamento do mês
+
+```mermaid
+stateDiagram-v2
+    [*] --> Aberto
+    Aberto --> Assinado: Colaborador assina
+    Assinado --> Aprovado: Gestor aprova
+    Aprovado --> Fechado: RH fecha
+    Fechado --> [*]
+```
+
+- Só é possível assinar depois do fim do mês.
+- Mês **fechado** não aceita novos ajustes nem decisões sobre ajustes daquele mês.
+
+## RN-17 · Batida fora da área da empresa
+
+A cerca é o raio configurado ao redor da unidade do colaborador. Quem trabalha em unidade sem cerca (home office) nunca está "fora".
+
+| Modo | Efeito |
+|---|---|
+| Permitir e sinalizar | Registra e avisa o gestor |
+| Exigir justificativa (padrão) | Pede o motivo, registra e avisa o gestor |
+| Bloquear | Impede o registro |
+
+## RN-18 · Verificação da batida
+
+1. **Localização** obrigatória (RN-10).
+2. **Selfie** a cada batida quando ativada em Configurações (simulada no protótipo).
+3. **Aparelho:** batida em aparelho diferente do habitual gera alerta.
+4. **Offline:** se permitido, a batida fica salva no aparelho como "aguardando sincronização" e é enviada quando a conexão volta. Se não for permitido, a batida é bloqueada.
+5. **Janela de entrada:** se configurada, a entrada só é liberada a partir de X minutos antes do horário.
+6. **Quiosque:** exige matrícula e PIN; a localização é a da unidade do aparelho.
