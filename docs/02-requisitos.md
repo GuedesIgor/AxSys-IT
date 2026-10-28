@@ -117,6 +117,7 @@ Origem de cada um na [matriz de funcionalidades](10-matriz-de-funcionalidades.md
 | RF-87 | O RH pode autorizar **método alternativo** (PIN) a uma pessoa, sem registrar o motivo. Revisão a cada 180 dias, com aviso na ficha quando vencida | 🔴 | ✅ |
 | RF-88 | Batidas aprovadas sem validação facial ou por método alternativo ficam marcadas no espelho (s/f, alt), na ficha do dia e nos alertas | 🟡 | ✅ |
 | RF-89 | Aviso ao colaborador sobre o tratamento do rosto, com alternativa sem necessidade de explicação | 🔴 | 🔴 texto pronto em [docs/11](11-pacote-juridico-lgpd.md), tela no app real |
+| RF-90 | Onboarding do cliente com o nome e o contato do encarregado (DPO) da empresa, exibidos no aviso ao colaborador | 🔴 | 🔴 app real |
 
 ## Requisitos não funcionais
 
@@ -141,6 +142,7 @@ Origem de cada um na [matriz de funcionalidades](10-matriz-de-funcionalidades.md
 | RNF-17 | Template facial apagado no desligamento (até 30 dias) | Ver [docs/11](11-pacote-juridico-lgpd.md), seção 7 |
 | RNF-18 | Nenhuma foto de batida guardada por padrão. Só o modelo matemático e o resultado | Minimização (LGPD art. 6, III) |
 | RNF-19 | Gravar de imediato a marcação recebida, mesmo pendente, em registro imutável | Mitiga o risco da Portaria 671 (ver docs/11, seção 12) |
+| RNF-20 | Multiempresa: cada cliente só acessa os próprios dados, com isolamento na base | Produto vendido como serviço ([Q-03](08-perguntas-em-aberto.md)) |
 
 ## Rastreabilidade rápida
 

@@ -16,6 +16,7 @@ Diário das decisões tomadas ao validar o protótipo. Mais recente no topo.
 | V9-02 | Batida sem validação facial | Pendente, com justificativa dos dois lados, mesmo fluxo e prazo do ponto sem localização | Evita travar a jornada e mantém decisão humana | ✅ |
 | V9-03 | Método alternativo | RH autoriza por pessoa, sem registrar o motivo, com revisão em 180 dias; confirmação por PIN | Acessibilidade sem tratar dado de saúde | ✅ |
 | V9-04 | Marcação imediata | Requisito de gravar de imediato a marcação recebida, mesmo pendente (RNF-19) | Risco com a Portaria 671 | 🟡 conferir com advogado |
+| V9-06 | Modelo de negócio | Produto vendido como serviço a empresas. Cada cliente é controlador e indica o encarregado; a AxSys é operadora. Resolve a Q-03 | Decisão do dono | ✅ |
 | V9-05 | Base legal | Art. 11, II, "g" como principal, com alternativa equivalente garantida | ANPD ainda não tem posição sobre ponto biométrico | 🟡 aguarda advogado |
 
 ### Pendências desta rodada

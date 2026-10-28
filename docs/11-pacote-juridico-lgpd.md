@@ -25,14 +25,16 @@ Resolve, no que cabe ao produto, as perguntas [Q-13](08-perguntas-em-aberto.md) 
 
 ## 2. Papéis (LGPD art. 5, VI e VII)
 
+> **Decisão (Q-03):** o AxPonto é vendido a empresas. **Cada cliente é controlador e indica o seu encarregado.** A AxSys IT é operadora. Isso muda o que a AxSys precisa entregar: ver a seção 15.
+
 | Papel | Quem | Observação |
 |---|---|---|
 | Controlador | Empresa que contrata o AxPonto (empregadora) | Decide finalidade e meios. Responde pela base legal e pelo aviso ao empregado |
 | Operador | AxSys IT | Trata os dados em nome do cliente, conforme contrato (art. 39) |
 | Suboperador | Fornecedor de prova de vida e comparação facial, nuvem | Precisa de contrato e autorização do controlador |
-| Encarregado (DPO) | Indicado pelo cliente e pela AxSys | Canal com titulares e ANPD (art. 41) |
+| Encarregado (DPO) | **Indicado por cada cliente** (controlador). A AxSys mantém um canal de contato e, como agente de pequeno porte, pode ter dispensa da indicação formal (Resolução CD/ANPD nº 2/2022; **confirmar**) | Canal com titulares e ANPD (art. 41) |
 
-Se a AxSys usar o produto apenas internamente (Q-03), ela é controladora do próprio quadro.
+A AxSys também é controladora dos dados dos próprios usuários da conta (por exemplo, e-mail de contato do cliente), mas isso é tratamento comum, fora deste pacote.
 
 ---
 
@@ -220,8 +222,9 @@ Pontos que o advogado e o time técnico precisam conferir no texto oficial, pois
 ## 14. Checklist de lançamento
 
 - [ ] Advogado revisou e assinou este pacote
-- [ ] Encarregado indicado (cliente e AxSys)
-- [ ] RIPD preenchido e assinado
+- [ ] Canal de contato de privacidade da AxSys publicado
+- [ ] Cada cliente indica o seu encarregado (exigir no onboarding)
+- [ ] RIPD preenchido e assinado pelo cliente, com o modelo da AxSys
 - [ ] Aviso ao colaborador publicado e entregue
 - [ ] Contrato com operador e suboperadores com as cláusulas da seção 9
 - [ ] Fornecedor de prova de vida escolhido ([doc 12](12-fornecedores-prova-de-vida.md))
@@ -230,6 +233,25 @@ Pontos que o advogado e o time técnico precisam conferir no texto oficial, pois
 - [ ] Método alternativo disponível e divulgado
 - [ ] Exercício de simulação de incidente feito
 - [ ] Certificação do REP-P no INPI iniciada, se o produto for vendido como ponto oficial
+
+## 15. O que a AxSys entrega a cada cliente (kit de conformidade)
+
+Como a AxSys vende o sistema, a responsabilidade pela base legal e pelo aviso é do cliente, mas **o produto e os documentos devem facilitar** que ele cumpra.
+
+| Entrega | Situação |
+|---|---|
+| Contrato de operador (cláusulas de dados) anexo ao contrato de serviço | A redigir com o advogado |
+| Termos de uso e política de privacidade do AxPonto | A redigir |
+| Modelo de RIPD e de aviso ao colaborador (seções 5 e 8) | Rascunho pronto |
+| Lista de suboperadores (fornecedor de prova de vida, nuvem) com aviso de mudança | Depende do doc 12 |
+| Tela do aviso ao colaborador no primeiro acesso, editável pelo cliente | Requisito RF-89 |
+| Campo no onboarding para o cliente informar o encarregado e o contato | Requisito novo (RF-90) |
+| Exclusão do template facial por colaborador e no desligamento | RNF-17 |
+| Isolamento total entre empresas (cada cliente só vê os seus dados) | Requisito novo (RNF-20) |
+| Relatório de exportação dos dados de uma pessoa, para atender pedidos de titular | A especificar |
+| Canal e prazo para a AxSys avisar o cliente de incidente (até 24 h) | Seção 9 |
+
+**Ponto de atenção:** vender o sistema com a promessa de "ponto eletrônico oficial" exige a certificação do REP-P no INPI (seção 12 e Q-01). Sem ela, o produto deve ser descrito como controle de jornada, e o cliente deve ser avisado da diferença.
 
 ## Fontes consultadas
 
