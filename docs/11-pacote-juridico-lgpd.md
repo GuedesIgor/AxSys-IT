@@ -236,6 +236,8 @@ Pontos que o advogado e o time técnico precisam conferir no texto oficial, pois
 
 ## 15. O que a AxSys entrega a cada cliente (kit de conformidade)
 
+As minutas já redigidas estão em [docs/juridico](juridico/00-resumo-para-o-advogado.md): contrato de operador, contrato SaaS e termos de uso, política de privacidade, aviso ao colaborador, modelo de RIPD e política de segurança.
+
 Como a AxSys vende o sistema, a responsabilidade pela base legal e pelo aviso é do cliente, mas **o produto e os documentos devem facilitar** que ele cumpra.
 
 | Entrega | Situação |
