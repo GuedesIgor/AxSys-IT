@@ -1,6 +1,6 @@
 # Política de Privacidade do AxPonto
 
-> **Minuta aprovada pelo advogado, conforme informado pelo dono em [data].** Advogado responsável pela revisão: Dr. Dinalto Gomes Martins, OAB/[UF] nº [número]. Faltam o número da OAB e a assinatura do advogado, que só ele pode apor. Publicar em [endereço do site].
+> **Minuta aprovada pelo advogado, conforme informado pelo dono em [data].** Advogado responsável pela revisão: Dr. Dinalto Gomes Martins, OAB/SP nº 389.139. Falta a assinatura do advogado, que só ele pode apor. Publicar em [endereço do site].
 
 Última atualização: [data].
 
