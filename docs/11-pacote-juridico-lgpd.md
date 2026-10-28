@@ -2,7 +2,7 @@
 
 > **Aviso.** Este pacote foi elaborado pela equipe de produto com apoio do Claude. É um **rascunho de trabalho** para um advogado de proteção de dados e trabalhista revisar e assinar. Ele não é parecer jurídico. A pesquisa usou fontes secundárias; os artigos da Portaria 671 e da LGPD devem ser conferidos no texto oficial.
 >
-> **Status geral:** 🟡 rascunho completo, aguardando revisão de advogado habilitado.
+> **Status geral:** Em elaboração: rascunho completo, aguardando revisão de advogado habilitado.
 
 Resolve, no que cabe ao produto, as perguntas [Q-13](08-perguntas-em-aberto.md) (parecer sobre selfie e biometria) e [Q-22](08-perguntas-em-aberto.md) (quem não pode usar a câmera).
 

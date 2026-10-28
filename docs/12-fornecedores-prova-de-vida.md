@@ -1,6 +1,6 @@
 # 12 · Fornecedores de prova de vida e comparação facial
 
-> **Status:** 🟡 critérios e plano de prova de conceito prontos. **Nenhum fornecedor foi escolhido.** Preços, disponibilidade em região brasileira e cartas de certificação **não foram verificados** e precisam ser pedidos a cada fornecedor.
+> **Status:** Em elaboração: critérios e plano de prova de conceito prontos. **Nenhum fornecedor foi escolhido.** Preços, disponibilidade em região brasileira e cartas de certificação **não foram verificados** e precisam ser pedidos a cada fornecedor.
 
 Resolve a segunda parte de [Q-22](08-perguntas-em-aberto.md): qual serviço usar, onde guardar o modelo facial e a imagem.
 

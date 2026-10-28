@@ -54,7 +54,7 @@ flowchart TD
 - **Confirmação** com mapa, validação facial com prova de vida (desafios, 3 tentativas), projeto (na entrada), justificativa se estiver fora da área, e avisos de aparelho diferente e de modo offline.
 - Cartões laterais: Hoje (progresso e previsão de saída), banco de horas e férias, últimos dias, mural de avisos.
 - Faixa de alerta com botão **Sincronizar agora** quando houver batidas offline.
-- **Sem localização:** o aviso âmbar explica que o ponto fica pendente e oferece **Registrar sem localização**. O modal pede a validação facial e justificativa obrigatória e termina em um protocolo "PENDENTE DE APROVAÇÃO". A batida aparece como "⏳ aguardando gestor" e um cartão lista as solicitações e as decisões.
+- **Sem localização:** o aviso âmbar explica que o ponto fica pendente e oferece **Registrar sem localização**. O modal pede a validação facial e justificativa obrigatória e termina em um protocolo "PENDENTE DE APROVAÇÃO". A batida aparece como "aguardando gestor" e um cartão lista as solicitações e as decisões.
 
 ### Meu espelho
 - Fechamento do mês: situação (Aberto, Assinado, Aprovado, Fechado) e botão **Assinar espelho**.

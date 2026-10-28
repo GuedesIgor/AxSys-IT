@@ -599,9 +599,9 @@ function vPonto(){
   var blocked=(i.aus||(i.sc.folga&&!i.arr.length&&false));
   var btns=seq.map(function(t){
     var p=i.arr.filter(function(x){return x.tipo===t[0]})[0];
-    if(p)return '<button class="pbtn done" disabled><span class="t">'+t[1]+'</span><span class="h">✓ '+p.hora+(p.sync===false?' · offline':'')+'</span></button>';
+    if(p)return '<button class="pbtn done" disabled><span class="t">'+t[1]+'</span><span class="h">'+p.hora+(p.sync===false?' · offline':'')+'</span></button>';
     var qp=pendHoje(u.id).filter(function(x){return x.tipo===t[0]})[0];
-    if(qp)return '<button class="pbtn" disabled><span class="t">'+t[1]+'</span><span class="h">⏳ '+qp.hora+' · aguardando gestor</span></button>';
+    if(qp)return '<button class="pbtn" disabled><span class="t">'+t[1]+'</span><span class="h">'+qp.hora+' · aguardando gestor</span></button>';
     if(nx===t[0])return loc.status==='ok'?'<button class="pbtn next" data-act="punch"><span class="t">'+t[1]+'</span><span class="h">Registrar agora</span></button>':'<button class="pbtn next" disabled><span class="t">'+t[1]+'</span><span class="h">Localização necessária</span></button>';
     return '<button class="pbtn" disabled><span class="t">'+t[1]+'</span><span class="h">Aguardando</span></button>';
   }).join('');

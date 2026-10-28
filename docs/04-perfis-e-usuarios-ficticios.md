@@ -1,6 +1,6 @@
 # 04 · Perfis, cadastro e usuários fictícios
 
-> ⚠️ **Somente para o protótipo.** Estes usuários, senhas e PINs são genéricos, públicos neste repositório privado e **não devem existir no sistema real**.
+> **Somente para o protótipo.** Estes usuários, senhas e PINs são genéricos, públicos neste repositório privado e **não devem existir no sistema real**.
 
 ## Perfis
 

@@ -84,21 +84,21 @@ O saldo só é calculado em dias **completos**. Dias incompletos ou com falta n�
 
 | Ação | Colaborador | Gestor | RH | Admin |
 |---|:-:|:-:|:-:|:-:|
-| Registrar o próprio ponto | ✅ | ✅ | ✅ | ✅ |
-| Ver o próprio espelho, escala e ausências | ✅ | ✅ | ✅ | ✅ |
-| Solicitar ajuste e ausência | ✅ | ✅ | ✅ | ✅ |
-| Assinar o próprio espelho | ✅ | ✅ | ✅ | ✅ |
-| Ver espelho, ficha e local da equipe | ❌ | ✅ (só equipe) | ✅ | ✅ |
-| Aprovar ajustes, ausências e espelhos | ❌ | ✅ (só equipe) | ✅ | ✅ |
-| Alterar escala | ❌ | ✅ (só equipe) | ✅ | ✅ |
-| Painel de exceções | ❌ | ✅ (só equipe) | ✅ | ✅ |
-| Publicar aviso no mural | ❌ | ✅ | ✅ | ✅ |
-| Cadastrar e editar colaboradores | ❌ | ❌ | ✅ | ✅ |
-| Setores, unidades, projetos e jornadas | ❌ | ❌ | ✅ | ✅ |
-| Fechar o mês | ❌ | ❌ | ✅ | ✅ |
-| Relatórios, integrações e auditoria | ❌ | ❌ | ✅ | ✅ |
-| Configurações de ponto | ❌ | ❌ | ✅ | ✅ |
-| Configurações de segurança | ❌ | ❌ | ❌ | ✅ |
+| Registrar o próprio ponto | Sim | Sim | Sim | Sim |
+| Ver o próprio espelho, escala e ausências | Sim | Sim | Sim | Sim |
+| Solicitar ajuste e ausência | Sim | Sim | Sim | Sim |
+| Assinar o próprio espelho | Sim | Sim | Sim | Sim |
+| Ver espelho, ficha e local da equipe | Não | Sim (só equipe) | Sim | Sim |
+| Aprovar ajustes, ausências e espelhos | Não | Sim (só equipe) | Sim | Sim |
+| Alterar escala | Não | Sim (só equipe) | Sim | Sim |
+| Painel de exceções | Não | Sim (só equipe) | Sim | Sim |
+| Publicar aviso no mural | Não | Sim | Sim | Sim |
+| Cadastrar e editar colaboradores | Não | Não | Sim | Sim |
+| Setores, unidades, projetos e jornadas | Não | Não | Sim | Sim |
+| Fechar o mês | Não | Não | Sim | Sim |
+| Relatórios, integrações e auditoria | Não | Não | Sim | Sim |
+| Configurações de ponto | Não | Não | Sim | Sim |
+| Configurações de segurança | Não | Não | Não | Sim |
 
 ## RN-09 · Imutabilidade
 

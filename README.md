@@ -55,10 +55,10 @@ flowchart LR
 
 | Perfil | O que faz | Telas principais |
 |---|---|---|
-| 👤 **Colaborador** | Registra o ponto com **localização obrigatória, mapa e validação facial com prova de vida**, confere o espelho, pede ajustes e ausências, vê a escala | Registrar ponto · Meu espelho · Ajustes · Ausências · Escala · Alertas |
-| 🧭 **Gestor** | Acompanha a equipe, decide ajustes, ausências e espelhos, monta escalas | Minha equipe · Painel de exceções · Aprovações · Escalas |
-| 🗂️ **RH** | Cadastra pessoas e organização, fecha o mês, gera relatórios | Visão geral · Colaboradores · Organização · Relatórios · Integrações · Configurações |
-| 🛠️ **Administrador** | Tudo do RH, mais segurança | Mesmas do RH |
+| **Colaborador** | Registra o ponto com **localização obrigatória, mapa e validação facial com prova de vida**, confere o espelho, pede ajustes e ausências, vê a escala | Registrar ponto · Meu espelho · Ajustes · Ausências · Escala · Alertas |
+| **Gestor** | Acompanha a equipe, decide ajustes, ausências e espelhos, monta escalas | Minha equipe · Painel de exceções · Aprovações · Escalas |
+| **RH** | Cadastra pessoas e organização, fecha o mês, gera relatórios | Visão geral · Colaboradores · Organização · Relatórios · Integrações · Configurações |
+| **Administrador** | Tudo do RH, mais segurança | Mesmas do RH |
 
 ### O que o protótipo já cobre
 
@@ -80,18 +80,18 @@ Resultado do [estudo de 10 sistemas de ponto](docs/09-benchmark-concorrentes.md)
 
 | Documento | Para que serve | Situação |
 |---|---|---|
-| [01 · Visão do produto](docs/01-visao-do-produto.md) | Problema, objetivos, escopo e o que fica de fora | ✅ Rascunho validado |
-| [02 · Requisitos](docs/02-requisitos.md) | Requisitos funcionais e não funcionais com prioridade | 🟡 Em validação |
-| [03 · Regras de negócio](docs/03-regras-de-negocio.md) | Cálculo de horas, sequência de batidas, bloqueios | 🟡 Em validação |
-| [04 · Perfis e cadastro](docs/04-perfis-e-usuarios-ficticios.md) | Perfis, ficha do colaborador, organograma e contas de teste | ✅ Validado no protótipo |
-| [05 · Páginas e layout](docs/05-paginas-e-layout.md) | Mapa de telas, conteúdo de cada uma, regras visuais | 🟡 Em validação |
-| [06 · Fluxos](docs/06-fluxos.md) | Fluxos principais em diagramas | 🟡 Em validação |
-| [07 · Registro de validações](docs/07-registro-de-validacoes.md) | Diário de cada decisão tomada com o protótipo | 🔄 Atualizado a cada rodada |
-| [08 · Perguntas em aberto](docs/08-perguntas-em-aberto.md) | O que ainda precisa de decisão | 🔴 Aberto |
-| [09 · Benchmark de concorrentes](docs/09-benchmark-concorrentes.md) | Estudo dos 10 sistemas de ponto e limites da pesquisa | ✅ Concluído |
-| [11 · Pacote jurídico (LGPD)](docs/11-pacote-juridico-lgpd.md) | RIPD, retenção, aviso, contratos, incidente e perguntas ao advogado | 🟡 Rascunho, aguarda advogado |
-| [12 · Fornecedores de prova de vida](docs/12-fornecedores-prova-de-vida.md) | Critérios, candidatos e prova de conceito | 🟡 Fornecedor em aberto |
-| [10 · Matriz de funcionalidades](docs/10-matriz-de-funcionalidades.md) | Todas as funções encontradas e a cobertura no protótipo | 🔄 Atualizado a cada rodada |
+| [01 · Visão do produto](docs/01-visao-do-produto.md) | Problema, objetivos, escopo e o que fica de fora | Rascunho validado |
+| [02 · Requisitos](docs/02-requisitos.md) | Requisitos funcionais e não funcionais com prioridade | Em validação |
+| [03 · Regras de negócio](docs/03-regras-de-negocio.md) | Cálculo de horas, sequência de batidas, bloqueios | Em validação |
+| [04 · Perfis e cadastro](docs/04-perfis-e-usuarios-ficticios.md) | Perfis, ficha do colaborador, organograma e contas de teste | Validado no protótipo |
+| [05 · Páginas e layout](docs/05-paginas-e-layout.md) | Mapa de telas, conteúdo de cada uma, regras visuais | Em validação |
+| [06 · Fluxos](docs/06-fluxos.md) | Fluxos principais em diagramas | Em validação |
+| [07 · Registro de validações](docs/07-registro-de-validacoes.md) | Diário de cada decisão tomada com o protótipo | Atualizado a cada rodada |
+| [08 · Perguntas em aberto](docs/08-perguntas-em-aberto.md) | O que ainda precisa de decisão | Aberto |
+| [09 · Benchmark de concorrentes](docs/09-benchmark-concorrentes.md) | Estudo dos 10 sistemas de ponto e limites da pesquisa | Concluído |
+| [11 · Pacote jurídico (LGPD)](docs/11-pacote-juridico-lgpd.md) | RIPD, retenção, aviso, contratos, incidente e perguntas ao advogado | Rascunho, aguarda advogado |
+| [12 · Fornecedores de prova de vida](docs/12-fornecedores-prova-de-vida.md) | Critérios, candidatos e prova de conceito | Fornecedor em aberto |
+| [10 · Matriz de funcionalidades](docs/10-matriz-de-funcionalidades.md) | Todas as funções encontradas e a cobertura no protótipo | Atualizado a cada rodada |
 
 ## Protótipo navegável
 
@@ -147,6 +147,11 @@ Estamos nas fases 1 a 3, que se repetem em ciclos curtos: ajustar o protótipo, 
     ├── README.md              ← como usar e o que cobre
     └── index.html             ← protótipo navegável
 ```
+
+## Regras de escrita
+
+- **Sem emojis** em documentação, código, scripts, mensagens de commit e na interface do protótipo. Situações se escrevem em palavras (Feito, Parcial, Pendente, Aberto, Resolvido).
+- Textos em português do Brasil.
 
 ## Como registrar uma nova validação
 
