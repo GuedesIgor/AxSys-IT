@@ -17,6 +17,7 @@ Diário das decisões tomadas ao validar o protótipo. Mais recente no topo.
 | V9-03 | Método alternativo | RH autoriza por pessoa, sem registrar o motivo, com revisão em 180 dias; confirmação por PIN | Acessibilidade sem tratar dado de saúde | Decidido|
 | V9-04 | Marcação imediata | Requisito de gravar de imediato a marcação recebida, mesmo pendente (RNF-19) | Risco com a Portaria 671 | Parcial: conferir com advogado |
 | V9-06 | Modelo de negócio | Produto vendido como serviço a empresas. Cada cliente é controlador e indica o encarregado; a AxSys é operadora. Resolve a Q-03 | Decisão do dono | Decidido|
+| V9-07 | Dados do contrato | Foro de Ilha Solteira (SP). CNPJ, razão social e endereço pendentes (empresa ainda não aberta). SLA de 99,5%, contrato mensal sem fidelidade, teste de 30 dias. Cláusula de limitação de responsabilidade redigida (12 e 24 meses). Preço aguarda cotação | Decisões do dono e estudo de mercado | Decidido; preço aguardando |
 | V9-05 | Base legal | Art. 11, II, "g" como principal, com alternativa equivalente garantida | ANPD ainda não tem posição sobre ponto biométrico | Parcial: aguarda advogado |
 
 ### Pendências desta rodada

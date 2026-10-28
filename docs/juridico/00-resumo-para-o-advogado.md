@@ -25,6 +25,13 @@
 | 6 | Revisar a política de segurança e de incidentes | [06](06-politica-de-seguranca-e-incidentes.md) |
 | 7 | Responder as perguntas abaixo | este documento |
 
+## Informações já definidas
+
+- **Foro:** comarca de Ilha Solteira, SP.
+- **Empresa:** a AxSys IT **ainda não tem CNPJ**. Razão social, CNPJ e endereço estão como pendentes. Os contratos só podem ser assinados com clientes depois da abertura da empresa; o senhor poderá orientar sobre o tipo societário.
+- **Preços e SLA:** propostos com base em estudo de mercado ([docs/13](../13-precificacao.md)).
+- **Cláusula de limitação de responsabilidade:** minutada (contrato SaaS, cláusula 10), pede sua análise.
+
 ## Perguntas centrais
 
 1. **Base legal.** O art. 11, II, "g" da LGPD (prevenção à fraude na autenticação) sustenta a validação facial do empregado no ponto? Se não, qual base? Não encontramos posição da ANPD específica para ponto biométrico.
@@ -34,7 +41,8 @@
 5. **Papéis.** A AxSys como operadora e cada cliente como controlador está bem caracterizado? Há risco de a AxSys ser vista como controladora conjunta por definir as regras de validação?
 6. **Pequeno porte.** A AxSys se enquadra como agente de tratamento de pequeno porte (Resolução CD/ANPD nº 2/2022) e fica dispensada de indicar encarregado?
 7. **Transferência internacional.** Se o fornecedor de prova de vida processar fora do Brasil, qual o mecanismo adequado?
-8. **Limitação de responsabilidade.** A cláusula de limitação do contrato SaaS é válida e adequada ao risco de dado biométrico?
+8. **Limitação de responsabilidade.** Os limites de 12 e 24 meses de pagamentos, com regresso proporcional, são válidos e adequados ao risco de dado biométrico?
+11. **Sem CNPJ.** Qual o melhor enquadramento para a AxSys vender o serviço (sociedade limitada unipessoal, outro) e o que ela pode ou não fazer antes da abertura?
 9. **Menores.** Como tratar estagiários e jovens aprendizes menores de 18 anos?
 10. **Certificação.** O que mudar nos contratos e na publicidade enquanto o REP-P não for certificado no INPI?
 

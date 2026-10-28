@@ -4,8 +4,8 @@
 
 ## Partes
 
-- **CONTRATADA:** AxSys IT, [razão social], CNPJ [número], [endereço], e-mail [contato].
-- **CONTRATANTE:** [razão social], CNPJ [número], [endereço], representada por [nome e cargo].
+- **CONTRATADA:** AxSys IT, razão social, CNPJ e endereço [PENDENTE: a AxSys IT ainda não tem CNPJ aberto], e-mail [contato].
+- **CONTRATANTE:** [PENDENTE: a AxSys IT ainda não tem CNPJ aberto], representada por [nome e cargo].
 
 ## 1. Objeto
 
@@ -35,11 +35,14 @@ Usar o serviço conforme a lei e este contrato; não fazer engenharia reversa, r
 
 ## 6. Obrigações da CONTRATADA
 
-Disponibilizar o serviço com disponibilidade mensal de [99,5%], exceto manutenção programada avisada com [48] horas e eventos fora de seu controle; manter suporte em dias úteis, das [9h] às [18h], com resposta em até [1 dia útil]; corrigir falhas; aplicar a política de segurança ([06](06-politica-de-seguranca-e-incidentes.md)).
+Disponibilizar o serviço com disponibilidade mensal de **99,5%** (cerca de 3 horas e 40 minutos de indisponibilidade por mês), exceto manutenção programada avisada com 48 horas de antecedência e eventos fora do controle da CONTRATADA; manter suporte em dias úteis, das 9h às 18h (horário de Brasília), por e-mail e chat, com primeira resposta em até 1 dia útil e, para falha que impeça bater o ponto, em até 4 horas úteis; corrigir falhas; aplicar a política de segurança ([06](06-politica-de-seguranca-e-incidentes.md)). Se a disponibilidade ficar abaixo do prometido, a CONTRATANTE tem crédito de 5% da mensalidade por cada ponto percentual abaixo, limitado a 30%, a pedido em até 30 dias.
 
 ## 7. Preço e pagamento
 
-[Valor por colaborador ativo por mês, ou valor fixo], faturado [mensalmente], vencimento em [dias]. Reajuste anual pelo [IPCA]. Atraso: multa de [2%] e juros de [1%] ao mês. A CONTRATADA pode suspender o serviço após [15] dias de atraso, com aviso prévio de [5] dias.
+7.1. Preço por colaborador ativo por mês, conforme o plano do [Anexo B](../13-precificacao.md): **[valor a confirmar após cotação do fornecedor de prova de vida]**, com mínimo mensal de **[valor]**. Colaborador ativo é quem tem cadastro ativo em qualquer dia do mês.
+7.2. Implantação e suporte inicial sem custo. Teste gratuito de **30 dias**, sem obrigação de contratar.
+7.3. Faturamento mensal, com vencimento em 10 dias após a emissão. Reajuste anual pelo IPCA.
+7.4. Atraso: multa de 2% e juros de 1% ao mês. A CONTRATADA pode suspender o serviço após 15 dias de atraso, com aviso prévio de 5 dias, sem apagar os dados.
 
 ## 8. Propriedade intelectual
 
@@ -51,15 +54,27 @@ As partes manterão sigilo sobre informações confidenciais da outra, durante a
 
 ## 10. Limitação de responsabilidade
 
-10.1. A responsabilidade total da CONTRATADA por danos decorrentes deste contrato limita-se a [12 vezes a mensalidade] pagas nos últimos 12 meses, **exceto** em caso de dolo, culpa grave ou violação do Anexo de Proteção de Dados que cause dano a titulares, quando prevalece o disposto no Anexo.
-10.2. A CONTRATADA não responde por lucros cessantes, nem por decisões de pagamento tomadas pela CONTRATANTE com base nos relatórios.
-**(Cláusula crítica: o advogado deve avaliar validade e adequação ao dado biométrico.)**
+10.1. **Limite geral.** A responsabilidade total da CONTRATADA por danos diretos decorrentes deste contrato, somados todos os eventos, fica limitada ao valor efetivamente pago pela CONTRATANTE nos 12 meses anteriores ao primeiro evento causador do dano.
+
+10.2. **Limite especial para dados pessoais.** Em caso de incidente de segurança ou violação do Anexo de Proteção de Dados causada pela CONTRATADA, o limite é o equivalente a 24 meses de pagamentos, ou o valor coberto por seguro de responsabilidade cibernética da CONTRATADA, o que for maior.
+
+10.3. **Exclusões.** Os limites não se aplicam a dolo, culpa grave, nem a hipóteses em que a lei não permita limitar.
+
+10.4. **Danos excluídos.** Nenhuma parte responde por lucros cessantes, perda de oportunidade ou danos indiretos. A CONTRATADA não responde por decisão de pagamento ou de pessoal tomada pela CONTRATANTE com base nos relatórios do sistema, nem por multas trabalhistas decorrentes de configuração, conferência ou de uso em desacordo com a lei por parte da CONTRATANTE.
+
+10.5. **Terceiros e titulares.** Estes limites valem entre as partes e **não limitam** os direitos dos titulares de dados nem de terceiros perante qualquer das partes (LGPD, arts. 42 a 45). Quando a CONTRATADA pagar a um titular por falha de que a CONTRATANTE seja responsável, ou o inverso, a parte que pagou tem direito de regresso proporcional à culpa de cada uma.
+
+10.6. **Responsabilidades da CONTRATANTE.** A CONTRATANTE responde pela base legal e pelo aviso aos colaboradores, e mantém a CONTRATADA indene de reclamações e multas decorrentes de instruções ilícitas ou da falta de aviso e de alternativa ao método facial.
+
+10.7. **Prazo.** Reclamações por falha do serviço devem ser feitas em até 12 meses do evento.
+
+**(Cláusula crítica: revisão do advogado. Os valores de 12 e 24 meses são propostas de mercado, não obrigação legal.)**
 
 ## 11. Vigência e rescisão
 
-11.1. Prazo de [12] meses, renovado automaticamente por iguais períodos, salvo aviso de [60] dias.
-11.2. Qualquer parte pode rescindir por descumprimento não corrigido em [15] dias após notificação.
-11.3. No fim do contrato, a CONTRATANTE pode **exportar seus dados** em [30] dias. Depois, aplica-se a cláusula 11 do Anexo de Proteção de Dados.
+11.1. Contrato **mensal, sem fidelidade**, renovado automaticamente. Qualquer parte pode encerrar com aviso de **30 dias**. Quem optar por plano anual pago adiantado tem desconto de **[15%]**, sem reembolso se rescindir antes do fim.
+11.2. Qualquer parte pode rescindir por descumprimento não corrigido em 15 dias após notificação por escrito.
+11.3. No fim do contrato, a CONTRATANTE pode **exportar seus dados** por 30 dias. Depois, aplica-se a cláusula 11 do Anexo de Proteção de Dados.
 
 ## 12. Alterações
 
@@ -67,7 +82,7 @@ A CONTRATADA pode atualizar o serviço e estes termos, com aviso de [30] dias. M
 
 ## 13. Disposições gerais
 
-Lei brasileira. Foro de [comarca]. Assinatura eletrônica admitida. Anexos: A) Anexo de Proteção de Dados; B) Plano e preço; C) Política de segurança.
+Lei brasileira. Foro da **comarca de Ilha Solteira, Estado de São Paulo**, com renúncia a qualquer outro. Assinatura eletrônica admitida. Anexos: A) Anexo de Proteção de Dados; B) [Plano e preço](../13-precificacao.md); C) Política de segurança.
 
 [Local], [data].
 

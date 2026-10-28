@@ -6,7 +6,7 @@
 
 ## 1. Quem somos e qual o nosso papel
 
-A **AxSys IT** ([razão social], CNPJ [número]) desenvolve e opera o AxPonto. No tratamento dos dados dos **empregados** de nossos clientes, somos **operadora**: tratamos os dados em nome da empresa empregadora, que é a **controladora** e decide as finalidades. No tratamento dos dados de **contato dos nossos clientes** (administradores e financeiro), somos **controladora**.
+A **AxSys IT** (razão social e CNPJ [PENDENTE: a AxSys IT ainda não tem CNPJ aberto]) desenvolve e opera o AxPonto. No tratamento dos dados dos **empregados** de nossos clientes, somos **operadora**: tratamos os dados em nome da empresa empregadora, que é a **controladora** e decide as finalidades. No tratamento dos dados de **contato dos nossos clientes** (administradores e financeiro), somos **controladora**.
 
 Contato de privacidade da AxSys IT: [e-mail]. Encarregado: [nome, se indicado, ou "dispensado como agente de pequeno porte"].
 

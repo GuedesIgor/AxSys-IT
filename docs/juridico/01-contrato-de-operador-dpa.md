@@ -5,7 +5,7 @@
 ## Partes
 
 - **CONTROLADORA:** [razão social do cliente], CNPJ [número], com sede em [endereço], representada por [nome e cargo].
-- **OPERADORA:** AxSys IT, [razão social], CNPJ [número], com sede em [endereço], representada por [nome e cargo].
+- **OPERADORA:** AxSys IT, razão social, CNPJ e endereço [PENDENTE: a AxSys IT ainda não tem CNPJ aberto], representada por [nome do sócio].
 
 ## 1. Definições
 
@@ -76,11 +76,11 @@ A CONTROLADORA pode, mediante aviso de [15] dias e uma vez por ano, solicitar in
 
 ## 12. Responsabilidade
 
-Cada parte responde pelos danos que causar ao descumprir a LGPD e este anexo, nos termos dos arts. 42 a 45 da LGPD. A limitação de responsabilidade do contrato principal [não se aplica / aplica-se com ressalvas] a violações deste anexo. **(Ponto para decisão do advogado.)**
+Cada parte responde pelos danos que causar ao descumprir a LGPD e este anexo, nos termos dos arts. 42 a 45 da LGPD. Aplicam-se aos danos de violação deste anexo os limites da cláusula 10.2 do contrato principal (limite especial para dados pessoais), ressalvados os direitos dos titulares. **(Revisão do advogado.)**
 
 ## 13. Disposições gerais
 
-Em caso de conflito, prevalece este anexo quanto a dados pessoais. Foro: [comarca]. Assinatura eletrônica admitida.
+Em caso de conflito, prevalece este anexo quanto a dados pessoais. Foro da comarca de Ilha Solteira, Estado de São Paulo. Assinatura eletrônica admitida.
 
 [Local], [data].
 
