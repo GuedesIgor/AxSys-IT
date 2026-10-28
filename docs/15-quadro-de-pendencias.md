@@ -69,4 +69,3 @@ Q-03 (venda como serviço), Q-06 (feriados e ausências no protótipo), Q-16 (cu
 1. Itens 1, 10 e 11: abrir a empresa e fechar a documentação do advogado.
 2. Itens 2, 3 e 4: responder sobre o SRVAD1, o domínio e o SLA, para publicar o demo no IIS.
 3. Item 15: prova de conceito pequena do modelo facial, antes de prometer desempenho.
-E
