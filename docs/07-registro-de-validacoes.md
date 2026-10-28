@@ -6,6 +6,12 @@ Diário das decisões tomadas ao validar o protótipo. Mais recente no topo.
 
 ---
 
+## Nota de 28/10/2026 · Conferência da inscrição do advogado
+
+Consulta ao CNA: OAB/MS nº 28.925, subseção Três Lagoas, situação regular. O dono informa que o advogado mora e atende em Ilha Solteira (SP) e em Três Lagoas (MS). Pendente: ele confirmar a situação da inscrição de SP e a necessidade de inscrição suplementar.
+
+---
+
 ## Rodada 12 · Hospedagem própria no IIS
 
 | # | Tema | Decisão | Motivo | Status |

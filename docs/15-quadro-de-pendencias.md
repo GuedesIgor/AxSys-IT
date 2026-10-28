@@ -25,7 +25,7 @@ Atualizado em 28/10/2026. Reúne tudo o que falta, por quem precisa agir e por q
 | # | Pendência | Efeito | Referência |
 |---|---|---|---|
 | 10 | Assinar as seis minutas (assinatura digital gov.br ou ICP-Brasil) e informar a data da aprovação | Bloqueia a venda | [docs/juridico](juridico/00-resumo-para-o-advogado.md) |
-| 11 | Esclarecer a inscrição: o CNA mostra OAB/MS nº 28.925 (Três Lagoas), situação regular, mas a carteira antiga é de SP nº 389.139. Qual é a principal hoje? Como ele atende o foro de Ilha Solteira (SP)? | Bloqueia a venda | Conferência de 28/10/2026 |
+| 11 | Inscrição: o CNA mostra OAB/MS nº 28.925 (subseção Três Lagoas), situação regular. Segundo o dono, ele mora e atende em Ilha Solteira (SP) e também em Três Lagoas (MS). Confirmar com ele se precisa de inscrição suplementar em SP e se a de SP nº 389.139 continua ativa | Pode esperar (não impede a revisão das minutas) | Conferência de 28/10/2026 |
 | 12 | Responder as 11 perguntas do resumo (base legal, obrigatoriedade, Portaria 671, retenção, papéis, pequeno porte, limitação de responsabilidade, menores, sem certificação, sem CNPJ) | Bloqueia a venda | Q-13 |
 | 13 | Validar a cláusula 10 (limitação de responsabilidade) | Bloqueia a venda | contrato SaaS |
 | 14 | Confirmar se a batida pendente é compatível com a Portaria 671 e se a gravação imediata da marcação basta | Bloqueia o lançamento | RNF-19 |
