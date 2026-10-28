@@ -227,8 +227,8 @@ Pontos que o advogado e o time técnico precisam conferir no texto oficial, pois
 - [ ] RIPD preenchido e assinado pelo cliente, com o modelo da AxSys
 - [ ] Aviso ao colaborador publicado e entregue
 - [ ] Contrato com operador e suboperadores com as cláusulas da seção 9
-- [ ] Fornecedor de prova de vida escolhido ([doc 12](12-fornecedores-prova-de-vida.md))
-- [ ] Carta de teste independente de resistência a fraude recebida
+- [ ] Relatório interno de testes de fraude e de viés do leitor facial próprio ([doc 12](12-fornecedores-prova-de-vida.md))
+- [ ] Opcional: teste independente de resistência a fraude (recomendado antes de vender a clientes de alto risco)
 - [ ] Rotina de exclusão no desligamento testada
 - [ ] Método alternativo disponível e divulgado
 - [ ] Exercício de simulação de incidente feito

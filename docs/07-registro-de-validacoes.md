@@ -6,6 +6,17 @@ Diário das decisões tomadas ao validar o protótipo. Mais recente no topo.
 
 ---
 
+## Rodada 10 · Leitor facial próprio e aprovação do advogado
+
+| # | Tema | Decisão | Motivo | Status |
+|---|---|---|---|---|
+| V10-01 | Aprovação jurídica | Segundo o dono, o advogado leu o resumo e aprovou as minutas. Faltam número da OAB e assinatura dele | Só o advogado assina | Aguardando assinatura |
+| V10-02 | Leitor facial | Desenvolvimento próprio, com desafios (piscar, virar o rosto, sorrir) verificados no servidor. Sem fornecedor externo na primeira versão | Decisão do dono; evita custo por validação | Decidido |
+| V10-03 | Compromisso de teste | Relatório interno de testes de fraude e de viés antes de vender. Não prometer "prova de vida certificada" | Sem certificação independente | Decidido |
+| V10-04 | Licenças | Conferir a licença comercial de cada modelo e biblioteca | Risco de uso indevido | Pendente |
+
+---
+
 ## Rodada 9 · Pacote jurídico e exceções à validação facial
 
 **Versão do protótipo:** v9 · **Pedido:** resolver as pendências jurídicas e a alternativa para quem não pode usar a câmera.

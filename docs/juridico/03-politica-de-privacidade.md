@@ -1,6 +1,6 @@
 # Política de Privacidade do AxPonto
 
-> **Minuta para revisão.** Advogado responsável pela revisão: Dr. Dinalto Gomes Martins, OAB/[UF] nº [número]. Não revisada nem assinada. Publicar em [endereço do site].
+> **Minuta aprovada pelo advogado, conforme informado pelo dono em [data].** Advogado responsável pela revisão: Dr. Dinalto Gomes Martins, OAB/[UF] nº [número]. Faltam o número da OAB e a assinatura do advogado, que só ele pode apor. Publicar em [endereço do site].
 
 Última atualização: [data].
 
@@ -30,7 +30,7 @@ O tratamento é feito conforme a base definida pela empresa empregadora (control
 
 ## 4. Com quem compartilhamos
 
-Apenas com os **suboperadores** necessários ao serviço (hospedagem, prova de vida e comparação facial, envio de e-mail), sob contrato. A lista atual está em [endereço]. Não vendemos dados.
+Apenas com os **suboperadores** necessários ao serviço (hospedagem e envio de e-mail). A validação facial é feita por componente próprio da AxSys, sem enviar o rosto a terceiros, sob contrato. A lista atual está em [endereço]. Não vendemos dados.
 
 ## 5. Por quanto tempo guardamos
 

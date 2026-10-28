@@ -1,6 +1,6 @@
 # Contrato de Tratamento de Dados Pessoais (Anexo de Proteção de Dados)
 
-> **Minuta para revisão.** Advogado responsável pela revisão: Dr. Dinalto Gomes Martins, OAB/[UF] nº [número]. Não revisada nem assinada. Anexo ao Contrato de Prestação de Serviços SaaS do AxPonto ([02](02-contrato-saas-e-termos-de-uso.md)).
+> **Minuta aprovada pelo advogado, conforme informado pelo dono em [data].** Advogado responsável pela revisão: Dr. Dinalto Gomes Martins, OAB/[UF] nº [número]. Faltam o número da OAB e a assinatura do advogado, que só ele pode apor. Anexo ao Contrato de Prestação de Serviços SaaS do AxPonto ([02](02-contrato-saas-e-termos-de-uso.md)).
 
 ## Partes
 
@@ -105,5 +105,5 @@ CONTROLADORA            OPERADORA
 | Suboperador | Serviço | País | Dados |
 |---|---|---|---|
 | [fornecedor de nuvem] | Hospedagem | [Brasil] | Todos, cifrados |
-| [fornecedor de prova de vida] | Prova de vida e comparação facial | [a definir] | Captura facial durante a validação |
+| Nenhum | A validação facial é feita por componente próprio, na infraestrutura da AxSys | Brasil | Captura facial durante a validação, processada e descartada |
 | [fornecedor de e-mail] | Envio de notificações | [a definir] | E-mail e nome |

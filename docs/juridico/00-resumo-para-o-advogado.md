@@ -3,7 +3,8 @@
 **Para:** Dr. Dinalto Gomes Martins, advogado (OAB/[UF] nº [número a preencher])
 **De:** AxSys IT
 **Assunto:** AxPonto, sistema de registro de ponto vendido como serviço (SaaS). Revisão das minutas e parecer sobre biometria facial.
-**Situação:** minutas elaboradas pela equipe de produto com apoio do Claude. **Nenhum documento foi revisado ou assinado por advogado.** Todos os campos entre colchetes precisam ser preenchidos.
+**Situação:** minutas elaboradas pela equipe de produto com apoio do Claude. Segundo o dono, o advogado leu este resumo e aprovou. **Pendentes:** número da OAB, assinatura do advogado e os campos entre colchetes (CNPJ, preço).
+**Atualização:** a validação facial será um **leitor próprio**, sem fornecedor externo de prova de vida (ver [docs/12](../12-fornecedores-prova-de-vida.md)). Isso altera a pergunta 7 e o risco de fraude; ver pergunta 11.
 
 ## O produto em 5 linhas
 
@@ -40,11 +41,13 @@
 4. **Retenção.** O template apagado até 30 dias após o desligamento e o resultado da validação guardado pelo prazo do registro de jornada (CF art. 7, XXIX) estão corretos?
 5. **Papéis.** A AxSys como operadora e cada cliente como controlador está bem caracterizado? Há risco de a AxSys ser vista como controladora conjunta por definir as regras de validação?
 6. **Pequeno porte.** A AxSys se enquadra como agente de tratamento de pequeno porte (Resolução CD/ANPD nº 2/2022) e fica dispensada de indicar encarregado?
-7. **Transferência internacional.** Se o fornecedor de prova de vida processar fora do Brasil, qual o mecanismo adequado?
+7. **Transferência internacional.** Com o leitor próprio e hospedagem no Brasil, não há transferência prevista. Se a hospedagem for fora do Brasil, qual o mecanismo adequado?
 8. **Limitação de responsabilidade.** Os limites de 12 e 24 meses de pagamentos, com regresso proporcional, são válidos e adequados ao risco de dado biométrico?
 11. **Sem CNPJ.** Qual o melhor enquadramento para a AxSys vender o serviço (sociedade limitada unipessoal, outro) e o que ela pode ou não fazer antes da abertura?
 9. **Menores.** Como tratar estagiários e jovens aprendizes menores de 18 anos?
 10. **Certificação.** O que mudar nos contratos e na publicidade enquanto o REP-P não for certificado no INPI?
+
+11. **Leitor facial próprio.** Sem certificação independente de resistência a fraude, quais cuidados jurídicos devemos ter na promessa ao cliente e na cláusula de responsabilidade? Propomos documentar testes internos de ataque e não prometer "prova de vida certificada".
 
 ## Material de apoio
 

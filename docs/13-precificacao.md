@@ -17,7 +17,9 @@ Dados encontrados em pesquisa de preços públicos. Valores mudam, vêm de pági
 
 Leitura: no Brasil, o ponto online custa de **R$ 3 a R$ 6 por colaborador ao mês**, com planos sem fidelidade; internacionalmente, de **US$ 4 a US$ 9**.
 
-## 2. O risco que muda a conta: custo da validação facial
+> **Decisão (Rodada 10):** o leitor facial será **próprio**. Não há tarifa por validação de fornecedor. O custo passa a ser servidor, armazenamento e o tempo de desenvolvimento e teste. A conta abaixo vale para a opção de comprar de terceiro.
+
+## 2. O risco que muda a conta: custo da validação facial (se comprar de terceiro)
 
 Cada colaborador faz de 2 a 4 batidas por dia, ou **cerca de 44 a 88 validações por mês**. Se o fornecedor cobrar, por exemplo, R$ 0,05 por validação, o custo vai de **R$ 2,20 a R$ 4,40 por colaborador ao mês**, o que pode consumir quase todo o preço de mercado. Valor ilustrativo, não cotação.
 
@@ -42,7 +44,7 @@ Por isso a cotação é decisiva. Alternativas para controlar o custo:
 
 ## 4. Como decidir
 
-1. Cotar 3 fornecedores de prova de vida ([doc 12](12-fornecedores-prova-de-vida.md), seção 4).
-2. Calcular o custo por colaborador com 44 a 88 validações ao mês.
+1. Medir o custo de servidor por validação no leitor próprio, com 44 a 88 validações por colaborador ao mês.
+2. Se algum cliente exigir fornecedor certificado, cotar como adicional.
 3. Definir o preço com margem sobre esse custo e comparar com R$ 3 a R$ 6 do mercado.
 4. Registrar a decisão em [07](07-registro-de-validacoes.md) e preencher o contrato.

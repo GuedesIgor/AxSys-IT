@@ -69,3 +69,34 @@ Fontes de mercado sobre certificação são em boa parte material de fornecedore
 - Quem contrata o fornecedor: AxSys (como suboperadora) ou o cliente.
 - Se o produto exigirá hospedagem somente no Brasil.
 - Quem paga o custo por validação e como entra no preço.
+
+## 7. Decisão: leitor facial próprio (Rodada 10)
+
+O dono decidiu **desenvolver o leitor facial próprio**, que pede gestos (piscar, virar o rosto, sorrir) para comprovar que é uma pessoa viva e não foto nem vídeo. **Não haverá fornecedor externo de prova de vida na primeira versão.** A comparação por fornecedor continua válida como opção futura para clientes mais exigentes.
+
+### Requisitos do leitor próprio
+
+| # | Requisito | Motivo |
+|---|---|---|
+| 1 | O servidor **sorteia e assina** um desafio novo a cada tentativa (gestos e ordem), com validade curta | Impede reaproveitar vídeo gravado (replay) |
+| 2 | A detecção dos gestos roda no aparelho, mas o servidor **verifica** a sequência e o tempo, e não confia só no resultado enviado | O aparelho do usuário pode ser adulterado |
+| 3 | Além dos gestos, medir sinais passivos: textura, reflexo, profundidade aparente, consistência entre quadros | Gestos sozinhos são fáceis de imitar com vídeo |
+| 4 | Detectar câmera virtual e vídeo injetado, tanto quanto possível no navegador | Ataque mais comum contra prova de vida |
+| 5 | A comparação do rosto com o cadastro usa o modelo guardado (template) e um limiar medido | Equilíbrio entre falsa aceitação e falsa rejeição |
+| 6 | **Verificar a licença** de cada modelo e biblioteca antes de usar | Alguns modelos faciais populares só podem ser usados em pesquisa, não em produto comercial |
+| 7 | Descartar a imagem logo após a conferência | Minimização |
+| 8 | Tudo processado em servidor no Brasil | LGPD |
+
+### Obrigação de testar antes de vender
+
+Sem laboratório independente, a confiança vem de **teste próprio documentado**. Antes do lançamento:
+
+1. Atacar o sistema com foto impressa, foto na tela, vídeo na tela, vídeo gravado, máscara, câmera virtual e replay.
+2. Medir **falsa aceitação** (deixou passar fraude) e **falsa rejeição** (barrou a pessoa certa), por faixa etária e tom de pele, com voluntários que autorizaram.
+3. Registrar método, resultado e versão em um relatório guardado por cliente que o pedir.
+4. Repetir a cada mudança relevante do leitor.
+5. Considerar um teste independente antes de vender para clientes de alto risco.
+
+### O que muda no discurso
+
+Não prometer "prova de vida certificada". Dizer "prova de vida com desafios aleatórios verificados no servidor, testada contra fotos, vídeos e máscaras". Isso vale para o site, o contrato e o relatório de impacto.

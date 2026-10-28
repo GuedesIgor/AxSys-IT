@@ -1,6 +1,6 @@
 # Modelo de Relatório de Impacto à Proteção de Dados Pessoais (RIPD)
 
-> **Minuta para revisão.** Advogado responsável pela revisão: Dr. Dinalto Gomes Martins, OAB/[UF] nº [número]. Não revisada nem assinada. Modelo fornecido pela AxSys IT (operadora) para que cada **cliente (controlador)** preencha, revise e assine. Base: LGPD, art. 5, XVII e art. 38. Conteúdo base em [docs/11](../11-pacote-juridico-lgpd.md), seção 5.
+> **Minuta aprovada pelo advogado, conforme informado pelo dono em [data].** Advogado responsável pela revisão: Dr. Dinalto Gomes Martins, OAB/[UF] nº [número]. Faltam o número da OAB e a assinatura do advogado, que só ele pode apor. Modelo fornecido pela AxSys IT (operadora) para que cada **cliente (controlador)** preencha, revise e assine. Base: LGPD, art. 5, XVII e art. 38. Conteúdo base em [docs/11](../11-pacote-juridico-lgpd.md), seção 5.
 
 **Controlador:** [razão social do cliente]  **Encarregado:** [nome e contato]  **Data:** [data]  **Versão:** [1.0]
 **Operador:** AxSys IT  **Tratamento:** validação facial com prova de vida no registro de ponto
@@ -38,9 +38,9 @@ Justificativa: [texto]
 |---|---|---|---|---|
 | Vazamento do modelo facial | [ ] | [ ] | Política de acesso ao painel | Cifragem, base separada, log de acesso |
 | Uso para outra finalidade | [ ] | [ ] | Política interna proibindo | Bloqueio técnico e cláusula contratual |
-| Discriminação ou falsa rejeição | [ ] | [ ] | Alternativa sem sanção | Teste de viés do fornecedor |
+| Discriminação ou falsa rejeição | [ ] | [ ] | Alternativa sem sanção | Teste de viés próprio, documentado |
 | Coação para aceitar | [ ] | [ ] | Canal de reclamação ao encarregado | Aviso e alternativa no sistema |
-| Fraude com foto, vídeo ou máscara | [ ] | [ ] | Apuração disciplinar | Prova de vida certificada, limite de tentativas |
+| Fraude com foto, vídeo ou máscara | [ ] | [ ] | Apuração disciplinar | Prova de vida própria com desafios aleatórios verificados no servidor, testes de fraude documentados, limite de tentativas |
 | Retenção excessiva | [ ] | [ ] | Registrar desligamentos em dia | Eliminação automática do modelo |
 | Incidente de segurança | [ ] | [ ] | Plano de comunicação à ANPD | Aviso em até 24 horas |
 

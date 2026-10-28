@@ -1,6 +1,6 @@
 # Aviso ao colaborador sobre o tratamento do rosto
 
-> **Minuta para revisão.** Advogado responsável pela revisão: Dr. Dinalto Gomes Martins, OAB/[UF] nº [número]. Não revisada nem assinada. Texto exibido pelo AxPonto no primeiro acesso e antes do cadastro facial. Cada cliente (controlador) pode editar os campos entre colchetes. É um **aviso** (LGPD, art. 9), não um termo de consentimento.
+> **Minuta aprovada pelo advogado, conforme informado pelo dono em [data].** Advogado responsável pela revisão: Dr. Dinalto Gomes Martins, OAB/[UF] nº [número]. Faltam o número da OAB e a assinatura do advogado, que só ele pode apor. Texto exibido pelo AxPonto no primeiro acesso e antes do cadastro facial. Cada cliente (controlador) pode editar os campos entre colchetes. É um **aviso** (LGPD, art. 9), não um termo de consentimento.
 
 ## Versão para a tela
 

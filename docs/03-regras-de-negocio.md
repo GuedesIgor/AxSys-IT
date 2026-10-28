@@ -152,7 +152,8 @@ flowchart TD
 5. **Cadastro:** não é possível criar usuário sem cadastrar o rosto com prova de vida. O RH pode refazer o cadastro na edição do colaborador. Usuário sem rosto cadastrado não consegue bater o ponto.
 6. O comprovante registra "validação facial com prova de vida aprovada" e a similaridade.
 7. No protótipo a câmera é simulada: os botões "fiz o gesto", "foto ou vídeo" e "outra pessoa" permitem testar cada resultado. No app real a prova de vida e a comparação facial precisam de um serviço próprio (Q-22).
-8. **LGPD:** com a validação obrigatória, o dado biométrico deixa de ser opcional. O parecer jurídico da Q-13 passa a ser requisito para o lançamento.
+8. **Leitor próprio:** a prova de vida é desenvolvida pela AxSys. O servidor sorteia e verifica o desafio, e o resultado é registrado com a versão do leitor. Requisitos e testes de fraude em [docs/12](12-fornecedores-prova-de-vida.md), seção 7.
+9. **LGPD:** com a validação obrigatória, o dado biométrico deixa de ser opcional. O parecer jurídico da Q-13 passa a ser requisito para o lançamento.
 
 ## RN-21 · Exceções à validação facial
 
