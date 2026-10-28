@@ -23,7 +23,7 @@ flowchart TD
     VG --- CO[Colaboradores] --- OR[Organização] --- JO[Jornadas] --- RE[Relatórios]
     VG --- IN[Integrações] --- CF[Configurações] --- AD[Auditoria]
 
-    PT --> MC((Confirmar ponto: mapa, selfie, projeto)) --> CP((Comprovante))
+    PT --> MC((Confirmar ponto: mapa, validação facial, projeto)) --> CP((Comprovante))
     ES --> MJ((Solicitar ajuste))
     ES --> ML((Local das batidas))
     AU --> MS((Solicitar ausência))
@@ -45,16 +45,16 @@ flowchart TD
 
 ### Login e quiosque
 - **Login:** painel de apresentação e formulário. Links para recuperar senha e abrir o quiosque. Lista de usuários de teste com matrícula e PIN.
-- **Quiosque:** relógio grande, escolha da unidade do aparelho, matrícula e PIN. A confirmação mostra mapa e pede selfie quando ativa.
+- **Quiosque:** relógio grande, escolha da unidade do aparelho, matrícula e PIN. A confirmação mostra mapa e exige a validação facial com prova de vida.
 
 ### Registrar ponto (todos)
 - **Relógio grande** com hora legal.
 - **Cartão de localização** com mapa, precisão, coordenadas e área da empresa. Sem permissão, os botões de ponto ficam bloqueados.
 - **Quatro botões** de batida: feito (verde), próximo (destacado), futuros (desabilitados).
-- **Confirmação** com mapa, selfie, projeto (na entrada), justificativa se estiver fora da área, e avisos de aparelho diferente e de modo offline.
+- **Confirmação** com mapa, validação facial com prova de vida (desafios, 3 tentativas), projeto (na entrada), justificativa se estiver fora da área, e avisos de aparelho diferente e de modo offline.
 - Cartões laterais: Hoje (progresso e previsão de saída), banco de horas e férias, últimos dias, mural de avisos.
 - Faixa de alerta com botão **Sincronizar agora** quando houver batidas offline.
-- **Sem localização:** o aviso âmbar explica que o ponto fica pendente e oferece **Registrar sem localização**. O modal pede selfie e justificativa obrigatória e termina em um protocolo "PENDENTE DE APROVAÇÃO". A batida aparece como "⏳ aguardando gestor" e um cartão lista as solicitações e as decisões.
+- **Sem localização:** o aviso âmbar explica que o ponto fica pendente e oferece **Registrar sem localização**. O modal pede a validação facial e justificativa obrigatória e termina em um protocolo "PENDENTE DE APROVAÇÃO". A batida aparece como "⏳ aguardando gestor" e um cartão lista as solicitações e as decisões.
 
 ### Meu espelho
 - Fechamento do mês: situação (Aberto, Assinado, Aprovado, Fechado) e botão **Assinar espelho**.

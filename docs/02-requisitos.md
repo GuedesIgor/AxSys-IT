@@ -75,7 +75,7 @@ Origem de cada um na [matriz de funcionalidades](10-matriz-de-funcionalidades.md
 | RF-50 | Ficha do colaborador com matrícula, CPF, setor, cargo, gestor, unidade, perfil, jornada, contrato, admissão, centro de custo, valor da hora e PIN | 🔴 | ✅ |
 | RF-51 | RH gerencia setores, unidades, projetos e jornadas | 🔴 | ✅ |
 | RF-52 | Quiosque compartilhado com matrícula e PIN | 🟡 | ✅ |
-| RF-53 | Selfie na batida, ativável por configuração | 🟡 | 🟡 simulada |
+| RF-53 | Validação facial com prova de vida obrigatória antes de toda batida (web, quiosque e ponto sem localização). Não pode ser desligada | 🔴 | 🟡 simulada |
 | RF-54 | Cerca virtual por unidade, raio configurável, e três modos para batida fora da cerca (permitir, justificar, bloquear) | 🔴 | ✅ |
 | RF-55 | Alertar quando a batida vem de aparelho diferente do habitual | 🟡 | ✅ |
 | RF-56 | Registrar offline e sincronizar depois | 🟡 | ✅ |
@@ -102,13 +102,17 @@ Origem de cada um na [matriz de funcionalidades](10-matriz-de-funcionalidades.md
 | ID | Requisito | Prioridade | Protótipo |
 |---|---|---|---|
 | RF-74 | Sem a localização liberada, a pessoa pode **solicitar** o ponto sem localização. Ele **não é registrado** até o gestor aprovar | 🔴 | ✅ |
-| RF-75 | A pessoa que bate **deve justificar** (mínimo 10 caracteres). Com a selfie ativa, a selfie também é obrigatória | 🔴 | ✅ |
+| RF-75 | A pessoa que bate **deve justificar** (mínimo 10 caracteres). A validação facial com prova de vida também é obrigatória | 🔴 | ✅ |
 | RF-76 | O gestor recebe aviso na lista de pendências e no contador do menu, com a justificativa, o motivo técnico, o aparelho e a hora batida, **antes de decidir** | 🔴 | ✅ |
 | RF-77 | O gestor **deve justificar** a aprovação ou a recusa (mínimo 10 caracteres). A decisão e as duas justificativas ficam no histórico e na auditoria | 🔴 | ✅ |
 | RF-78 | Ponto aprovado entra no espelho marcado como "sem localização" e mostra quem aprovou e por quê. Recusado não entra | 🔴 | ✅ |
 | RF-79 | Ninguém decide o próprio ponto. Para gestores, decidem RH e Admin | 🔴 | ✅ |
 | RF-80 | Configuração para **bloquear** o ponto sem localização em vez de enviá-lo para aprovação | 🟡 | ✅ |
 | RF-81 | Prazo para o gestor decidir (padrão 2 dias úteis, configurável): lembrete no último dia e escalonamento ao RH quando vence | 🟡 | ✅ |
+| RF-82 | Cadastro facial com prova de vida obrigatório para cadastrar usuário. Sem ele o cadastro não é salvo | 🔴 | 🟡 simulada |
+| RF-83 | Prova de vida com desafios aleatórios (piscar, virar a cabeça, sorrir, abrir a boca) a cada tentativa | 🔴 | 🟡 simulada |
+| RF-84 | Rosto que não confere ou prova de vida reprovada impede a batida. Após 3 tentativas a validação bloqueia e a pessoa procura o RH. Cada recusa vai para a auditoria | 🔴 | ✅ |
+| RF-85 | Usuário sem rosto cadastrado não bate o ponto e vê aviso para procurar o RH. O RH pode refazer o cadastro facial na edição | 🔴 | ✅ |
 
 ## Requisitos não funcionais
 

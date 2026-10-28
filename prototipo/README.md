@@ -25,7 +25,7 @@ Cobertura detalhada em [docs/10 · Matriz de funcionalidades](../docs/10-matriz-
 | Cadastros (colaborador, setor, unidade, projeto, jornada), aprovações, configurações | **Funcionam** e mudam o comportamento do protótipo |
 | Dados | Gerados ao abrir e guardados no navegador de quem testa (`localStorage`). **Reiniciar dados** no login recomeça |
 | GPS | Tenta o GPS real. O visualizador de artefatos bloqueia, então há **simulador de local, aparelho e rede** |
-| Selfie e reconhecimento facial | **Simulados** (sem câmera) |
+| Cadastro e validação facial com prova de vida | **Simulados** (sem câmera; botões para simular sucesso, foto/vídeo e outra pessoa) |
 | Mapa | Desenho esquemático. No app real será um mapa com tiles |
 | Hora | Hora do navegador. No app real, hora do servidor sincronizada |
 | E-mail, WhatsApp, Slack, Teams, folha, relógio físico, SSO | **Simulados**: só mudam o estado visual |
@@ -36,7 +36,7 @@ Em Configurações, cada opção avisa se tem efeito no protótipo ("ativo no pr
 
 ## Roteiro de validação sugerido
 
-1. Entre como **Ana**. Use o simulador para ficar "Em home office" e bata o ponto: o sistema exige selfie e justificativa por estar fora da área.
+1. Entre como **Ana**. Use o simulador para ficar "Em home office" e bata o ponto: o sistema exige validação facial com prova de vida e justificativa por estar fora da área.
 2. Abra **Meu espelho**, veja os alertas do mês, o botão **Local** e solicite ajuste no dia incompleto.
 3. Entre como **Carlos** e abra **Aprovações** (ajuste e ausência) e o **Painel de exceções**. Mude um dia na **Escala**.
 4. Entre como **Marina (RH)**, veja a **Visão geral**, edite uma **Ficha** e cadastre um colaborador. Gere os **Relatórios** e exporte um CSV.

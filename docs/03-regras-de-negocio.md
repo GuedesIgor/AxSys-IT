@@ -116,7 +116,7 @@ stateDiagram-v2
 ```
 
 1. Só aparece quando a localização não foi liberada e a configuração permite (padrão). Em modo **bloquear**, não há alternativa.
-2. O colaborador informa uma **justificativa obrigatória** (mínimo 10 caracteres). Com selfie ativa, a selfie é obrigatória também.
+2. O colaborador informa uma **justificativa obrigatória** (mínimo 10 caracteres). A validação facial com prova de vida (RN-20) é obrigatória também.
 3. O sistema guarda a **hora em que a pessoa bateu**, o motivo técnico (permissão negada, sem resposta, não liberada) e o aparelho.
 4. O ponto fica **pendente e não conta** em horas, saldo, banco de horas nem relatórios de jornada até ser aprovado.
 5. A batida pendente ocupa o lugar na sequência do dia: o botão mostra "aguardando gestor" e a pessoa segue para a próxima batida normalmente.
@@ -127,6 +127,32 @@ stateDiagram-v2
 10. Tudo vai para a auditoria e para o relatório de localização (como aprovado ou pendente).
 11. **Prazo de decisão:** 2 dias úteis a partir do pedido (configurável de 1 a 10). No último dia o gestor recebe lembrete. Vencido o prazo, o pedido é marcado como **escalado ao RH**, que passa a ser o responsável, sem tirar o direito do gestor de decidir. Não existe prazo legal específico para isso; 2 dias úteis é a prática comum de fluxos de aprovação de ponto e deve caber antes do fechamento do mês.
 12. **Sem limite mensal** de pedidos por pessoa (decisão da AxSys). O controle de abuso fica na justificativa obrigatória, na aprovação do gestor e no relatório de localização, que mostra quem usa esse caminho com frequência.
+
+## RN-20 · Validação facial com prova de vida
+
+```mermaid
+flowchart TD
+    A[Pessoa pede para bater o ponto] --> B{Rosto cadastrado?}
+    B -->|Não| X[Bloqueia: procure o RH]
+    B -->|Sim| C[Sorteia 2 desafios de prova de vida]
+    C --> D{Fez os gestos ao vivo?}
+    D -->|Não: foto, vídeo ou máscara| F[Recusa e registra na auditoria]
+    D -->|Sim| E{Rosto confere com o cadastro?}
+    E -->|Não| F
+    E -->|Sim| OK[Libera confirmar o registro]
+    F --> T{3 tentativas?}
+    T -->|Não| C
+    T -->|Sim| BL[Bloqueia e orienta procurar o RH]
+```
+
+1. A validação vem **antes** de confirmar o registro. Sem ela aprovada, o botão de confirmar não grava nada.
+2. Vale para o navegador, o quiosque e o ponto sem localização. Não há opção de desligar.
+3. Os desafios são sorteados a cada tentativa, para impedir foto, vídeo e máscara.
+4. Falha na prova de vida ou rosto que não confere conta como tentativa. Com 3 tentativas falhas a validação bloqueia e a pessoa procura o RH ou o gestor. Cada recusa vai para a auditoria.
+5. **Cadastro:** não é possível criar usuário sem cadastrar o rosto com prova de vida. O RH pode refazer o cadastro na edição do colaborador. Usuário sem rosto cadastrado não consegue bater o ponto.
+6. O comprovante registra "validação facial com prova de vida aprovada" e a similaridade.
+7. No protótipo a câmera é simulada: os botões "fiz o gesto", "foto ou vídeo" e "outra pessoa" permitem testar cada resultado. No app real a prova de vida e a comparação facial precisam de um serviço próprio (Q-22).
+8. **LGPD:** com a validação obrigatória, o dado biométrico deixa de ser opcional. O parecer jurídico da Q-13 passa a ser requisito para o lançamento.
 
 ## RN-11 · Alertas de jornada (CLT)
 
@@ -197,7 +223,7 @@ A cerca é o raio configurado ao redor da unidade do colaborador. Quem trabalha 
 ## RN-18 · Verificação da batida
 
 1. **Localização** obrigatória (RN-10).
-2. **Selfie** a cada batida quando ativada em Configurações (simulada no protótipo).
+2. **Validação facial com prova de vida** a cada batida, sempre ativa (RN-20).
 3. **Aparelho:** batida em aparelho diferente do habitual gera alerta.
 4. **Offline:** se permitido, a batida fica salva no aparelho como "aguardando sincronização" e é enviada quando a conexão volta. Se não for permitido, a batida é bloqueada.
 5. **Janela de entrada:** se configurada, a entrada só é liberada a partir de X minutos antes do horário.

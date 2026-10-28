@@ -6,6 +6,26 @@ Diário das decisões tomadas ao validar o protótipo. Mais recente no topo.
 
 ---
 
+## Rodada 8 · Validação facial obrigatória com prova de vida
+
+**Versão do protótipo:** v8 · **Pedido:** validar o rosto com teste de vida antes de bater o ponto, e exigir o cadastro facial para cadastrar usuário.
+
+| # | Tema | Decisão | Motivo | Status |
+|---|---|---|---|---|
+| V8-01 | Validação na batida | Obrigatória e sempre ativa, antes de confirmar, no navegador, no quiosque e no ponto sem localização | Pedido da AxSys; substitui a selfie opcional | ✅ simulada |
+| V8-02 | Prova de vida | Dois desafios sorteados a cada tentativa (piscar, virar a cabeça, sorrir, abrir a boca) | Impede foto, vídeo e máscara | ✅ simulada |
+| V8-03 | Falhas | Prova reprovada ou rosto que não confere: recusa, auditoria e 3 tentativas. Depois bloqueia | Antifraude sem travar para sempre: o RH desbloqueia | ✅ |
+| V8-04 | Cadastro | Não é possível criar usuário sem cadastrar o rosto com prova de vida. O RH pode refazer na edição | Pedido da AxSys | ✅ |
+| V8-05 | Sem rosto cadastrado | A pessoa não bate o ponto e é orientada a procurar o RH | Evita validar contra nada | ✅ |
+| V8-06 | Configuração | A opção de ligar e desligar a selfie foi removida | A validação passou a ser obrigatória | ✅ |
+| V8-07 | Dados de teste | Dados do protótipo renovados (nova versão de armazenamento); os 10 usuários já têm rosto cadastrado | Novo campo no cadastro | ✅ |
+
+### Pendências desta rodada
+- Q-13 ficou mais crítica: a biometria deixou de ser opcional. O parecer jurídico vira requisito de lançamento.
+- Q-22: método alternativo para quem não pode usar a câmera e como será a prova de vida real.
+
+---
+
 ## Rodada 7 · Prazo do gestor no ponto sem localização
 
 **Versão do protótipo:** v7 · **Origem:** respostas da AxSys à pergunta Q-21.

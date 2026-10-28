@@ -55,18 +55,18 @@ flowchart LR
 
 | Perfil | O que faz | Telas principais |
 |---|---|---|
-| 👤 **Colaborador** | Registra o ponto com **localização obrigatória, mapa e selfie**, confere o espelho, pede ajustes e ausências, vê a escala | Registrar ponto · Meu espelho · Ajustes · Ausências · Escala · Alertas |
+| 👤 **Colaborador** | Registra o ponto com **localização obrigatória, mapa e validação facial com prova de vida**, confere o espelho, pede ajustes e ausências, vê a escala | Registrar ponto · Meu espelho · Ajustes · Ausências · Escala · Alertas |
 | 🧭 **Gestor** | Acompanha a equipe, decide ajustes, ausências e espelhos, monta escalas | Minha equipe · Painel de exceções · Aprovações · Escalas |
 | 🗂️ **RH** | Cadastra pessoas e organização, fecha o mês, gera relatórios | Visão geral · Colaboradores · Organização · Relatórios · Integrações · Configurações |
 | 🛠️ **Administrador** | Tudo do RH, mais segurança | Mesmas do RH |
 
 ### O que o protótipo já cobre
 
-Resultado do [estudo de 10 sistemas de ponto](docs/09-benchmark-concorrentes.md) (UKG, Deputy, Connecteam, Clockify, Jibble, Homebase, When I Work, Rippling, QuickBooks Time e Buddy Punch), mais a referência brasileira (Pontomais e Portaria 671). São **106 funções catalogadas** na [matriz de funcionalidades](docs/10-matriz-de-funcionalidades.md).
+Resultado do [estudo de 10 sistemas de ponto](docs/09-benchmark-concorrentes.md) (UKG, Deputy, Connecteam, Clockify, Jibble, Homebase, When I Work, Rippling, QuickBooks Time e Buddy Punch), mais a referência brasileira (Pontomais e Portaria 671). São **107 funções catalogadas** na [matriz de funcionalidades](docs/10-matriz-de-funcionalidades.md).
 
 | Grupo | Funções |
 |---|---|
-| **Registro** | Web, quiosque com PIN, selfie, QR Code, offline, projeto por batida, comprovante numerado |
+| **Registro** | Web, quiosque com PIN, validação facial com prova de vida (também no cadastro), QR Code, offline, projeto por batida, comprovante numerado |
 | **Local e antifraude** | Localização obrigatória com mapa, cerca virtual por unidade, três modos para batida fora da área, alerta de aparelho diferente. Sem localização, o ponto fica pendente e só vale após aprovação justificada do gestor |
 | **Regras da CLT** | Tolerância, intervalo, 6h sem pausa, extras 50% e 100%, adicional noturno, interjornada, banco de horas, feriados |
 | **Escalas e ausências** | Escala semanal, folga e plantão, férias com saldo, atestado, licença, abono, folga compensatória |

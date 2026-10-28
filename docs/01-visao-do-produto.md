@@ -36,14 +36,14 @@ Um sistema web em que o colaborador registra o ponto pelo navegador, o gestor re
 - Relatório mensal por colaborador
 - Log de auditoria
 - Localização obrigatória em cada batida, com mapa e cerca virtual. Sem localização, o ponto só vale depois da aprovação justificada do gestor
-- Selfie de verificação (ativa por padrão, sujeita a parecer jurídico)
+- Validação facial com prova de vida em toda batida e cadastro facial obrigatório para criar usuário (sujeito a parecer jurídico)
 - Escalas, ausências, banco de horas e fechamento mensal
 - Funcionamento em qualquer navegador e aparelho, como app web instalável
 
 ## Fora do escopo (por enquanto)
 
 - Aplicativo nativo para celular (o app web instalável cobre computador e celular)
-- Biometria digital e relógio físico (a selfie de verificação está no escopo, sujeita a parecer jurídico)
+- Biometria digital e relógio físico (a validação facial pela câmera está no escopo, sujeita a parecer jurídico)
 - Integração real com folha de pagamento (a primeira versão exporta eventos)
 - Escalas complexas (12x36, turnos rotativos)
 - Homologação legal de ponto eletrônico (Portaria 671/MTE). Precisa de estudo jurídico antes de qualquer promessa comercial. Ver [perguntas em aberto](08-perguntas-em-aberto.md).

@@ -16,7 +16,9 @@ sequenceDiagram
         C-->>S: Latitude, longitude e precisão
         S-->>C: Mostra mapa com a posição
         C->>S: Clica no botão destacado
-        S-->>C: Pede confirmação com hora e mapa
+        S-->>C: Validação facial com prova de vida (2 desafios)
+        C->>S: Faz os gestos
+        S-->>C: Rosto confere: pede confirmação com hora e mapa
         C->>S: Confirma
         S->>S: Grava hora do servidor, local e log
         S-->>C: Comprovante com número e local
@@ -66,7 +68,9 @@ flowchart LR
     RH[RH abre Colaboradores] --> N[Novo colaborador]
     N --> V{Nome, e-mail válido e único?}
     V -->|Não| E[Mostra erro no formulário]
-    V -->|Sim| OK[Cria com senha provisória]
+    V -->|Sim| FC{Rosto cadastrado com prova de vida?}
+    FC -->|Não| E2[Não salva: cadastro facial obrigatório]
+    FC -->|Sim| OK[Cria com senha provisória]
     OK --> L[Registra na auditoria]
 ```
 
@@ -83,7 +87,7 @@ sequenceDiagram
         S-->>K: Mensagem de erro
     else Válido
         S-->>K: Próxima batida com mapa da unidade
-        K-->>C: Pede selfie, se ativa
+        K-->>C: Validação facial com prova de vida
         C->>K: Confirma
         S->>S: Grava com local da unidade e origem "quiosque"
         S-->>K: Comprovante
@@ -160,7 +164,7 @@ sequenceDiagram
     C->>S: Tenta bater o ponto
     S-->>C: Localização negada ou indisponível, botão bloqueado
     C->>S: Registrar sem localização
-    S-->>C: Pede selfie e justificativa obrigatória
+    S-->>C: Pede validação facial e justificativa obrigatória
     C->>S: Envia
     S->>S: Guarda como PENDENTE (não conta no espelho)
     S-->>C: Protocolo "pendente de aprovação"
