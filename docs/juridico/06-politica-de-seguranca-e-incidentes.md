@@ -1,6 +1,6 @@
 # Política de Segurança da Informação e de Resposta a Incidentes
 
-> **Minuta aprovada pelo advogado, conforme informado pelo dono em [data].** Advogado responsável pela revisão: Dr. Dinalto Gomes Martins, OAB/SP nº 389.139. Falta a assinatura do advogado, que só ele pode apor. Parte técnica a validar por quem opera a infraestrutura. Aplica-se à AxSys IT como operadora do AxPonto.
+> **Minuta aprovada pelo advogado, conforme informado pelo dono em [data]. Inscrição conferida no CNA em 28/10/2026: situação regular.** Advogado responsável pela revisão: Dr. Dinalto Gomes Martins, OAB/MS nº 28.925. Falta a assinatura do advogado, que só ele pode apor. Parte técnica a validar por quem opera a infraestrutura. Aplica-se à AxSys IT como operadora do AxPonto.
 
 ## 1. Princípios
 

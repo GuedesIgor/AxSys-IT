@@ -1,6 +1,6 @@
 # Resumo para o advogado responsável
 
-**Para:** Dr. Dinalto Gomes Martins, advogado (OAB/SP nº 389.139)
+**Para:** Dr. Dinalto Gomes Martins, advogado (OAB/MS nº 28.925)
 **De:** AxSys IT
 **Assunto:** AxPonto, sistema de registro de ponto vendido como serviço (SaaS). Revisão das minutas e parecer sobre biometria facial.
 **Situação:** minutas elaboradas pela equipe de produto com apoio do Claude. Segundo o dono, o advogado leu este resumo e aprovou. **Pendentes:** assinatura do advogado e os campos entre colchetes (CNPJ, preço).

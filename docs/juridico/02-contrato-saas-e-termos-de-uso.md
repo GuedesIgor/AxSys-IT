@@ -1,6 +1,6 @@
 # Contrato de Prestação de Serviços SaaS e Termos de Uso do AxPonto
 
-> **Minuta aprovada pelo advogado, conforme informado pelo dono em [data].** Advogado responsável pela revisão: Dr. Dinalto Gomes Martins, OAB/SP nº 389.139. Falta a assinatura do advogado, que só ele pode apor. Contrato entre empresas (não é relação de consumo). Os valores, prazos e percentuais entre colchetes são propostas a decidir.
+> **Minuta aprovada pelo advogado, conforme informado pelo dono em [data]. Inscrição conferida no CNA em 28/10/2026: situação regular.** Advogado responsável pela revisão: Dr. Dinalto Gomes Martins, OAB/MS nº 28.925. Falta a assinatura do advogado, que só ele pode apor. Contrato entre empresas (não é relação de consumo). Os valores, prazos e percentuais entre colchetes são propostas a decidir.
 
 ## Partes
 

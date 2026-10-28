@@ -1,6 +1,6 @@
 # Modelo de Relatório de Impacto à Proteção de Dados Pessoais (RIPD)
 
-> **Minuta aprovada pelo advogado, conforme informado pelo dono em [data].** Advogado responsável pela revisão: Dr. Dinalto Gomes Martins, OAB/SP nº 389.139. Falta a assinatura do advogado, que só ele pode apor. Modelo fornecido pela AxSys IT (operadora) para que cada **cliente (controlador)** preencha, revise e assine. Base: LGPD, art. 5, XVII e art. 38. Conteúdo base em [docs/11](../11-pacote-juridico-lgpd.md), seção 5.
+> **Minuta aprovada pelo advogado, conforme informado pelo dono em [data]. Inscrição conferida no CNA em 28/10/2026: situação regular.** Advogado responsável pela revisão: Dr. Dinalto Gomes Martins, OAB/MS nº 28.925. Falta a assinatura do advogado, que só ele pode apor. Modelo fornecido pela AxSys IT (operadora) para que cada **cliente (controlador)** preencha, revise e assine. Base: LGPD, art. 5, XVII e art. 38. Conteúdo base em [docs/11](../11-pacote-juridico-lgpd.md), seção 5.
 
 **Controlador:** [razão social do cliente]  **Encarregado:** [nome e contato]  **Data:** [data]  **Versão:** [1.0]
 **Operador:** AxSys IT  **Tratamento:** validação facial com prova de vida no registro de ponto
