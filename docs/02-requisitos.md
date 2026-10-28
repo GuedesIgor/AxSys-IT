@@ -140,7 +140,9 @@ Origem de cada um na [matriz de funcionalidades](10-matriz-de-funcionalidades.md
 | RNF-15 | Sem dependência de app nativo | Toda função da primeira versão roda no navegador. Câmera e GPS usam as permissões do próprio navegador |
 | RNF-16 | Caminho alternativo quando o aparelho ou a câmera não permite | Ver [Q-20](08-perguntas-em-aberto.md) e [Q-22](08-perguntas-em-aberto.md) |
 | RNF-17 | Template facial apagado no desligamento (até 30 dias) | Ver [docs/11](11-pacote-juridico-lgpd.md), seção 7 |
-| RNF-18 | Nenhuma foto de batida guardada por padrão. Só o modelo matemático e o resultado | Minimização (LGPD art. 6, III) |
+| RNF-18 | Foto de evidência da batida (um quadro, sem vídeo) guardada **cifrada por 30 dias** e apagada automaticamente, só para contestação. Chave de cifra própria, separada da do modelo facial | Respaldo jurídico com minimização (LGPD art. 6, III) |
+| RNF-26 | Acesso à foto de evidência só por RH ou administrador do cliente, com motivo informado e registro de acesso. O titular pode ver a própria foto | Segurança e direito de acesso |
+| RNF-27 | Contestação aberta suspende a exclusão da foto daquela batida até a decisão final (retenção por litígio), com registro do motivo | Preservar a prova |
 | RNF-19 | Gravar de imediato a marcação recebida, mesmo pendente, em registro imutável | Mitiga o risco da Portaria 671 (ver docs/11, seção 12) |
 | RNF-20 | Multiempresa: cada cliente só acessa os próprios dados, com isolamento na base | Produto vendido como serviço ([Q-03](08-perguntas-em-aberto.md)) |
 

@@ -6,6 +6,17 @@ Diário das decisões tomadas ao validar o protótipo. Mais recente no topo.
 
 ---
 
+## Rodada 13 · Foto de evidência por 30 dias
+
+| # | Tema | Decisão | Motivo | Status |
+|---|---|---|---|---|
+| V13-01 | Foto da batida | Guardar um quadro (sem vídeo) de cada batida, cifrado, por 30 dias, com exclusão automática | Respaldo jurídico em contestação. Muitos concorrentes guardam a selfie por batida | Decidido |
+| V13-02 | Proteção | Chave de cifra própria, acesso só de RH ou administrador do cliente com registro, titular pode ver a sua | Evitar vazamento | Decidido |
+| V13-03 | Contestação | Contestação aberta suspende a exclusão até a decisão final | Preservar a prova | Decidido |
+| V13-04 | Base legal | Art. 11, II, "d" e "g", a confirmar pelo advogado | Prazo e base ainda sem parecer | Aguardando |
+
+---
+
 ## Nota de 28/10/2026 · Conferência da inscrição do advogado
 
 Consulta ao CNA: OAB/MS nº 28.925, subseção Três Lagoas, situação regular. O dono informa que o advogado mora e atende em Ilha Solteira (SP) e em Três Lagoas (MS). Pendente: ele confirmar a situação da inscrição de SP e a necessidade de inscrição suplementar.

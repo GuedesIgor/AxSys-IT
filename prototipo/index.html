@@ -987,7 +987,7 @@ function faceBox(m,u,enr){
   var t=f&&f.t||0;
   if(f&&f.fail)o='<div class="err" role="alert" style="margin-bottom:8px">'+f.fail+(t>=3?' Limite de 3 tentativas atingido.':' Tentativa '+t+' de 3.')+'</div>';
   var tem=enr&&u.face?'Cadastro facial feito em '+fdate(u.face.em)+'. Refaça só se precisar trocar.':'';
-  return o+'<div class="selfie"><div><b>'+(enr?'Cadastro facial com prova de vida (obrigatório)':'Validação facial com prova de vida (obrigatória)')+'</b><div class="muted">'+(enr?'Sem o cadastro do rosto a pessoa não consegue bater o ponto. '+tem:'Antes de registrar, confirme que é você e que está presente ao vivo. A imagem só é usada para conferir a identidade.')+' A câmera é simulada.</div></div>'+(t>=3?'':'<button class="btn sm primary" data-act="facego">'+(enr?(u.face?'Refazer cadastro facial':'Cadastrar rosto'):'Iniciar validação facial')+'</button>')+exc+'</div>';
+  return o+'<div class="selfie"><div><b>'+(enr?'Cadastro facial com prova de vida (obrigatório)':'Validação facial com prova de vida (obrigatória)')+'</b><div class="muted">'+(enr?'Sem o cadastro do rosto a pessoa não consegue bater o ponto. '+tem:'Antes de registrar, confirme que é você e que está presente ao vivo. Um quadro da batida fica guardado, cifrado, por 30 dias, só para o caso de contestação.')+' A câmera é simulada.</div></div>'+(t>=3?'':'<button class="btn sm primary" data-act="facego">'+(enr?(u.face?'Refazer cadastro facial':'Cadastrar rosto'):'Iniciar validação facial')+'</button>')+exc+'</div>';
 }
 function punchCtx(m){
   var u=U(m.uid),l=m.local||loc,ar=areaInfo(u,l),c=S.cfg,bloq='';

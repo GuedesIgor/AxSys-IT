@@ -22,7 +22,7 @@ Contato de privacidade da AxSys IT: [e-mail]. Encarregado: [nome, se indicado, o
 | Justificativas e decisões de gestores | Ajustes e exceções | Registro e auditoria |
 | Registros de acesso | Uso do sistema | Segurança e cumprimento legal |
 
-Não guardamos foto nem vídeo das batidas por padrão.
+**Foto de evidência:** guardamos uma foto de cada batida, cifrada, por 30 dias, apenas para o caso de contestação do registro. Não guardamos vídeo.
 
 ## 3. Bases legais
 
@@ -37,6 +37,7 @@ Apenas com os **suboperadores** necessários ao serviço (hospedagem e envio de 
 | Dado | Prazo |
 |---|---|
 | Modelo facial | Até o desligamento da pessoa, eliminado em até 30 dias |
+| Foto de evidência da batida | 30 dias, apagada automaticamente. Se houver contestação aberta, mantida até a decisão final |
 | Registros de ponto e resultado da validação | Pelo prazo legal de guarda de registros de jornada, definido pela empresa |
 | Registros de acesso | Mínimo de [6] meses |
 

@@ -60,7 +60,7 @@ Fontes de mercado sobre certificação são em boa parte material de fornecedore
 | Dado | Onde | Como |
 |---|---|---|
 | Template facial | Base própria (ou do fornecedor, se for o desenho do contrato), separada dos dados de jornada | Cifrado, chave em cofre, região no Brasil |
-| Foto da captura | Não guardar | Descartar logo após a comparação |
+| Foto de evidência da batida | Base própria, separada, em servidor no Brasil | Um quadro (sem vídeo), cifrada com chave própria, apagada automaticamente em 30 dias. Acesso restrito e registrado. Contestação aberta suspende a exclusão |
 | Resultado da validação | Com a batida | Sem dado biométrico |
 | Log de acesso | Registro de auditoria | Imutável |
 
@@ -92,7 +92,7 @@ O dono decidiu **desenvolver o leitor facial próprio**, que pede gestos (piscar
 | 4 | Detectar câmera virtual e vídeo injetado, tanto quanto possível no navegador | Ataque mais comum contra prova de vida |
 | 5 | A comparação do rosto com o cadastro usa o modelo guardado (template) e um limiar medido | Equilíbrio entre falsa aceitação e falsa rejeição |
 | 6 | **Verificar a licença** de cada modelo e biblioteca antes de usar | Alguns modelos faciais populares só podem ser usados em pesquisa, não em produto comercial |
-| 7 | Descartar a imagem logo após a conferência | Minimização |
+| 7 | Descartar vídeo e quadros intermediários logo após a conferência. Guardar só **um quadro de evidência**, cifrado, por 30 dias | Respaldo em contestação com minimização |
 | 8 | Tudo processado em servidor no Brasil | LGPD |
 
 ### Obrigação de testar antes de vender

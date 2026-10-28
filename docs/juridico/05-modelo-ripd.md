@@ -10,11 +10,11 @@
 | Item | Resposta |
 |---|---|
 | Finalidade | Confirmar a identidade de quem registra o ponto e evitar fraude |
-| Dados | Modelo facial, resultado da prova de vida, pontuação de similaridade, data e hora, aparelho. Sem foto armazenada |
+| Dados | Modelo facial, resultado da prova de vida, pontuação de similaridade, data e hora, aparelho e uma foto de evidência por batida (30 dias, cifrada) |
 | Titulares | [número aproximado] empregados e estagiários |
 | Frequência | Cadastro (uma vez) e [2 a 4] vezes por dia |
 | Compartilhamento | Operador e suboperadores do Anexo B do contrato |
-| Retenção | Modelo até o desligamento + 30 dias. Resultado pelo prazo do registro de jornada |
+| Retenção | Modelo até o desligamento + 30 dias. Foto de evidência 30 dias. Resultado pelo prazo do registro de jornada |
 | Local do tratamento | [Brasil / outro] |
 
 ## 2. Base legal escolhida pelo controlador

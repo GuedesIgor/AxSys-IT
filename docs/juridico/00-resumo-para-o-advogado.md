@@ -11,7 +11,7 @@
 1. Sistema web para empresas registrarem o ponto de seus empregados, pelo navegador do celular ou computador e por quiosque.
 2. Cada batida exige **localização do aparelho** e **validação facial com prova de vida**. O cadastro do rosto é obrigatório para criar o usuário.
 3. Sem localização, sem câmera ou após 3 recusas da validação facial, a batida fica **pendente** até o gestor aprovar com justificativa. O RH pode autorizar **método alternativo (PIN)** a uma pessoa, sem registrar o motivo.
-4. Guardamos só o modelo matemático do rosto (sem foto), cifrado, apagado até 30 dias após o desligamento.
+4. Guardamos o modelo matemático do rosto (apagado até 30 dias após o desligamento) e **uma foto de evidência de cada batida por 30 dias**, cifrada, para respaldo em contestação. Sem vídeo.
 5. A AxSys vende o serviço a empresas. **Cada cliente é controlador** e indica o seu encarregado. **A AxSys é operadora.**
 
 ## O que pedimos que o senhor faça
@@ -47,6 +47,7 @@
 9. **Menores.** Como tratar estagiários e jovens aprendizes menores de 18 anos?
 10. **Certificação.** O que mudar nos contratos e na publicidade enquanto o REP-P não for certificado no INPI?
 
+12. **Foto de evidência.** Guardar uma foto por batida por 30 dias, cifrada, sustenta-se em quais bases (art. 11, II, "d" e "g")? O prazo de 30 dias é adequado frente ao prazo de contestação, e a retenção por litígio está bem desenhada?
 11. **Leitor facial próprio.** Sem certificação independente de resistência a fraude, quais cuidados jurídicos devemos ter na promessa ao cliente e na cláusula de responsabilidade? Propomos documentar testes internos de ataque e não prometer "prova de vida certificada".
 
 ## Material de apoio

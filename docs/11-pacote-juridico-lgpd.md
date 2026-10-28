@@ -14,7 +14,7 @@ Resolve, no que cabe ao produto, as perguntas [Q-13](08-perguntas-em-aberto.md) 
 |---|---|
 | Base legal | Não depender de uma só. Adotar o art. 11, II, "g" da LGPD (prevenção à fraude na autenticação) como base principal **e** manter alternativa equivalente a quem não quiser usar o rosto, o que reforça necessidade e proporcionalidade |
 | Biometria obrigatória sem saída | **Evitar.** É o desenho mais frágil: risco de discriminação (LGPD art. 6, IX; Lei Brasileira de Inclusão) e de o empregador ficar sem registro de jornada |
-| O que guardar | Só o **modelo matemático do rosto** (template), cifrado, em base separada. Sem foto por padrão |
+| O que guardar | O **modelo matemático do rosto** (template) e uma **foto de evidência da batida por 30 dias**, ambos cifrados, em base separada, com chaves diferentes |
 | Prazo | Template apagado no desligamento (até 30 dias). Resultado da validação guardado com a batida pelo prazo do registro de jornada |
 | Papéis | Empresa cliente é **controladora**; AxSys é **operadora** (se SaaS). Depende de [Q-03](08-perguntas-em-aberto.md) |
 | Antes do lançamento | RIPD assinado, aviso ao colaborador, contratos com operadores, encarregado indicado e teste de falha de segurança |
@@ -60,7 +60,7 @@ A AxSys também é controladora dos dados dos próprios usuários da conta (por 
 | J-03 | **Método alternativo autorizado pelo RH** (PIN com confirmação no quiosque), com revisão periódica. **Não se registra o motivo**, para não tratar dado de saúde | Rodada 9 |
 | J-04 | O pedido ao RH de método alternativo **não exige explicação**. Basta pedir | Texto do aviso |
 | J-05 | O template facial é apagado no desligamento | Requisito RNF-17 |
-| J-06 | Nenhuma foto guardada por padrão | Requisito RNF-18 |
+| J-06 | Foto de evidência da batida guardada por **30 dias**, cifrada, para respaldo em contestação (decisão do dono, Rodada 13) | RNF-18, RNF-26, RNF-27 |
 | J-07 | O resultado da validação (aprovada, reprovada, método alternativo) fica gravado na batida e na auditoria | Já implementado |
 | J-08 | Nunca usar o rosto para outra finalidade (por exemplo, avaliar humor, desempenho ou presença contínua) | Cláusula de contrato e aviso |
 
@@ -75,7 +75,7 @@ A AxSys também é controladora dos dados dos próprios usuários da conta (por 
 | Item | Conteúdo |
 |---|---|
 | Finalidade | Confirmar a identidade de quem registra o ponto, evitando que um colega bata por outro, e garantir a integridade do registro de jornada |
-| Dados tratados | Template facial (modelo matemático), resultado da prova de vida, pontuação de similaridade, data e hora, aparelho. **Sem foto armazenada por padrão** |
+| Dados tratados | Template facial (modelo matemático), resultado da prova de vida, pontuação de similaridade, data e hora, aparelho. **Foto de evidência de cada batida, cifrada, apagada em 30 dias** |
 | Titulares | Empregados, estagiários e demais pessoas que registram jornada |
 | Quando ocorre | No cadastro (uma vez) e a cada batida |
 | Compartilhamento | Operador (AxSys) e suboperador de prova de vida, sob contrato. Sem venda ou cessão a terceiros |
@@ -86,7 +86,7 @@ A AxSys também é controladora dos dados dos próprios usuários da conta (por 
 | Pergunta | Resposta proposta |
 |---|---|
 | O objetivo se alcança com menos dado? | Em parte: PIN e QR são mais frágeis (podem ser emprestados). O rosto reduz fraude. Por isso há alternativa para quem não puder ou não quiser |
-| O dado coletado é o mínimo? | Sim: só template, sem foto, sem localização do rosto, sem vídeo |
+| O dado coletado é o mínimo? | Em parte: template e uma foto de evidência por batida, apagada em 30 dias. Sem vídeo e sem outra imagem. A foto serve só para contestação e apuração de fraude |
 | Há alternativa equivalente? | Sim: método alternativo autorizado pelo RH |
 | Quem decide a exceção? | RH (método alternativo) e gestor (batida pontual), ambos com justificativa registrada |
 
@@ -130,7 +130,7 @@ Campos para preencher pelo cliente: data, nome do encarregado, parecer, nome do 
 | Dado | Prazo | Justificativa |
 |---|---|---|
 | Template facial | Até o desligamento da pessoa, apagado em até 30 dias | Finalidade acaba com o vínculo |
-| Foto da batida | **Não guardar.** Se o jurídico exigir evidência, no máximo 30 dias, cifrada | Minimização |
+| Foto de evidência da batida (um quadro, sem vídeo), inclusive de tentativa recusada | **30 dias**, cifrada, apagada automaticamente. Se houver contestação aberta, mantida até a decisão final | Respaldo jurídico em contestação. Base a confirmar: art. 11, II, "d" (exercício regular de direitos) e "g" |
 | Resultado da validação (aprovada, reprovada, alternativo, pontuação) | Junto com o registro de ponto | Prova do registro. A prescrição trabalhista (CF art. 7, XXIX: 5 anos na vigência, até 2 anos após o fim do contrato) orienta o prazo; **confirmar com o advogado** |
 | Log de acesso ao dado biométrico | 6 meses no mínimo (Marco Civil, art. 15, para logs de aplicação) | Segurança e investigação |
 | Pedido de exclusão | Atendido em até 15 dias, salvo obrigação de guarda | LGPD art. 18 e 19 |
@@ -145,7 +145,7 @@ Campos para preencher pelo cliente: data, nome do encarregado, parecer, nome do 
 >
 > **Para quê:** evitar que outra pessoa registre o ponto por você e proteger a integridade da sua jornada. Não usamos o seu rosto para nenhuma outra finalidade.
 >
-> **O que guardamos:** apenas o modelo matemático do rosto, que não é uma foto e não reconstrói a sua imagem. Por padrão, não guardamos fotos nem vídeos das batidas.
+> **O que guardamos:** o modelo matemático do rosto, que não reconstrói a sua imagem, e **uma foto de cada batida por 30 dias**, cifrada, usada só se alguém contestar o registro. Não guardamos vídeos. Passados 30 dias a foto é apagada automaticamente.
 >
 > **Por quanto tempo:** o modelo é apagado até 30 dias depois do seu desligamento. O resultado de cada conferência fica junto com o registro do ponto pelo prazo legal.
 >

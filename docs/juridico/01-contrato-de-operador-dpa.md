@@ -71,7 +71,7 @@ A CONTROLADORA pode, mediante aviso de [15] dias e uma vez por ano, solicitar in
 ## 11. Término
 
 11.1. Encerrado o contrato, a OPERADORA, a critério da CONTROLADORA, **devolve ou elimina** os Dados Pessoais em até [30] dias, e comprova a eliminação por escrito.
-11.2. O **template facial** é eliminado quando a CONTROLADORA registrar o desligamento do Titular, em até 30 dias.
+11.2. O **template facial** é eliminado quando a CONTROLADORA registrar o desligamento do Titular, em até 30 dias. A **foto de evidência** de cada batida é eliminada automaticamente em 30 dias, salvo contestação aberta, hipótese em que é mantida até a decisão final.
 11.3. Poderão ser mantidos os dados cuja guarda a lei exigir, pelo prazo legal.
 
 ## 12. Responsabilidade

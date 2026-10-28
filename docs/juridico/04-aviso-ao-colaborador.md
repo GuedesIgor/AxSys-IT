@@ -12,11 +12,11 @@ Para registrar o seu ponto, o sistema compara o seu rosto com um **modelo matem�
 
 **Para que serve:** evitar que outra pessoa registre o ponto por você e proteger a integridade da sua jornada. Não usamos o seu rosto para nenhuma outra finalidade, como avaliar desempenho, humor ou presença contínua.
 
-**O que guardamos:** apenas o modelo matemático do rosto, que não é uma foto e não permite refazer a sua imagem, e o resultado de cada conferência. Por padrão, não guardamos fotos nem vídeos das batidas.
+**O que guardamos:** apenas o modelo matemático do rosto, que não é uma foto e não permite refazer a sua imagem, e o resultado de cada conferência. Guardamos também **uma foto de cada batida por 30 dias**, cifrada, usada só se o registro for contestado. Não guardamos vídeos. Depois de 30 dias a foto é apagada automaticamente.
 
 **Por quanto tempo:** o modelo é apagado em até 30 dias depois do seu desligamento. O resultado de cada conferência fica junto com o registro do ponto pelo prazo legal.
 
-**Quem acessa:** apenas os sistemas necessários à conferência e as pessoas autorizadas. Nada é vendido nem usado para outros fins.
+**Quem acessa:** apenas os sistemas necessários à conferência e, no caso da foto, o RH ou o administrador da empresa, com registro de cada acesso. Você pode pedir para ver a sua própria foto. Nada é vendido nem usado para outros fins.
 
 **Você tem alternativa.** Se não puder ou não quiser usar o rosto, peça ao RH um método alternativo. Você **não precisa explicar o motivo** e não será prejudicado por isso.
 
