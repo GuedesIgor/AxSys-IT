@@ -38,7 +38,7 @@ Por isso a cotação é decisiva. Alternativas para controlar o custo:
 | Teste | 30 dias gratuitos | Prática comum |
 | Fidelidade | Nenhuma, aviso de 30 dias | Prática do mercado (Genyo e outros) |
 | Desconto anual | 15%, pago adiantado | Comum em SaaS |
-| Nível de serviço | 99,5% de disponibilidade | Faixa usual de SaaS para pequenas e médias empresas; 99,9% custa mais caro de entregar |
+| Nível de serviço | 99,5% de disponibilidade (com hospedagem própria, ver [docs/14](14-hospedagem-iis.md), seção 3: sugerido 99% no piloto) | Faixa usual de SaaS para pequenas e médias empresas; 99,9% custa mais caro de entregar |
 | Suporte | Dias úteis, 9h às 18h; primeira resposta em 1 dia útil, falha que impeça bater ponto em 4 horas úteis | Realista para uma equipe pequena |
 | Crédito por indisponibilidade | 5% por ponto percentual abaixo, máximo 30% | Padrão de mercado |
 

@@ -153,6 +153,8 @@ flowchart LR
     O4[O4 Fechamento] --> RF47 & RF48
     O5[O5 Rastro] --> RF49 & RNF05
 ```
+| RNF-24 | Todo o sistema só é acessível por HTTPS com certificado válido | Câmera e localização do navegador exigem HTTPS |
+| RNF-25 | Nenhum recurso do front-end vem de servidor externo (fontes, scripts, mapas) | Diretriz sem fornecedores externos e privacidade do visitante |
 | RNF-21 | Desafio de prova de vida sorteado, assinado e de validade curta, verificado no servidor | Impede replay e adulteração no aparelho |
 | RNF-22 | Relatório de testes de fraude (foto, tela, vídeo, máscara, câmera virtual) e de viés antes de cada lançamento do leitor | Sem certificação independente ([docs/12](12-leitor-facial-proprio.md)) |
 | RNF-23 | Licença de cada modelo e biblioteca facial verificada para uso comercial | Evitar modelos restritos a pesquisa |

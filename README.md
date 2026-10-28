@@ -92,6 +92,7 @@ Resultado do [estudo de 10 sistemas de ponto](docs/09-benchmark-concorrentes.md)
 | [11 · Pacote jurídico (LGPD)](docs/11-pacote-juridico-lgpd.md) | RIPD, retenção, aviso, contratos, incidente e perguntas ao advogado | Rascunho, aguarda advogado |
 | [12 · Leitor facial próprio](docs/12-leitor-facial-proprio.md) | Requisitos, plano de testes e certificação do leitor próprio | Em planejamento |
 | [13 · Precificação](docs/13-precificacao.md) | Preços de mercado, custo da validação facial e proposta provisória | Proposta, depende de cotação |
+| [14 · Hospedagem no IIS](docs/14-hospedagem-iis.md) | Servidor próprio SRVAD1, riscos, publicação do protótipo | Decidido, faltam requisitos |
 | [Minutas jurídicas](docs/juridico/00-resumo-para-o-advogado.md) | Contrato de operador, contrato SaaS e termos, política de privacidade, aviso ao colaborador, modelo de RIPD e política de segurança | Minuta, aguarda revisão do advogado |
 | [10 · Matriz de funcionalidades](docs/10-matriz-de-funcionalidades.md) | Todas as funções encontradas e a cobertura no protótipo | Atualizado a cada rodada |
 
@@ -144,6 +145,7 @@ Estamos nas fases 1 a 3, que se repetem em ciclos curtos: ajustar o protótipo, 
 │   ├── 11-pacote-juridico-lgpd.md
 │   ├── 12-leitor-facial-proprio.md
 │   ├── 13-precificacao.md
+│   ├── 14-hospedagem-iis.md
 │   └── juridico/              ← minutas jurídicas para revisão do advogado
 ├── assets/
 │   └── brand/                 ← logo e favicon da AxSys IT (do axsys.com.br)

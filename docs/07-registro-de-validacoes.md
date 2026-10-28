@@ -6,6 +6,17 @@ Diário das decisões tomadas ao validar o protótipo. Mais recente no topo.
 
 ---
 
+## Rodada 12 · Hospedagem própria no IIS
+
+| # | Tema | Decisão | Motivo | Status |
+|---|---|---|---|---|
+| V12-01 | Hospedagem | Servidor próprio SRVAD1 com IIS, sem provedor de terceiros | Diretriz de não ter fornecedores externos | Decidido |
+| V12-02 | Alerta de segurança | Não expor o app em controlador de domínio; HTTPS obrigatório; cópias fora do local | Dado biométrico e exigência dos navegadores | Pendente de confirmação |
+| V12-03 | SLA | Sugestão de 99% no piloto, subindo depois de medir | Um servidor e um link dificilmente sustentam 99,5% | Aguardando decisão |
+| V12-04 | Protótipo | Fonte embutida e configuração `web.config` para o IIS. Sem requisição externa | Não depender de terceiros | Feito |
+
+---
+
 ## Rodada 11 · Sem fornecedores externos
 
 | # | Tema | Decisão | Motivo | Status |

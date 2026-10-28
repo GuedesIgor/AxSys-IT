@@ -2,6 +2,10 @@
 
 Protótipo navegável do sistema de registro de ponto web. Serve para validar requisitos, telas e fluxos **antes** de construir o app real.
 
+## Publicar no IIS
+
+Veja [docs/14](../docs/14-hospedagem-iis.md), seção 4. A pasta já traz o `web.config`. A fonte Inter vai embutida (licença SIL Open Font), então o protótipo não consulta servidores externos.
+
 ## Como abrir
 
 - **Local:** abra [`index.html`](index.html) no navegador. Não precisa instalar nada. Para o GPS real, sirva por `localhost` ou `https`.
