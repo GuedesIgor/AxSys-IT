@@ -219,6 +219,20 @@ Pontos que o advogado e o time técnico precisam conferir no texto oficial, pois
 
 ---
 
+## 14-A. Foto de evidência da batida: base legal, prazo e natureza (proposta para o advogado)
+
+**1. A foto é dado biométrico?** Resposta de trabalho: **tratar como sensível, por cautela.** A doutrina majoritária diz que uma foto comum não é dado biométrico; ela passa a ser quando é processada para identificar a pessoa. Na AxSys o mesmo quadro passa pela verificação facial, então a foto fica ligada a um tratamento biométrico. A ANPD ainda não tem regra específica (Radar Tecnológico 2024). Por isso: base do art. 11, cifragem com chave própria, acesso restrito e RIPD.
+
+**2. Base legal (construção).**
+- Art. 11, II, "d": exercício regular de direitos em processo judicial, administrativo ou arbitral. Cobre guardar a prova para uma eventual contestação.
+- Art. 11, II, "g": prevenção à fraude e segurança do titular, em processos de identificação e autenticação de cadastro em sistemas eletrônicos. É o fundamento da verificação em si; a guarda da foto como prova se apoia melhor em "d".
+- Consentimento (art. 11, I) **não** é a base principal: no vínculo de emprego ele é frágil por causa da subordinação. Fica só como reforço e a recusa tem alternativa (PIN autorizado pelo RH).
+- O cliente (controlador) escolhe e responde pela base; a AxSys (operador) a documenta no contrato e no aviso. Parecer do advogado pendente.
+
+**3. Prazo.** Nas plataformas pesquisadas (Pontotel, Tangerino, Ahgora, Pontomais) **não há prazo público de retenção da foto**. A Pontotel diz apenas que o armazenamento segue a duração do contrato. Referências: um edital público exige reconhecimento sem guardar a imagem; o registro de ponto em si fica pelo prazo trabalhista (5 anos, art. 7, XXIX da CF, a confirmar). Posição da AxSys: **30 dias por padrão**, mais restritivo que o mercado, com **suspensão da exclusão enquanto houver contestação aberta**. Pergunta ao advogado: o cliente pode configurar prazo maior (por exemplo, 90 dias) com justificativa? Registro do espelho, comprovante e AFD seguem o prazo legal, sem foto.
+
+**4. Fontes:** Confidata (biometria e LGPD), IDEC, Migalhas (caso Via Quatro), Pontotel (declaração de privacidade), Radar Tecnológico da ANPD. Todas secundárias; texto oficial a conferir.
+
 ## 14. Checklist de lançamento
 
 - [ ] Advogado revisou e assinou este pacote
