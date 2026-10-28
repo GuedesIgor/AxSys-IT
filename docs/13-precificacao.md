@@ -1,6 +1,6 @@
 # 13 · Precificação e nível de serviço
 
-> **Status:** proposta preliminar. O preço final só pode ser fechado depois da cotação do fornecedor de prova de vida ([doc 12](12-fornecedores-prova-de-vida.md)), porque cada validação facial tem custo.
+> **Status:** proposta preliminar. O preço final só pode ser fechado depois da cotação do fornecedor de prova de vida ([doc 12](12-leitor-facial-proprio.md)), porque cada validação facial tem custo.
 
 ## 1. O que o mercado cobra
 

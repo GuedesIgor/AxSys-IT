@@ -104,6 +104,6 @@ CONTROLADORA            OPERADORA
 
 | Suboperador | Serviço | País | Dados |
 |---|---|---|---|
-| [fornecedor de nuvem] | Hospedagem | [Brasil] | Todos, cifrados |
+| [provedor de hospedagem] | Hospedagem de servidor e banco de dados. Não acessa o modelo facial, cifrado com chave da AxSys | [Brasil] | Todos, cifrados |
 | Nenhum | A validação facial é feita por componente próprio, na infraestrutura da AxSys | Brasil | Captura facial durante a validação, processada e descartada |
 | [fornecedor de e-mail] | Envio de notificações | [a definir] | E-mail e nome |

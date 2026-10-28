@@ -154,5 +154,5 @@ flowchart LR
     O5[O5 Rastro] --> RF49 & RNF05
 ```
 | RNF-21 | Desafio de prova de vida sorteado, assinado e de validade curta, verificado no servidor | Impede replay e adulteração no aparelho |
-| RNF-22 | Relatório de testes de fraude (foto, tela, vídeo, máscara, câmera virtual) e de viés antes de cada lançamento do leitor | Sem certificação independente ([docs/12](12-fornecedores-prova-de-vida.md)) |
+| RNF-22 | Relatório de testes de fraude (foto, tela, vídeo, máscara, câmera virtual) e de viés antes de cada lançamento do leitor | Sem certificação independente ([docs/12](12-leitor-facial-proprio.md)) |
 | RNF-23 | Licença de cada modelo e biblioteca facial verificada para uso comercial | Evitar modelos restritos a pesquisa |

@@ -4,7 +4,7 @@
 **De:** AxSys IT
 **Assunto:** AxPonto, sistema de registro de ponto vendido como serviço (SaaS). Revisão das minutas e parecer sobre biometria facial.
 **Situação:** minutas elaboradas pela equipe de produto com apoio do Claude. Segundo o dono, o advogado leu este resumo e aprovou. **Pendentes:** número da OAB, assinatura do advogado e os campos entre colchetes (CNPJ, preço).
-**Atualização:** a validação facial será um **leitor próprio**, sem fornecedor externo de prova de vida (ver [docs/12](../12-fornecedores-prova-de-vida.md)). Isso altera a pergunta 7 e o risco de fraude; ver pergunta 11.
+**Atualização:** a validação facial será um **leitor próprio**, sem fornecedor externo de prova de vida (ver [docs/12](../12-leitor-facial-proprio.md)). Isso altera a pergunta 7 e o risco de fraude; ver pergunta 11.
 
 ## O produto em 5 linhas
 

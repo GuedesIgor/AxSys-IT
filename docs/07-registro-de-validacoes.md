@@ -6,6 +6,17 @@ Diário das decisões tomadas ao validar o protótipo. Mais recente no topo.
 
 ---
 
+## Rodada 11 · Sem fornecedores externos
+
+| # | Tema | Decisão | Motivo | Status |
+|---|---|---|---|---|
+| V11-01 | Diretriz | A AxSys desenvolve todas as funções por conta própria, sem fornecedores externos | Decisão do dono | Decidido |
+| V11-02 | Exceção de infraestrutura | Hospedagem e envio de e-mail continuam de terceiros, sem acesso ao rosto | Não existe alternativa prática | Decidido |
+| V11-03 | Certificação | Plano em três passos: testes internos, teste independente de fraude e REP-P no INPI | Só se diz "certificado" com carta ou registro | Decidido |
+| V11-04 | Modelo facial | Risco de treino: dados de rostos e licenças | LGPD e licença comercial | Pendente (Q-26) |
+
+---
+
 ## Rodada 10 · Leitor facial próprio e aprovação do advogado
 
 | # | Tema | Decisão | Motivo | Status |
@@ -23,7 +34,7 @@ Diário das decisões tomadas ao validar o protótipo. Mais recente no topo.
 
 | # | Tema | Decisão | Motivo | Status |
 |---|---|---|---|---|
-| V9-01 | Pacote jurídico | Criados [docs/11](11-pacote-juridico-lgpd.md) (RIPD, ROPA, retenção, aviso, contratos, incidente, perguntas ao advogado) e [docs/12](12-fornecedores-prova-de-vida.md) (critérios e prova de conceito) | Q-13 e Q-22 | Parcial: aguarda advogado |
+| V9-01 | Pacote jurídico | Criados [docs/11](11-pacote-juridico-lgpd.md) (RIPD, ROPA, retenção, aviso, contratos, incidente, perguntas ao advogado) e [docs/12](12-leitor-facial-proprio.md) (critérios e prova de conceito) | Q-13 e Q-22 | Parcial: aguarda advogado |
 | V9-02 | Batida sem validação facial | Pendente, com justificativa dos dois lados, mesmo fluxo e prazo do ponto sem localização | Evita travar a jornada e mantém decisão humana | Decidido|
 | V9-03 | Método alternativo | RH autoriza por pessoa, sem registrar o motivo, com revisão em 180 dias; confirmação por PIN | Acessibilidade sem tratar dado de saúde | Decidido|
 | V9-04 | Marcação imediata | Requisito de gravar de imediato a marcação recebida, mesmo pendente (RNF-19) | Risco com a Portaria 671 | Parcial: conferir com advogado |

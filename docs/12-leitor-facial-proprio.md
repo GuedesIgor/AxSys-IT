@@ -1,4 +1,4 @@
-# 12 · Fornecedores de prova de vida e comparação facial
+# 12 · Leitor facial próprio e prova de vida
 
 > **Status:** Em elaboração: critérios e plano de prova de conceito prontos. **Nenhum fornecedor foi escolhido.** Preços, disponibilidade em região brasileira e cartas de certificação **não foram verificados** e precisam ser pedidos a cada fornecedor.
 
@@ -70,7 +70,15 @@ Fontes de mercado sobre certificação são em boa parte material de fornecedore
 - Se o produto exigirá hospedagem somente no Brasil.
 - Quem paga o custo por validação e como entra no preço.
 
-## 7. Decisão: leitor facial próprio (Rodada 10)
+## 7. Decisão: tudo desenvolvido pela AxSys (Rodadas 10 e 11)
+
+**Diretriz do dono (Rodada 11):** a AxSys desenvolve por conta própria todas as funções do produto, **sem fornecedores externos**. Isso inclui o leitor facial, a prova de vida, o cálculo de jornada e as integrações. Depois de construído, o sistema passa por uma bateria completa de testes para certificação (seção 8).
+
+**O que continua sendo de terceiros, e por quê:** servidor e banco de dados (hospedagem) e envio de e-mail. A AxSys não opera data center nem servidor de e-mail confiável. Esses itens entram como **hospedagem**, sem acesso ao rosto: o modelo facial é cifrado com chave controlada pela AxSys. A escolha deve privilegiar hospedagem no Brasil. Ver Q-25.
+
+**Risco do modelo facial próprio:** treinar um reconhecedor de rostos do zero exige muitos rostos de treino. Usar imagens de terceiros esbarra na LGPD e em licenças. Caminhos possíveis: (a) usar modelo aberto com licença comercial permissiva e ajustá-lo; (b) treinar com voluntários que consentiram por escrito, o que limita a qualidade; (c) técnicas clássicas de menor precisão. A decisão fica para a prova de conceito técnica (Q-26).
+
+## 7.1 Leitor facial próprio (Rodada 10)
 
 O dono decidiu **desenvolver o leitor facial próprio**, que pede gestos (piscar, virar o rosto, sorrir) para comprovar que é uma pessoa viva e não foto nem vídeo. **Não haverá fornecedor externo de prova de vida na primeira versão.** A comparação por fornecedor continua válida como opção futura para clientes mais exigentes.
 
@@ -97,6 +105,26 @@ Sem laboratório independente, a confiança vem de **teste próprio documentado*
 4. Repetir a cada mudança relevante do leitor.
 5. Considerar um teste independente antes de vender para clientes de alto risco.
 
-### O que muda no discurso
+### O que muda no discurso (até haver certificação)
 
 Não prometer "prova de vida certificada". Dizer "prova de vida com desafios aleatórios verificados no servidor, testada contra fotos, vídeos e máscaras". Isso vale para o site, o contrato e o relatório de impacto.
+
+## 8. Plano de testes para certificação
+
+"Certificar" tem três sentidos diferentes, e cada um pede um passo:
+
+| Certificação | O que é | Como obter |
+|---|---|---|
+| Teste de resistência a fraude (ISO/IEC 30107-3) | Laboratório independente ataca o leitor e emite carta | Contratar um laboratório de teste. **Não é fornecedor do produto**, é verificador externo |
+| REP-P no INPI (Portaria MTP 671/2021) | Registro do programa como ponto eletrônico | Processo no INPI e atendimento ao anexo técnico |
+| Segurança da informação (por exemplo ISO/IEC 27001) | Certificação de gestão de segurança | Auditoria por certificadora, quando houver cliente que exija |
+
+### Ordem proposta
+
+1. **Testes internos** (antes de qualquer cliente): ataques com foto, tela, vídeo, replay, máscara e câmera virtual; falsa aceitação e falsa rejeição por idade e tom de pele; carga e desempenho; segurança (teste de intrusão); isolamento entre clientes.
+2. **Relatório interno** versionado, entregue a quem pedir.
+3. **Piloto** com um cliente pequeno, com aviso e método alternativo.
+4. **Teste independente** de resistência a fraude, para poder dizer "certificado" com base em carta de laboratório.
+5. **REP-P no INPI**, para poder vender como ponto eletrônico oficial (Q-01).
+
+Até o passo 4, o discurso é "testado internamente", nunca "certificado".
