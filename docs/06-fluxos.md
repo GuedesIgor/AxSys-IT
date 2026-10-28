@@ -154,6 +154,24 @@ flowchart LR
     E --> F[Registro enviado, alerta some]
 ```
 
+## F11 · Exceção à validação facial
+
+```mermaid
+sequenceDiagram
+    actor C as Colaborador
+    participant S as Sistema
+    actor G as Gestor
+    actor R as RH
+    C->>S: Validação facial recusada 3 vezes ou sem câmera
+    C->>S: Não consigo validar o rosto
+    S-->>C: Pede justificativa obrigatória
+    S->>S: Guarda PENDENTE com localização e hora (não conta no espelho)
+    S-->>G: Aviso e contador em Aprovações
+    G->>S: Decide com justificativa obrigatória
+    S-->>C: Resultado e justificativa
+    Note over R,C: Para uso contínuo, o RH autoriza método alternativo (PIN), sem registrar o motivo
+```
+
 ## F10 · Ponto sem localização
 
 ```mermaid

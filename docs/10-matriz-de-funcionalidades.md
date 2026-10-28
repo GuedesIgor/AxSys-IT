@@ -8,10 +8,10 @@
 
 | Situação | Funções | % |
 |---|---:|---:|
-| ✅ Implementado no protótipo | 60 | 56% |
+| ✅ Implementado no protótipo | 62 | 57% |
 | 🟡 Parcial ou simulado | 24 | 22% |
 | ⬜ Fora do protótipo (com motivo) | 23 | 21% |
-| **Total catalogado** | **107** | |
+| **Total catalogado** | **109** | |
 
 🟡 significa que a tela e o fluxo existem para validar, mas o efeito real (câmera, envio de e-mail, conector, arquivo oficial) só acontece no app de verdade.
 
@@ -41,6 +41,8 @@
 | A19 | Aplicativo nativo para celular | ● | ● | ● |  | ● |  |  |  |  |  | ● |  | ⬜ | Decisão V5-05: só se uma função exigir |
 | A03 | Quiosque compartilhado com matrícula e PIN | ● |  | ● | ● | ● |  |  |  |  |  | ● |  | ✅ | Modo quiosque na tela de login |
 | A04 | Validação facial com prova de vida antes de cada batida, obrigatória | ● | ● | ● |  | ● |  |  |  |  |  | ● |  | ✅ | Desafios aleatórios, 3 tentativas, bloqueio e auditoria. Câmera simulada. Depende de parecer jurídico (Q-13) |
+| A04c | Batida sem validação facial: pendente de aprovação do gestor, com justificativas dos dois lados |  |  | ● |  |  |  |  |  |  |  | ● |  | ✅ | Reaproveita o fluxo do ponto sem localização. Entra no espelho marcada s/f |
+| A04d | Método alternativo de validação autorizado pelo RH (PIN), sem registrar o motivo | ● |  |  |  |  |  |  |  |  |  | ● |  | ✅ | Revisão a cada 180 dias. Batida marcada alt |
 | A04b | Cadastro facial com prova de vida obrigatório para criar usuário | ● |  | ● |  | ● |  |  |  |  |  | ● |  | ✅ | Sem rosto cadastrado não há cadastro nem batida. Câmera simulada |
 | A05 | QR Code pessoal do colaborador |  |  |  |  |  |  |  |  |  |  | ● |  | 🟡 | QR ilustrativo em Meu perfil; leitura real no app |
 | A06 | Registro por WhatsApp |  |  |  |  |  |  |  |  |  |  | ● |  | 🟡 | Método e integração simulados em Configurações |

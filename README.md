@@ -62,12 +62,12 @@ flowchart LR
 
 ### O que o protótipo já cobre
 
-Resultado do [estudo de 10 sistemas de ponto](docs/09-benchmark-concorrentes.md) (UKG, Deputy, Connecteam, Clockify, Jibble, Homebase, When I Work, Rippling, QuickBooks Time e Buddy Punch), mais a referência brasileira (Pontomais e Portaria 671). São **107 funções catalogadas** na [matriz de funcionalidades](docs/10-matriz-de-funcionalidades.md).
+Resultado do [estudo de 10 sistemas de ponto](docs/09-benchmark-concorrentes.md) (UKG, Deputy, Connecteam, Clockify, Jibble, Homebase, When I Work, Rippling, QuickBooks Time e Buddy Punch), mais a referência brasileira (Pontomais e Portaria 671). São **109 funções catalogadas** na [matriz de funcionalidades](docs/10-matriz-de-funcionalidades.md).
 
 | Grupo | Funções |
 |---|---|
 | **Registro** | Web, quiosque com PIN, validação facial com prova de vida (também no cadastro), QR Code, offline, projeto por batida, comprovante numerado |
-| **Local e antifraude** | Localização obrigatória com mapa, cerca virtual por unidade, três modos para batida fora da área, alerta de aparelho diferente. Sem localização, o ponto fica pendente e só vale após aprovação justificada do gestor |
+| **Local e antifraude** | Localização obrigatória com mapa, cerca virtual por unidade, três modos para batida fora da área, alerta de aparelho diferente. Sem localização ou sem validação facial, o ponto fica pendente e só vale após aprovação justificada do gestor; método alternativo autorizado pelo RH |
 | **Regras da CLT** | Tolerância, intervalo, 6h sem pausa, extras 50% e 100%, adicional noturno, interjornada, banco de horas, feriados |
 | **Escalas e ausências** | Escala semanal, folga e plantão, férias com saldo, atestado, licença, abono, folga compensatória |
 | **Fechamento** | Espelho assinado, aprovado e fechado, com mês travado |
@@ -89,6 +89,8 @@ Resultado do [estudo de 10 sistemas de ponto](docs/09-benchmark-concorrentes.md)
 | [07 · Registro de validações](docs/07-registro-de-validacoes.md) | Diário de cada decisão tomada com o protótipo | 🔄 Atualizado a cada rodada |
 | [08 · Perguntas em aberto](docs/08-perguntas-em-aberto.md) | O que ainda precisa de decisão | 🔴 Aberto |
 | [09 · Benchmark de concorrentes](docs/09-benchmark-concorrentes.md) | Estudo dos 10 sistemas de ponto e limites da pesquisa | ✅ Concluído |
+| [11 · Pacote jurídico (LGPD)](docs/11-pacote-juridico-lgpd.md) | RIPD, retenção, aviso, contratos, incidente e perguntas ao advogado | 🟡 Rascunho, aguarda advogado |
+| [12 · Fornecedores de prova de vida](docs/12-fornecedores-prova-de-vida.md) | Critérios, candidatos e prova de conceito | 🟡 Fornecedor em aberto |
 | [10 · Matriz de funcionalidades](docs/10-matriz-de-funcionalidades.md) | Todas as funções encontradas e a cobertura no protótipo | 🔄 Atualizado a cada rodada |
 
 ## Protótipo navegável
@@ -136,7 +138,9 @@ Estamos nas fases 1 a 3, que se repetem em ciclos curtos: ajustar o protótipo, 
 │   ├── 07-registro-de-validacoes.md
 │   ├── 08-perguntas-em-aberto.md
 │   ├── 09-benchmark-concorrentes.md
-│   └── 10-matriz-de-funcionalidades.md
+│   ├── 10-matriz-de-funcionalidades.md
+│   ├── 11-pacote-juridico-lgpd.md
+│   └── 12-fornecedores-prova-de-vida.md
 ├── assets/
 │   └── brand/                 ← logo e favicon da AxSys IT (do axsys.com.br)
 └── prototipo/

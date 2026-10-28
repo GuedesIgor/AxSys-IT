@@ -154,6 +154,29 @@ flowchart TD
 7. No protótipo a câmera é simulada: os botões "fiz o gesto", "foto ou vídeo" e "outra pessoa" permitem testar cada resultado. No app real a prova de vida e a comparação facial precisam de um serviço próprio (Q-22).
 8. **LGPD:** com a validação obrigatória, o dado biométrico deixa de ser opcional. O parecer jurídico da Q-13 passa a ser requisito para o lançamento.
 
+## RN-21 · Exceções à validação facial
+
+```mermaid
+flowchart TD
+    A[Validação facial] --> B{Resultado}
+    B -->|Aprovada| OK[Libera o registro]
+    B -->|Recusada 3 vezes, sem câmera ou cadastro pendente| C[Pessoa pede batida sem validação facial]
+    C --> D[Justificativa obrigatória da pessoa]
+    D --> E[Fica pendente, não conta no espelho]
+    E --> F{Gestor decide com justificativa}
+    F -->|Aprova| G[Entra no espelho como s/f]
+    F -->|Recusa| H[Não entra]
+    P[RH autoriza método alternativo] --> Q[Pessoa confirma com PIN]
+    Q --> R[Registro marcado como alt]
+```
+
+1. A exceção usa o **mesmo fluxo e o mesmo prazo** do ponto sem localização (RN-19): justificativa dos dois lados, 2 dias úteis, escalonamento ao RH, ninguém decide o próprio ponto.
+2. A batida aprovada entra com a **localização real** que a pessoa tinha na hora e a marca **s/f**.
+3. **Método alternativo:** o RH autoriza por pessoa, na edição do colaborador. **O motivo não é registrado**, para não tratar dado de saúde. A autorização vale 180 dias e depois pede revisão; a ficha avisa quando vencida.
+4. Com método alternativo, a batida pede o PIN de 4 dígitos. Três PINs errados bloqueiam a tentativa. A batida fica marcada **alt**.
+5. A pessoa pode pedir o método alternativo sem explicar o motivo (aviso ao colaborador, [docs/11](11-pacote-juridico-lgpd.md)).
+6. Toda exceção e autorização vai para a auditoria.
+
 ## RN-11 · Alertas de jornada (CLT)
 
 Calculados automaticamente para cada dia, com os valores de Configurações:

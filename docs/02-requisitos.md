@@ -113,6 +113,10 @@ Origem de cada um na [matriz de funcionalidades](10-matriz-de-funcionalidades.md
 | RF-83 | Prova de vida com desafios aleatórios (piscar, virar a cabeça, sorrir, abrir a boca) a cada tentativa | 🔴 | 🟡 simulada |
 | RF-84 | Rosto que não confere ou prova de vida reprovada impede a batida. Após 3 tentativas a validação bloqueia e a pessoa procura o RH. Cada recusa vai para a auditoria | 🔴 | ✅ |
 | RF-85 | Usuário sem rosto cadastrado não bate o ponto e vê aviso para procurar o RH. O RH pode refazer o cadastro facial na edição | 🔴 | ✅ |
+| RF-86 | Falha na validação facial (3 recusas), câmera indisponível ou cadastro facial pendente: a pessoa pode pedir a batida **sem validação facial**. Ela fica pendente, com justificativa dela e do gestor | 🔴 | ✅ |
+| RF-87 | O RH pode autorizar **método alternativo** (PIN) a uma pessoa, sem registrar o motivo. Revisão a cada 180 dias, com aviso na ficha quando vencida | 🔴 | ✅ |
+| RF-88 | Batidas aprovadas sem validação facial ou por método alternativo ficam marcadas no espelho (s/f, alt), na ficha do dia e nos alertas | 🟡 | ✅ |
+| RF-89 | Aviso ao colaborador sobre o tratamento do rosto, com alternativa sem necessidade de explicação | 🔴 | 🔴 texto pronto em [docs/11](11-pacote-juridico-lgpd.md), tela no app real |
 
 ## Requisitos não funcionais
 
@@ -133,7 +137,10 @@ Origem de cada um na [matriz de funcionalidades](10-matriz-de-funcionalidades.md
 | RNF-13 | **Qualquer navegador e qualquer aparelho** | Funciona nas duas últimas versões de Chrome, Edge, Firefox, Safari e Samsung Internet, em Windows, macOS, Linux, Android e iOS, de 360 px de largura até telas grandes |
 | RNF-14 | App web instalável (PWA) | Instalável na tela inicial, abre em tela cheia e tem o mesmo comportamento em todos os aparelhos |
 | RNF-15 | Sem dependência de app nativo | Toda função da primeira versão roda no navegador. Câmera e GPS usam as permissões do próprio navegador |
-| RNF-16 | Caminho alternativo quando o aparelho não permite | Ver [Q-20](08-perguntas-em-aberto.md) |
+| RNF-16 | Caminho alternativo quando o aparelho ou a câmera não permite | Ver [Q-20](08-perguntas-em-aberto.md) e [Q-22](08-perguntas-em-aberto.md) |
+| RNF-17 | Template facial apagado no desligamento (até 30 dias) | Ver [docs/11](11-pacote-juridico-lgpd.md), seção 7 |
+| RNF-18 | Nenhuma foto de batida guardada por padrão. Só o modelo matemático e o resultado | Minimização (LGPD art. 6, III) |
+| RNF-19 | Gravar de imediato a marcação recebida, mesmo pendente, em registro imutável | Mitiga o risco da Portaria 671 (ver docs/11, seção 12) |
 
 ## Rastreabilidade rápida
 

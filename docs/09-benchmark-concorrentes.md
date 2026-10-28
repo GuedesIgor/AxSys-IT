@@ -41,7 +41,7 @@ Não existe um ranking oficial de "mais usados no mundo". As fontes encontradas 
 
 ## O que o AxPonto incorporou
 
-Do estudo saíram **107 funções catalogadas**. Em síntese, o protótipo agora cobre:
+Do estudo saíram **109 funções catalogadas**. Em síntese, o protótipo agora cobre:
 
 - **Registro:** web, quiosque com PIN, selfie, QR, offline, projeto por batida, comprovante numerado.
 - **Local e antifraude:** local obrigatório com mapa, cerca por unidade com raio ajustável, três modos para batida fora da cerca, alerta de aparelho diferente.

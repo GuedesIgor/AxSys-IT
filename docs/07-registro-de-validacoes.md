@@ -6,6 +6,24 @@ Diário das decisões tomadas ao validar o protótipo. Mais recente no topo.
 
 ---
 
+## Rodada 9 · Pacote jurídico e exceções à validação facial
+
+**Versão do protótipo:** v9 · **Pedido:** resolver as pendências jurídicas e a alternativa para quem não pode usar a câmera.
+
+| # | Tema | Decisão | Motivo | Status |
+|---|---|---|---|---|
+| V9-01 | Pacote jurídico | Criados [docs/11](11-pacote-juridico-lgpd.md) (RIPD, ROPA, retenção, aviso, contratos, incidente, perguntas ao advogado) e [docs/12](12-fornecedores-prova-de-vida.md) (critérios e prova de conceito) | Q-13 e Q-22 | 🟡 aguarda advogado |
+| V9-02 | Batida sem validação facial | Pendente, com justificativa dos dois lados, mesmo fluxo e prazo do ponto sem localização | Evita travar a jornada e mantém decisão humana | ✅ |
+| V9-03 | Método alternativo | RH autoriza por pessoa, sem registrar o motivo, com revisão em 180 dias; confirmação por PIN | Acessibilidade sem tratar dado de saúde | ✅ |
+| V9-04 | Marcação imediata | Requisito de gravar de imediato a marcação recebida, mesmo pendente (RNF-19) | Risco com a Portaria 671 | 🟡 conferir com advogado |
+| V9-05 | Base legal | Art. 11, II, "g" como principal, com alternativa equivalente garantida | ANPD ainda não tem posição sobre ponto biométrico | 🟡 aguarda advogado |
+
+### Pendências desta rodada
+- Revisão e assinatura do advogado sobre o pacote.
+- Escolha do fornecedor de prova de vida pela prova de conceito.
+
+---
+
 ## Rodada 8 · Validação facial obrigatória com prova de vida
 
 **Versão do protótipo:** v8 · **Pedido:** validar o rosto com teste de vida antes de bater o ponto, e exigir o cadastro facial para cadastrar usuário.
